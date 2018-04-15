@@ -125,14 +125,14 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b60405160408061047b833981016040528080519190602001805160008054600160a060020a03909216600160a060020a03199092169190911790555050420160015561041b806100606000396000f3006060604052600436106100775763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631998aeef811461007c5780632a24f46c1461008657806338af3eed146100995780633ccfd60b146100d557806391f90157146100fc578063d57bde791461010f575b600080fd5b610084610134565b005b341561009157600080fd5b61008461021e565b34156100a457600080fd5b6100ac6102ff565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100e057600080fd5b6100e861031b565b604051901515815260200160405180910390f35b341561010757600080fd5b6100ac6103cd565b341561011a57600080fd5b6101226103e9565b60405190815260200160405180910390f35b60015442111561014357600080fd5b600354341161015157600080fd5b6003541561018b5760035460025473ffffffffffffffffffffffffffffffffffffffff166000908152600460205260409020805490910190555b6002805473ffffffffffffffffffffffffffffffffffffffff19163373ffffffffffffffffffffffffffffffffffffffff8116919091179091553460038190557ff4757a49b326036464bec6fe419a4ae38c8a02ce3e68bf0809674f6aab8ad300919060405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390a1565b60015442101561022d57600080fd5b60055460ff161561023d57600080fd5b6005805460ff191660011790556002546003547fdaec4582d5d9595688c8c98545fdd1c696d41c6aeaeb636737e84ed2f5c00eda9173ffffffffffffffffffffffffffffffffffffffff169060405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390a160005460035473ffffffffffffffffffffffffffffffffffffffff9091169080156108fc0290604051600060405180830381858888f1935050505015156102fd57600080fd5b565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b73ffffffffffffffffffffffffffffffffffffffff3316600090815260046020526040812054818111156103c45773ffffffffffffffffffffffffffffffffffffffff33166000818152600460205260408082209190915582156108fc0290839051600060405180830381858888f1935050505015156103c45773ffffffffffffffffffffffffffffffffffffffff3316600090815260046020526040812082905591506103c9565b600191505b5090565b60025473ffffffffffffffffffffffffffffffffffffffff1681565b600354815600a165627a7a7230582008ecc83a0e06329e2a12e7ea724978714ddf71cc9ff51327dddcbb424622959b0029",
-  "deployedBytecode": "0x6060604052600436106100775763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631998aeef811461007c5780632a24f46c1461008657806338af3eed146100995780633ccfd60b146100d557806391f90157146100fc578063d57bde791461010f575b600080fd5b610084610134565b005b341561009157600080fd5b61008461021e565b34156100a457600080fd5b6100ac6102ff565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100e057600080fd5b6100e861031b565b604051901515815260200160405180910390f35b341561010757600080fd5b6100ac6103cd565b341561011a57600080fd5b6101226103e9565b60405190815260200160405180910390f35b60015442111561014357600080fd5b600354341161015157600080fd5b6003541561018b5760035460025473ffffffffffffffffffffffffffffffffffffffff166000908152600460205260409020805490910190555b6002805473ffffffffffffffffffffffffffffffffffffffff19163373ffffffffffffffffffffffffffffffffffffffff8116919091179091553460038190557ff4757a49b326036464bec6fe419a4ae38c8a02ce3e68bf0809674f6aab8ad300919060405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390a1565b60015442101561022d57600080fd5b60055460ff161561023d57600080fd5b6005805460ff191660011790556002546003547fdaec4582d5d9595688c8c98545fdd1c696d41c6aeaeb636737e84ed2f5c00eda9173ffffffffffffffffffffffffffffffffffffffff169060405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390a160005460035473ffffffffffffffffffffffffffffffffffffffff9091169080156108fc0290604051600060405180830381858888f1935050505015156102fd57600080fd5b565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b73ffffffffffffffffffffffffffffffffffffffff3316600090815260046020526040812054818111156103c45773ffffffffffffffffffffffffffffffffffffffff33166000818152600460205260408082209190915582156108fc0290839051600060405180830381858888f1935050505015156103c45773ffffffffffffffffffffffffffffffffffffffff3316600090815260046020526040812082905591506103c9565b600191505b5090565b60025473ffffffffffffffffffffffffffffffffffffffff1681565b600354815600a165627a7a7230582008ecc83a0e06329e2a12e7ea724978714ddf71cc9ff51327dddcbb424622959b0029",
+  "bytecode": "0x6060604052341561000f57600080fd5b60405160408061047b833981016040528080519190602001805160008054600160a060020a03909216600160a060020a03199092169190911790555050420160015561041b806100606000396000f3006060604052600436106100775763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631998aeef811461007c5780632a24f46c1461008657806338af3eed146100995780633ccfd60b146100d557806391f90157146100fc578063d57bde791461010f575b600080fd5b610084610134565b005b341561009157600080fd5b61008461021e565b34156100a457600080fd5b6100ac6102ff565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100e057600080fd5b6100e861031b565b604051901515815260200160405180910390f35b341561010757600080fd5b6100ac6103cd565b341561011a57600080fd5b6101226103e9565b60405190815260200160405180910390f35b60015442111561014357600080fd5b600354341161015157600080fd5b6003541561018b5760035460025473ffffffffffffffffffffffffffffffffffffffff166000908152600460205260409020805490910190555b6002805473ffffffffffffffffffffffffffffffffffffffff19163373ffffffffffffffffffffffffffffffffffffffff8116919091179091553460038190557ff4757a49b326036464bec6fe419a4ae38c8a02ce3e68bf0809674f6aab8ad300919060405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390a1565b60015442101561022d57600080fd5b60055460ff161561023d57600080fd5b6005805460ff191660011790556002546003547fdaec4582d5d9595688c8c98545fdd1c696d41c6aeaeb636737e84ed2f5c00eda9173ffffffffffffffffffffffffffffffffffffffff169060405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390a160005460035473ffffffffffffffffffffffffffffffffffffffff9091169080156108fc0290604051600060405180830381858888f1935050505015156102fd57600080fd5b565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b73ffffffffffffffffffffffffffffffffffffffff3316600090815260046020526040812054818111156103c45773ffffffffffffffffffffffffffffffffffffffff33166000818152600460205260408082209190915582156108fc0290839051600060405180830381858888f1935050505015156103c45773ffffffffffffffffffffffffffffffffffffffff3316600090815260046020526040812082905591506103c9565b600191505b5090565b60025473ffffffffffffffffffffffffffffffffffffffff1681565b600354815600a165627a7a7230582033e64925b71a1c9f27c165bf50909509c43e8bcf06f98cd8619ff91826fac48d0029",
+  "deployedBytecode": "0x6060604052600436106100775763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631998aeef811461007c5780632a24f46c1461008657806338af3eed146100995780633ccfd60b146100d557806391f90157146100fc578063d57bde791461010f575b600080fd5b610084610134565b005b341561009157600080fd5b61008461021e565b34156100a457600080fd5b6100ac6102ff565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100e057600080fd5b6100e861031b565b604051901515815260200160405180910390f35b341561010757600080fd5b6100ac6103cd565b341561011a57600080fd5b6101226103e9565b60405190815260200160405180910390f35b60015442111561014357600080fd5b600354341161015157600080fd5b6003541561018b5760035460025473ffffffffffffffffffffffffffffffffffffffff166000908152600460205260409020805490910190555b6002805473ffffffffffffffffffffffffffffffffffffffff19163373ffffffffffffffffffffffffffffffffffffffff8116919091179091553460038190557ff4757a49b326036464bec6fe419a4ae38c8a02ce3e68bf0809674f6aab8ad300919060405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390a1565b60015442101561022d57600080fd5b60055460ff161561023d57600080fd5b6005805460ff191660011790556002546003547fdaec4582d5d9595688c8c98545fdd1c696d41c6aeaeb636737e84ed2f5c00eda9173ffffffffffffffffffffffffffffffffffffffff169060405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390a160005460035473ffffffffffffffffffffffffffffffffffffffff9091169080156108fc0290604051600060405180830381858888f1935050505015156102fd57600080fd5b565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b73ffffffffffffffffffffffffffffffffffffffff3316600090815260046020526040812054818111156103c45773ffffffffffffffffffffffffffffffffffffffff33166000818152600460205260408082209190915582156108fc0290839051600060405180830381858888f1935050505015156103c45773ffffffffffffffffffffffffffffffffffffffff3316600090815260046020526040812082905591506103c9565b600191505b5090565b60025473ffffffffffffffffffffffffffffffffffffffff1681565b600354815600a165627a7a7230582033e64925b71a1c9f27c165bf50909509c43e8bcf06f98cd8619ff91826fac48d0029",
   "sourceMap": "26:4095:0:-;;;997:177;;;;;;;;;;;;;;;;;;;;;;;;;;;;1100:11;:26;;-1:-1:-1;;;;;1100:26:0;;;-1:-1:-1;;;;;;1100:26:0;;;;;;;;;-1:-1:-1;;1149:3:0;:18;1100:26;1136:31;26:4095;;;;;;",
   "deployedSourceMap": "26:4095:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1342:977;;;;;;3051:1068;;;;;;;;;;;;200:26;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2366:602;;;;;;;;;;;;;;;;;;;;;;;;;;;;;298:28;;;;;;;;;;;;332:22;;;;;;;;;;;;;;;;;;;;;;;;;;;1342:977;1680:10;;1673:3;:17;;1665:26;;;;;;1791:10;;1779:9;:22;1771:31;;;;;;1817:10;;:15;1813:375;;2167:10;;2149:13;;;;2134:29;;;;:14;:29;;;;;:43;;;;;;;1813:375;2197:13;:26;;-1:-1:-1;;2197:26:0;2213:10;2197:26;;;;;;;;;;2246:9;2233:10;:22;;;2270:42;;2213:10;2270:42;;;;;;;;;;;;;;;;;;;;;;;1342:977::o;3051:1068::-;3840:10;;3833:3;:17;;3825:26;;;;;;3897:5;;;;3896:6;3888:15;;;;;;3977:5;:12;;-1:-1:-1;;3977:12:0;3985:4;3977:12;;;4017:13;;4032:10;;4004:39;;4017:13;;;4004:39;;;;;;;;;;;;;;;;;;;;;;;4080:11;;4101:10;;4080:11;;;;;:32;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3051:1068::o;200:26::-;;;;;;:::o;2366:602::-;2432:26;2447:10;2432:26;2402:4;2432:26;;;:14;:26;;;;;;2472:10;;;2468:473;;;2683:26;2698:10;2683:26;2712:1;2683:26;;;:14;:26;;;;;;:30;;;;2733:23;;;;;2749:6;;2733:23;;;;;;;;;;;;;;;;;2732:24;2728:203;;;2851:26;2866:10;2851:26;;;;;:14;:26;;;;;:35;;;:26;-1:-1:-1;2904:12:0;;2728:203;2957:4;2950:11;;2366:602;;;:::o;298:28::-;;;;;;:::o;332:22::-;;;;:::o",
   "source": "pragma solidity ^0.4.21;\n\ncontract SimpleAuction {\n    // Parameters of the auction. Times are either\n    // absolute unix timestamps (seconds since 1970-01-01)\n    // or time periods in seconds.\n    address public beneficiary;\n    uint public auctionEnd;\n\n    // Current state of the auction.\n    address public highestBidder;\n    uint public highestBid;\n\n    // Allowed withdrawals of previous bids\n    mapping(address => uint) pendingReturns;\n\n    // Set to true at the end, disallows any change\n    bool ended;\n\n    // Events that will be fired on changes.\n    event HighestBidIncreased(address bidder, uint amount);\n    event AuctionEnded(address winner, uint amount);\n\n    // The following is a so-called natspec comment,\n    // recognizable by the three slashes.\n    // It will be shown when the user is asked to\n    // confirm a transaction.\n\n    /// Create a simple auction with `_biddingTime`\n    /// seconds bidding time on behalf of the\n    /// beneficiary address `_beneficiary`.\n    function SimpleAuction(\n        uint _biddingTime,\n        address _beneficiary\n    ) public {\n        beneficiary = _beneficiary;\n        auctionEnd = now + _biddingTime;\n    }\n\n    /// Bid on the auction with the value sent\n    /// together with this transaction.\n    /// The value will only be refunded if the\n    /// auction is not won.\n    function bid() public payable {\n        // No arguments are necessary, all\n        // information is already part of\n        // the transaction. The keyword payable\n        // is required for the function to\n        // be able to receive Ether.\n\n        // Revert the call if the bidding\n        // period is over.\n        require(now <= auctionEnd);\n\n        // If the bid is not higher, send the\n        // money back.\n        require(msg.value > highestBid);\n\n        if (highestBid != 0) {\n            // Sending back the money by simply using\n            // highestBidder.send(highestBid) is a security risk\n            // because it could execute an untrusted contract.\n            // It is always safer to let the recipients\n            // withdraw their money themselves.\n            pendingReturns[highestBidder] += highestBid;\n        }\n        highestBidder = msg.sender;\n        highestBid = msg.value;\n        emit HighestBidIncreased(msg.sender, msg.value);\n    }\n\n    /// Withdraw a bid that was overbid.\n    function withdraw() public returns (bool) {\n        uint amount = pendingReturns[msg.sender];\n        if (amount > 0) {\n            // It is important to set this to zero because the recipient\n            // can call this function again as part of the receiving call\n            // before `send` returns.\n            pendingReturns[msg.sender] = 0;\n\n            if (!msg.sender.send(amount)) {\n                // No need to call throw here, just reset the amount owing\n                pendingReturns[msg.sender] = amount;\n                return false;\n            }\n        }\n        return true;\n    }\n\n    /// End the auction and send the highest bid\n    /// to the beneficiary.\n    function auctionEnd() public {\n        // It is a good guideline to structure functions that interact\n        // with other contracts (i.e. they call functions or send Ether)\n        // into three phases:\n        // 1. checking conditions\n        // 2. performing actions (potentially changing conditions)\n        // 3. interacting with other contracts\n        // If these phases are mixed up, the other contract could call\n        // back into the current contract and modify the state or cause\n        // effects (ether payout) to be performed multiple times.\n        // If functions called internally include interaction with external\n        // contracts, they also have to be considered interaction with\n        // external contracts.\n\n        // 1. Conditions\n        require(now >= auctionEnd); // auction did not yet end\n        require(!ended); // this function has already been called\n\n        // 2. Effects\n        ended = true;\n        emit AuctionEnded(highestBidder, highestBid);\n\n        // 3. Interaction\n        beneficiary.transfer(highestBid);\n    }\n}\n",
-  "sourcePath": "/Users/austinhwang/Documents/GitHub/datachain/contracts/Auction.sol",
+  "sourcePath": "/Users/NLee/Dropbox/College_Docs/3Junior Year/CS144R/datachain/contracts/SimpleAuction.sol",
   "ast": {
-    "absolutePath": "/Users/austinhwang/Documents/GitHub/datachain/contracts/Auction.sol",
+    "absolutePath": "/Users/NLee/Dropbox/College_Docs/3Junior Year/CS144R/datachain/contracts/SimpleAuction.sol",
     "exportedSymbols": {
       "SimpleAuction": [
         165
@@ -572,7 +572,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 942,
+                        "referencedDeclaration": 180,
                         "src": "1149:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -719,7 +719,7 @@
                           "name": "now",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 942,
+                          "referencedDeclaration": 180,
                           "src": "1673:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -761,7 +761,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 943,
+                      "referencedDeclaration": 181,
                       "src": "1665:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -809,7 +809,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 940,
+                            "referencedDeclaration": 178,
                             "src": "1779:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -863,7 +863,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 943,
+                      "referencedDeclaration": 181,
                       "src": "1771:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1055,7 +1055,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 940,
+                        "referencedDeclaration": 178,
                         "src": "2213:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1117,7 +1117,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 940,
+                        "referencedDeclaration": 178,
                         "src": "2246:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1160,7 +1160,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 940,
+                          "referencedDeclaration": 178,
                           "src": "2290:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1189,7 +1189,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 940,
+                          "referencedDeclaration": 178,
                           "src": "2302:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1343,7 +1343,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 940,
+                        "referencedDeclaration": 178,
                         "src": "2447:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1470,7 +1470,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 940,
+                                "referencedDeclaration": 178,
                                 "src": "2698:3:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -1576,7 +1576,7 @@
                                   "name": "msg",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 940,
+                                  "referencedDeclaration": 178,
                                   "src": "2733:3:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_magic_message",
@@ -1671,7 +1671,7 @@
                                       "name": "msg",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 940,
+                                      "referencedDeclaration": 178,
                                       "src": "2866:3:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_magic_message",
@@ -1865,7 +1865,7 @@
                           "name": "now",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 942,
+                          "referencedDeclaration": 180,
                           "src": "3833:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1907,7 +1907,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 943,
+                      "referencedDeclaration": 181,
                       "src": "3825:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1977,7 +1977,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 943,
+                      "referencedDeclaration": 181,
                       "src": "3888:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2231,7 +2231,7 @@
     "src": "0:4122:0"
   },
   "legacyAST": {
-    "absolutePath": "/Users/austinhwang/Documents/GitHub/datachain/contracts/Auction.sol",
+    "absolutePath": "/Users/NLee/Dropbox/College_Docs/3Junior Year/CS144R/datachain/contracts/SimpleAuction.sol",
     "exportedSymbols": {
       "SimpleAuction": [
         165
@@ -2671,7 +2671,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 942,
+                        "referencedDeclaration": 180,
                         "src": "1149:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -2818,7 +2818,7 @@
                           "name": "now",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 942,
+                          "referencedDeclaration": 180,
                           "src": "1673:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2860,7 +2860,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 943,
+                      "referencedDeclaration": 181,
                       "src": "1665:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2908,7 +2908,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 940,
+                            "referencedDeclaration": 178,
                             "src": "1779:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -2962,7 +2962,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 943,
+                      "referencedDeclaration": 181,
                       "src": "1771:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -3154,7 +3154,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 940,
+                        "referencedDeclaration": 178,
                         "src": "2213:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -3216,7 +3216,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 940,
+                        "referencedDeclaration": 178,
                         "src": "2246:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -3259,7 +3259,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 940,
+                          "referencedDeclaration": 178,
                           "src": "2290:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -3288,7 +3288,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 940,
+                          "referencedDeclaration": 178,
                           "src": "2302:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -3442,7 +3442,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 940,
+                        "referencedDeclaration": 178,
                         "src": "2447:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -3569,7 +3569,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 940,
+                                "referencedDeclaration": 178,
                                 "src": "2698:3:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -3675,7 +3675,7 @@
                                   "name": "msg",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 940,
+                                  "referencedDeclaration": 178,
                                   "src": "2733:3:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_magic_message",
@@ -3770,7 +3770,7 @@
                                       "name": "msg",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 940,
+                                      "referencedDeclaration": 178,
                                       "src": "2866:3:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_magic_message",
@@ -3964,7 +3964,7 @@
                           "name": "now",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 942,
+                          "referencedDeclaration": 180,
                           "src": "3833:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -4006,7 +4006,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 943,
+                      "referencedDeclaration": 181,
                       "src": "3825:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -4076,7 +4076,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 943,
+                      "referencedDeclaration": 181,
                       "src": "3888:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -4333,7 +4333,14 @@
     "name": "solc",
     "version": "0.4.21+commit.dfe3193c.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1523819973610": {
+      "events": {},
+      "links": {},
+      "address": "0x67130f7c7c95ac50bd283762f4ff78773a53d23a",
+      "transactionHash": "0xb57532fa0ffde9fe947cc125188546afe022b4309e46973faa9bfd686d442ff8"
+    }
+  },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-04-15T19:08:13.896Z"
+  "updatedAt": "2018-04-15T19:32:35.659Z"
 }
