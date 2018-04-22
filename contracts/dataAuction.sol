@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.18;
 
 contract Auction {
     // Parameters of the auction. Times are either
@@ -60,7 +60,7 @@ contract Auction {
     /// Create a simple auction with `_biddingTime`
     /// seconds bidding time on behalf of the
     /// beneficiary address `_beneficiary`.
-    constructor(
+    function Auction(
         uint _biddingTime,
         address _beneficiary,
         uint _collectionPeriod,
@@ -109,7 +109,7 @@ contract Auction {
         }
         highestBidder = msg.sender;
         highestBid = msg.value;
-        emit HighestBidIncreased(msg.sender, msg.value);
+        HighestBidIncreased(msg.sender, msg.value);
     }
 
     /// Withdraw a bid that was overbid.
@@ -165,7 +165,7 @@ contract Auction {
         require(!ended); // this function has already been called
 
         ended = true;
-        emit AuctionEnded(highestBidder, highestBid);
+        AuctionEnded(highestBidder, highestBid);
 
         state = State.Locked;
         collectionEnd = now + collectionPeriod;
