@@ -99,6 +99,8 @@ contract Auction {
         // money back.
         require(msg.value > highestBid);
 
+        require(msg.value != 0);
+
         if (highestBid != 0) {
             // Sending back the money by simply using
             // highestBidder.send(highestBid) is a security risk
