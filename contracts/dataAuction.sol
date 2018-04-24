@@ -1,6 +1,6 @@
 pragma solidity ^0.4.20;
 
-contract Auction {
+contract dataAuction {
     // Parameters of the auction. Times are either
     // absolute unix timestamps (seconds since 1970-01-01)
     // or time periods in seconds.
@@ -60,7 +60,7 @@ contract Auction {
     /// Create a simple auction with `_biddingTime`
     /// seconds bidding time on behalf of the
     /// beneficiary address `_beneficiary`.
-    function Auction(
+    function dataAuction(
         uint _biddingTime,
         address _beneficiary,
         uint _collectionPeriod,
