@@ -9,7 +9,7 @@ import { default as Web3} from 'web3';
 //contracts
 import { default as contract } from 'truffle-contract'
 import auctionFactory from './contracts/AuctionFactory.json'
-import auction from './contracts/Auction.json'
+import auction from './contracts/dataAuction.json'
 
     //var watching = false; //start watching to events only 
     // var passwd = false;
@@ -37,17 +37,14 @@ export default class AuctionDetails extends Component {
      AuctionFactory.setProvider(web3.currentProvider);
      Auction.setProvider(web3.currentProvider);
 
-     // this.getAuctionDetails = this.getAuctionDetails.bind(this);
       this.state= {
           auctionId: null,
-          totalTickets: null,
-          ticketPerPerson: null,
-          lastBidder: null,
-          lastBid: null,
+          beneficiary: null,
+          auctionEnd: null,
+          metadata: null,
           highestBidder: null,
           highestBid: null,
-          balanceTikets: null,
-          auctionStatus: false
+          collectionEnd: null,
       }
 
       me = this;
@@ -55,58 +52,47 @@ export default class AuctionDetails extends Component {
   }
 
   componentDidMount = () => {
-    
-    me.props.notifier(false,false,false,true);
-    let auctioneerId = this.props.auctioneerId; 
-    
-    AuctionFactory.deployed().then(function(factoryInstance) {
-      factoryInstance.getAuction.call(auctioneerId).then(function(result) {
+
+    me.props.notifier(false, false, false, true);
+    let auctioneerId = this.props.auctioneerId;
+
+    AuctionFactory.deployed().then(function (factoryInstance) {
+      factoryInstance.getAuction.call(auctioneerId).then(function (result) {
         console.warn("address of auction for  " + auctioneerId + " is " + result);
-        var myAuction = Auction.at(result);
-        // console.warn("auction @  " + myAuction);
+        Auction.at(result).then(myAuction => {
+          me.props.onAuctionId(myAuction, result);
 
-        // if(!watching) {
-        //   watchEvents(myAuction, result);
-        //   watching = 1;
-        // }
-        me.props.onAuctionId(myAuction, result);
+          me.setState({auctionId: result});
 
-        me.setState({auctionId : result});
+          myAuction.beneficiary.call().then(function (beneficiary) {
+            me.setState({beneficiary});
+          });
+          myAuction.auctionEnd.call().then(function (auctionEnd) {
+            console.log(auctionEnd)
+            me.setState({auctionEnd});
+          });
+          myAuction.metadata.call().then(function (metadata) {
+            me.setState({metadata});
+          });
 
-        myAuction.totalTickets.call().then(function(totalTicketsVal) {
-          me.setState({totalTickets : totalTicketsVal['c']});
+          myAuction.highestBidder.call().then(function (highestBidder) {
+            me.setState({highestBidder});
+          });
+          myAuction.highestBid.call().then(function (highestBid) {
+            me.setState({highestBid: highestBid['c']});
+          });
+          myAuction.collectionEnd.call().then(function (collectionEnd) {
+            me.setState({collectionEnd: collectionEnd['c']});
+          });
+          myAuction.incomplete.call().then(function (status) {
+            if (status)
+              me.setState({auctionStatus: 'Active'});
+            else
+              me.setState({auctionStatus: 'Expired'});
+          });
         });
-        myAuction.ticketPerPerson.call().then(function(ticketPerPersonVal) {
-           me.setState({ticketPerPerson : ticketPerPersonVal['c']});
-        });
-        myAuction.lastBidder.call().then(function(lastBidderVal) {
-          me.setState({lastBidder : lastBidderVal});
-        });
-
-        myAuction.lastBid.call().then(function(lastBidVal) {
-          me.setState({lastBid : lastBidVal['c']});
-        });
-        myAuction.highestBidder.call().then(function(highestBidderVal) {
-          me.setState({highestBidder : highestBidderVal});
-        });
-        myAuction.highestBid.call().then(function(highestBidVal) {
-          me.setState({highestBid : highestBidVal['c']});
-        });
-        myAuction.balanceTikets.call().then(function(bal) {
-          me.setState({balanceTikets : bal['c']});
-        });
-        myAuction.isActive.call().then(function(status) {
-          if(status)
-            me.setState({auctionStatus : 'Active'});
-          else
-            me.setState({auctionStatus : 'Expired'});
-        });
-
       });
-      
     });
-
-
   }
 
 
@@ -130,20 +116,16 @@ export default class AuctionDetails extends Component {
                       <td>{this.state.auctionId}</td>
                     </tr>
                     <tr>
-                      <td>Total Tickets</td>
-                      <td>{this.state.totalTickets}</td>
+                      <td>Beneficiary</td>
+                      <td>{this.state.beneficiary}</td>
                     </tr>
                     <tr>
-                      <td>Tickets Per Person</td>
-                      <td>{this.state.ticketPerPerson}</td>
+                      <td>Auction End</td>
+                      <td>{this.state.auctionEnd}</td>
                     </tr>
                     <tr>
-                      <td>Last Bidder</td>
-                      <td>{this.state.lastBidder}</td>
-                    </tr>
-                    <tr>
-                      <td>Last Bid</td>
-                      <td>{this.state.lastBid}</td>
+                      <td>Metadata</td>
+                      <td>{this.state.metadata}</td>
                     </tr>
                     <tr>
                       <td>Highest Bidder</td>
@@ -154,12 +136,8 @@ export default class AuctionDetails extends Component {
                       <td>{this.state.highestBid}</td>
                     </tr>
                     <tr>
-                      <td>Tickets Remaining</td>
-                      <td>{this.state.balanceTikets}</td>
-                    </tr>
-                    <tr>
-                      <td>Auction Status</td>
-                      <td>{this.state.auctionStatus}</td>
+                      <td>Collection End</td>
+                      <td>{this.state.collectionEnd}</td>
                     </tr>
                   </tbody>
                 </table>                
