@@ -1,7 +1,6 @@
 pragma solidity ^0.4.11;
 
-import './Auction.sol';
-import './AuctionEscrow.sol';
+import './dataAuction.sol';
 
 
 /**
@@ -21,19 +20,19 @@ contract AuctionFactory {
 
 	// contains the owner of an auction mapped to the hash of that auction
 	mapping( address => address) public auctions;
-	mapping( address => address) public escrows;
+	// mapping( address => address) public escrows;
 
 	function AuctionFactory() {
 		factoryOwner = msg.sender;
 	}
 	
-    function createAuction(uint32 pTicketPerPerson, uint32 pTotalTickets, uint32 pMinimumBid, uint256 pEndTime ) returns (address auctionAddress) {
+    function createAuction(uint biddingTime, address beneficiary, uint collectionPeriod, bytes32 sellerHash, string metadata) returns (address auctionAddress) {
         
         address owner = msg.sender;
-        Auction auction = new Auction(owner, pTicketPerPerson, pTotalTickets, pMinimumBid, pEndTime); 
+        dataAuction auction = new dataAuction(biddingTime, beneficiary, collectionPeriod, sellerHash, metadata); 
         auctions[owner] = auction;
-        AuctionEscrow escrow = new AuctionEscrow(owner, auction);
-        escrows[auction] = escrow;
+        // AuctionEscrow escrow = new AuctionEscrow(owner, auction);
+        // escrows[auction] = escrow;
 
 		return auctions[owner];
     
@@ -43,9 +42,9 @@ contract AuctionFactory {
         return auctions[owner];
     }
 
-    function getEscrow(address auction) returns (address) {
-        return escrows[auction];
-    }
+    // function getEscrow(address auction) returns (address) {
+    //     return escrows[auction];
+    // }
 
 
 }
