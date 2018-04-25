@@ -86,9 +86,9 @@ class App extends Component {
                   <li>
                     <a onClick={ () => { this.setState({sub_feature : 'Settle'}) } }>Settle Payments</a>
                   </li>
-                  // <li>
-                  //   <a onClick={ () => { this.setState({feature : 'A'}); this.setState({sub_feature : 'Delete'}) } }>Remove</a>
-                  // </li>
+                  <li>
+                     <a onClick={ () => { this.setState({feature : 'A'}); this.setState({sub_feature : 'Delete'}) } }>Remove</a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -102,7 +102,7 @@ class App extends Component {
                 <li className="breadcrumb-item">{this.state.sub_feature}</li>
               </ol>
               
-                <div className="card-header"> 
+                <div> 
                       <div dangerouslySetInnerHTML={{__html: this.state.message}} />
                 </div>
 
