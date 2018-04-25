@@ -53,9 +53,8 @@ export default class AuctionDetails extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  async handleChange(event) {
-    let auctionAddress = event.target.value
-    let myAuction = await Auction.at(auctionAddress);
+  async getAuctionInfo(address) {
+    let myAuction = await Auction.at(address);
     let beneficiary = await myAuction.beneficiary.call();
     let auctionEndEpoch = await myAuction.auctionEnd.call();
     let auctionEnd = new Date(1000 * auctionEndEpoch['c']).toUTCString();
@@ -66,14 +65,19 @@ export default class AuctionDetails extends Component {
     //let incomplete = await myAuction.incomplete.call();
     //let auctionStatus = incomplete ? 'Active' : 'Expired';
 
-    const auction = {
+    return {
       beneficiary,
       auctionEnd,
       metadata,
       highestBidder,
       highestBid,
       collectionEnd,
-    }
+    };
+  }
+
+  async handleChange(event) {
+    let auctionAddress = event.target.value;
+    let auction = await me.getAuctionInfo(auctionAddress);
 
     me.setState({
       auction,
