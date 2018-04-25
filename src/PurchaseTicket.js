@@ -139,7 +139,7 @@ export default class PurchaseTicket extends Component {
     return (
       <form>
         <div className="card mb-3">
-          <div className="card-header">Pay for Ticket</div>
+          <div className="card-header">Withdraw Bid</div>
             <div className="card-body">
               <div className="table-responsive">
                 <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
@@ -150,7 +150,7 @@ export default class PurchaseTicket extends Component {
                       <td>{this.props.auctionId}</td>
                     </tr>
                     <tr>
-                      <td>Get Payable For</td>
+                      <td>Verification</td>
                       <td><input className="form-control" ref="txtBuyerId"  defaultValue="0x3ad78130DCff93d6c942c37aA45F0A004A0Ffe0C" placeholder="Buyer Address" /></td>
                     </tr>
                     <tr>
