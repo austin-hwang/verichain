@@ -10,9 +10,9 @@
     function initHeader() {
         width = window.innerWidth;
         if(width >= 991) {
-            height = 900;
+            height = window.innerHeight;
         } else {
-            height = 1000;
+            height = window.innerHeight;
         }
         target = {x: width/2, y: height/2};
 
