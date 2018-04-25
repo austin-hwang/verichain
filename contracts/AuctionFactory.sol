@@ -38,9 +38,13 @@ contract AuctionFactory {
   
   }
 
-  // function getAuction(address owner) returns (address) {
-  //     return auctions[owner];
-  // }
+  function getAuction(uint256 index) returns (address) {
+      return auctions[index];
+  }
+
+  function numAuctions() returns (uint256) {
+    return auctions.length;
+  }
 
     // function getEscrow(address auction) returns (address) {
     //     return escrows[auction];
