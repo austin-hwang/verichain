@@ -1,0 +1,27 @@
+{
+  "links": [
+    { "rel": "properties", "href": "/things/pi/properties" },
+    { "rel": "actions", "href": "/things/pi/actions" },
+    { "rel": "events", "href": "/things/pi/events" },
+    { "rel": "alternate", "href": "wss://mywebthingserver.com/things/pi" },
+    { "href": "/things/pi", "rel": "alternate", "mediaType": "text/html" }
+  ],
+  "name": "WoT Pi",
+  "events": { "reboot": { "description": "Going down for reboot" } },
+  "type": "thing",
+  "description": "A WoT-connected Raspberry Pi",
+  "properties": {
+    "humidity": {
+      "type": "number",
+      "unit": "percent",
+      "href": "/things/pi/properties/humidity"
+    },
+    "temperature": {
+      "type": "number",
+      "unit": "celsius",
+      "description": "An ambient temperature sensor",
+      "href": "/things/pi/properties/temperature"
+    }
+  },
+  "actions": { "reboot": { "description": "Reboot the device" } }
+}

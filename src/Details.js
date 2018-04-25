@@ -21,6 +21,53 @@ var Auction = contract(auction);
 // else ctx is not visible from anonymous functions and we cant call other functions like writeMsg
 var me = null;
 
+function formatMetadata(metadata) {
+  metadata = JSON.parse(metadata);
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Sensors</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{metadata.name}</td>
+          <td>{metadata.description}</td>
+          <td>{metadata.type}</td>
+          <td>
+            <table>
+              <thead>
+                <tr>
+                  <th>Sensor Name</th>
+                  <th>Type</th>
+                  <th>Unit</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(metadata.properties).map(
+                  ([key, properties]) => (
+                    <tr>
+                      <td>{key}</td>
+                      <td>{properties.type}</td>
+                      <td>{properties.unit}</td>
+                      <td>{properties.description}</td>
+                    </tr>
+                  )
+                )}
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+
 export default class AuctionDetails extends Component {
   constructor(props) {
     super(props);
@@ -140,7 +187,7 @@ export default class AuctionDetails extends Component {
                     </tr>
                     <tr>
                       <td>Metadata</td>
-                      <td>{metadata}</td>
+                      <td>{formatMetadata(metadata)}</td>
                     </tr>
                     <tr>
                       <td>Highest Bidder</td>
