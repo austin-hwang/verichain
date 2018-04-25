@@ -19,28 +19,28 @@ contract AuctionFactory {
 	address factoryOwner;
 
 	// contains the owner of an auction mapped to the hash of that auction
-	mapping( address => address) public auctions;
+	address[] public auctions;
 	// mapping( address => address) public escrows;
 
 	function AuctionFactory() {
 		factoryOwner = msg.sender;
 	}
 	
-    function createAuction(uint biddingTime, address beneficiary, uint collectionPeriod, bytes32 sellerHash, string metadata) returns (address auctionAddress) {
-        
-        address owner = msg.sender;
-        dataAuction auction = new dataAuction(biddingTime, beneficiary, collectionPeriod, sellerHash, metadata); 
-        auctions[owner] = auction;
-        // AuctionEscrow escrow = new AuctionEscrow(owner, auction);
-        // escrows[auction] = escrow;
+  function createAuction(uint biddingTime, address beneficiary, uint collectionPeriod, bytes32 sellerHash, string metadata) returns (address auctionAddress) {
+      
+      address owner = msg.sender;
+      dataAuction auction = new dataAuction(biddingTime, beneficiary, collectionPeriod, sellerHash, metadata); 
+      auctions.push(auction);
+      // AuctionEscrow escrow = new AuctionEscrow(owner, auction);
+      // escrows[auction] = escrow;
 
-		return auctions[owner];
-    
-    }
+  return auction;
+  
+  }
 
-    function getAuction(address owner) returns (address) {
-        return auctions[owner];
-    }
+  // function getAuction(address owner) returns (address) {
+  //     return auctions[owner];
+  // }
 
     // function getEscrow(address auction) returns (address) {
     //     return escrows[auction];
