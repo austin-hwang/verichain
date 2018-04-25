@@ -10,9 +10,9 @@
     function initHeader() {
         width = window.innerWidth;
         if(width >= 991) {
-            height = 600;
-        } else {
             height = 900;
+        } else {
+            height = 1000;
         }
         target = {x: width/2, y: height/2};
 
@@ -103,9 +103,9 @@
     function resize() {
         width = window.innerWidth;
         if(width >= 991) {
-            height = 600;
-        } else {
             height = 900;
+        } else {
+            height = 1000;
         }
         largeHeader.style.height = height+'px';
         canvas.width = width;
