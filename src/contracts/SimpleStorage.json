@@ -52,14 +52,14 @@
     "absolutePath": "/Users/hari/Harvard/cs144r/datachain/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
-        1117
+        1123
       ]
     },
-    "id": 1118,
+    "id": 1124,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1096,
+        "id": 1102,
         "literals": [
           "solidity",
           "^",
@@ -75,9 +75,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1117,
+        "id": 1123,
         "linearizedBaseContracts": [
-          1117
+          1123
         ],
         "name": "SimpleStorage",
         "nodeType": "ContractDefinition",
@@ -85,20 +85,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1100,
+            "id": 1106,
             "name": "StorageSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1099,
+              "id": 1105,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1098,
+                  "id": 1104,
                   "indexed": false,
                   "name": "_message",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1100,
+                  "scope": 1106,
                   "src": "75:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -107,7 +107,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1097,
+                    "id": 1103,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "75:6:6",
@@ -126,10 +126,10 @@
           },
           {
             "constant": false,
-            "id": 1102,
+            "id": 1108,
             "name": "storedData",
             "nodeType": "VariableDeclaration",
-            "scope": 1117,
+            "scope": 1123,
             "src": "99:22:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -138,7 +138,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1101,
+              "id": 1107,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "99:4:6",
@@ -152,25 +152,25 @@
           },
           {
             "body": {
-              "id": 1115,
+              "id": 1121,
               "nodeType": "Block",
               "src": "154:71:6",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1109,
+                    "id": 1115,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1107,
+                      "id": 1113,
                       "name": "storedData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1102,
+                      "referencedDeclaration": 1108,
                       "src": "160:10:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -181,11 +181,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 1108,
+                      "id": 1114,
                       "name": "x",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1104,
+                      "referencedDeclaration": 1110,
                       "src": "173:1:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -198,7 +198,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1110,
+                  "id": 1116,
                   "nodeType": "ExpressionStatement",
                   "src": "160:14:6"
                 },
@@ -209,7 +209,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "446174612073746f726564207375636365737366756c6c7921",
-                        "id": 1112,
+                        "id": 1118,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -232,18 +232,18 @@
                           "typeString": "literal_string \"Data stored successfully!\""
                         }
                       ],
-                      "id": 1111,
+                      "id": 1117,
                       "name": "StorageSet",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1100,
+                      "referencedDeclaration": 1106,
                       "src": "181:10:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (string memory)"
                       }
                     },
-                    "id": 1113,
+                    "id": 1119,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -257,14 +257,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1114,
+                  "id": 1120,
                   "nodeType": "ExpressionStatement",
                   "src": "181:39:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 1116,
+            "id": 1122,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -272,15 +272,15 @@
             "name": "set",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1105,
+              "id": 1111,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1104,
+                  "id": 1110,
                   "name": "x",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1116,
+                  "scope": 1122,
                   "src": "139:6:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -289,7 +289,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1103,
+                    "id": 1109,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "139:4:6",
@@ -306,19 +306,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1106,
+              "id": 1112,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "154:0:6"
             },
-            "scope": 1117,
+            "scope": 1123,
             "src": "126:99:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1118,
+        "scope": 1124,
         "src": "26:201:6"
       }
     ],
@@ -328,14 +328,14 @@
     "absolutePath": "/Users/hari/Harvard/cs144r/datachain/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
-        1117
+        1123
       ]
     },
-    "id": 1118,
+    "id": 1124,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1096,
+        "id": 1102,
         "literals": [
           "solidity",
           "^",
@@ -351,9 +351,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1117,
+        "id": 1123,
         "linearizedBaseContracts": [
-          1117
+          1123
         ],
         "name": "SimpleStorage",
         "nodeType": "ContractDefinition",
@@ -361,20 +361,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1100,
+            "id": 1106,
             "name": "StorageSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1099,
+              "id": 1105,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1098,
+                  "id": 1104,
                   "indexed": false,
                   "name": "_message",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1100,
+                  "scope": 1106,
                   "src": "75:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -383,7 +383,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1097,
+                    "id": 1103,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "75:6:6",
@@ -402,10 +402,10 @@
           },
           {
             "constant": false,
-            "id": 1102,
+            "id": 1108,
             "name": "storedData",
             "nodeType": "VariableDeclaration",
-            "scope": 1117,
+            "scope": 1123,
             "src": "99:22:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -414,7 +414,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1101,
+              "id": 1107,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "99:4:6",
@@ -428,25 +428,25 @@
           },
           {
             "body": {
-              "id": 1115,
+              "id": 1121,
               "nodeType": "Block",
               "src": "154:71:6",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1109,
+                    "id": 1115,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1107,
+                      "id": 1113,
                       "name": "storedData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1102,
+                      "referencedDeclaration": 1108,
                       "src": "160:10:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -457,11 +457,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 1108,
+                      "id": 1114,
                       "name": "x",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1104,
+                      "referencedDeclaration": 1110,
                       "src": "173:1:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -474,7 +474,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1110,
+                  "id": 1116,
                   "nodeType": "ExpressionStatement",
                   "src": "160:14:6"
                 },
@@ -485,7 +485,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "446174612073746f726564207375636365737366756c6c7921",
-                        "id": 1112,
+                        "id": 1118,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -508,18 +508,18 @@
                           "typeString": "literal_string \"Data stored successfully!\""
                         }
                       ],
-                      "id": 1111,
+                      "id": 1117,
                       "name": "StorageSet",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1100,
+                      "referencedDeclaration": 1106,
                       "src": "181:10:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (string memory)"
                       }
                     },
-                    "id": 1113,
+                    "id": 1119,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -533,14 +533,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1114,
+                  "id": 1120,
                   "nodeType": "ExpressionStatement",
                   "src": "181:39:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 1116,
+            "id": 1122,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -548,15 +548,15 @@
             "name": "set",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1105,
+              "id": 1111,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1104,
+                  "id": 1110,
                   "name": "x",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1116,
+                  "scope": 1122,
                   "src": "139:6:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -565,7 +565,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1103,
+                    "id": 1109,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "139:4:6",
@@ -582,19 +582,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1106,
+              "id": 1112,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "154:0:6"
             },
-            "scope": 1117,
+            "scope": 1123,
             "src": "126:99:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1118,
+        "scope": 1124,
         "src": "26:201:6"
       }
     ],
@@ -608,10 +608,10 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x9440538b23fb9d2b722eb1c075ee4c041e2f84ed",
-      "transactionHash": "0x41e28450e3ab9a2ef2c970c347e684504fc99ccbbd485fce89eafb64a4b5e36a"
+      "address": "0xe38c7cb3bf43e8fb7365e47fe4cf415cd62604fd",
+      "transactionHash": "0x7959d45312964a2051b8b95f3d6807d9a5e4604b9c1dbb2f8f7db5a7c455dbd5"
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-04-25T00:40:25.232Z"
+  "updatedAt": "2018-04-25T03:01:23.627Z"
 }

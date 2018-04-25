@@ -93,7 +93,7 @@ export default class CreateAuction extends Component {
 
                   <div className="form-group">
                     <label htmlFor="beneficiary">Beneficiary</label>
-                    <input className="form-control" ref="beneficiary"  defaultValue="0xE7D4fb00EA93027a10101A48F9b791626f232Ac6" placeholder="Beneficiary" />
+                    <input className="form-control" ref="beneficiary"  defaultValue="0x0Ea55fd4140012e999a0c397DCcf2d2FD46bf112" placeholder="Beneficiary" />
                   </div>
 
                   <div className="form-group">

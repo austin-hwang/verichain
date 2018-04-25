@@ -184,14 +184,14 @@
     "absolutePath": "/Users/hari/Harvard/cs144r/datachain/contracts/ComplexStorage.sol",
     "exportedSymbols": {
       "ComplexStorage": [
-        998
+        1004
       ]
     },
-    "id": 999,
+    "id": 1005,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 866,
+        "id": 872,
         "literals": [
           "solidity",
           "^",
@@ -207,19 +207,19 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 998,
+        "id": 1004,
         "linearizedBaseContracts": [
-          998
+          1004
         ],
         "name": "ComplexStorage",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 869,
+            "id": 875,
             "name": "storeduint1",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "53:28:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -228,7 +228,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 867,
+              "id": 873,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "53:4:3",
@@ -240,7 +240,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3135",
-              "id": 868,
+              "id": 874,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -259,10 +259,10 @@
           },
           {
             "constant": true,
-            "id": 872,
+            "id": 878,
             "name": "constuint",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "84:35:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -271,7 +271,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 870,
+              "id": 876,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "84:4:3",
@@ -283,7 +283,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3136",
-              "id": 871,
+              "id": 877,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -302,10 +302,10 @@
           },
           {
             "constant": false,
-            "id": 875,
+            "id": 881,
             "name": "investmentsLimit",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "122:39:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -314,7 +314,7 @@
               "typeString": "uint128"
             },
             "typeName": {
-              "id": 873,
+              "id": 879,
               "name": "uint128",
               "nodeType": "ElementaryTypeName",
               "src": "122:7:3",
@@ -326,7 +326,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3137303535",
-              "id": 874,
+              "id": 880,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -345,10 +345,10 @@
           },
           {
             "constant": false,
-            "id": 880,
+            "id": 886,
             "name": "investmentsDeadlineTimeStamp",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "164:56:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -357,7 +357,7 @@
               "typeString": "uint32"
             },
             "typeName": {
-              "id": 876,
+              "id": 882,
               "name": "uint32",
               "nodeType": "ElementaryTypeName",
               "src": "164:6:3",
@@ -371,11 +371,11 @@
               "arguments": [
                 {
                   "argumentTypes": null,
-                  "id": 878,
+                  "id": 884,
                   "name": "now",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2030,
+                  "referencedDeclaration": 2043,
                   "src": "216:3:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
@@ -390,7 +390,7 @@
                     "typeString": "uint256"
                   }
                 ],
-                "id": 877,
+                "id": 883,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
@@ -403,7 +403,7 @@
                 },
                 "typeName": "uint32"
               },
-              "id": 879,
+              "id": 885,
               "isConstant": false,
               "isLValue": false,
               "isPure": false,
@@ -421,10 +421,10 @@
           },
           {
             "constant": false,
-            "id": 883,
+            "id": 889,
             "name": "string1",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "224:32:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -433,7 +433,7 @@
               "typeString": "bytes16"
             },
             "typeName": {
-              "id": 881,
+              "id": 887,
               "name": "bytes16",
               "nodeType": "ElementaryTypeName",
               "src": "224:7:3",
@@ -445,7 +445,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "7465737431",
-              "id": 882,
+              "id": 888,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -464,10 +464,10 @@
           },
           {
             "constant": false,
-            "id": 886,
+            "id": 892,
             "name": "string2",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "259:35:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -476,7 +476,7 @@
               "typeString": "bytes32"
             },
             "typeName": {
-              "id": 884,
+              "id": 890,
               "name": "bytes32",
               "nodeType": "ElementaryTypeName",
               "src": "259:7:3",
@@ -488,7 +488,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "7465737431323336",
-              "id": 885,
+              "id": 891,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -507,10 +507,10 @@
           },
           {
             "constant": false,
-            "id": 889,
+            "id": 895,
             "name": "string3",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "297:47:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -519,7 +519,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 887,
+              "id": 893,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "297:6:3",
@@ -531,7 +531,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "6c65747320737472696e6720736f6d657468696e67",
-              "id": 888,
+              "id": 894,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -550,10 +550,10 @@
           },
           {
             "constant": false,
-            "id": 893,
+            "id": 899,
             "name": "uints1",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "348:32:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -562,9 +562,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 892,
+              "id": 898,
               "keyType": {
-                "id": 890,
+                "id": 896,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "357:7:3",
@@ -580,7 +580,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 891,
+                "id": 897,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "368:4:3",
@@ -595,21 +595,21 @@
           },
           {
             "constant": false,
-            "id": 897,
+            "id": 903,
             "name": "structs1",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "383:40:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$912_storage_$",
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$918_storage_$",
               "typeString": "mapping(address => struct ComplexStorage.DeviceData)"
             },
             "typeName": {
-              "id": 896,
+              "id": 902,
               "keyType": {
-                "id": 894,
+                "id": 900,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "392:7:3",
@@ -621,18 +621,18 @@
               "nodeType": "Mapping",
               "src": "383:31:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$912_storage_$",
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$918_storage_$",
                 "typeString": "mapping(address => struct ComplexStorage.DeviceData)"
               },
               "valueType": {
                 "contractScope": null,
-                "id": 895,
+                "id": 901,
                 "name": "DeviceData",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 912,
+                "referencedDeclaration": 918,
                 "src": "403:10:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_DeviceData_$912_storage_ptr",
+                  "typeIdentifier": "t_struct$_DeviceData_$918_storage_ptr",
                   "typeString": "struct ComplexStorage.DeviceData"
                 }
               }
@@ -642,10 +642,10 @@
           },
           {
             "constant": false,
-            "id": 900,
+            "id": 906,
             "name": "uintarray",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "427:23:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -655,7 +655,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 898,
+                "id": 904,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "427:4:3",
@@ -664,7 +664,7 @@
                   "typeString": "uint256"
                 }
               },
-              "id": 899,
+              "id": 905,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "427:6:3",
@@ -678,36 +678,36 @@
           },
           {
             "constant": false,
-            "id": 903,
+            "id": 909,
             "name": "deviceDataArray",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "453:35:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_DeviceData_$912_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_DeviceData_$918_storage_$dyn_storage",
               "typeString": "struct ComplexStorage.DeviceData[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 901,
+                "id": 907,
                 "name": "DeviceData",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 912,
+                "referencedDeclaration": 918,
                 "src": "453:10:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_DeviceData_$912_storage_ptr",
+                  "typeIdentifier": "t_struct$_DeviceData_$918_storage_ptr",
                   "typeString": "struct ComplexStorage.DeviceData"
                 }
               },
-              "id": 902,
+              "id": 908,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "453:12:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_DeviceData_$912_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_DeviceData_$918_storage_$dyn_storage_ptr",
                 "typeString": "struct ComplexStorage.DeviceData[]"
               }
             },
@@ -716,26 +716,26 @@
           },
           {
             "constant": false,
-            "id": 905,
+            "id": 911,
             "name": "singleDD",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "494:26:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+              "typeIdentifier": "t_struct$_DeviceData_$918_storage",
               "typeString": "struct ComplexStorage.DeviceData"
             },
             "typeName": {
               "contractScope": null,
-              "id": 904,
+              "id": 910,
               "name": "DeviceData",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 912,
+              "referencedDeclaration": 918,
               "src": "494:10:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_DeviceData_$912_storage_ptr",
+                "typeIdentifier": "t_struct$_DeviceData_$918_storage_ptr",
                 "typeString": "struct ComplexStorage.DeviceData"
               }
             },
@@ -744,14 +744,14 @@
           },
           {
             "canonicalName": "ComplexStorage.DeviceData",
-            "id": 912,
+            "id": 918,
             "members": [
               {
                 "constant": false,
-                "id": 907,
+                "id": 913,
                 "name": "deviceBrand",
                 "nodeType": "VariableDeclaration",
-                "scope": 912,
+                "scope": 918,
                 "src": "546:18:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -760,7 +760,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 906,
+                  "id": 912,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "546:6:3",
@@ -774,10 +774,10 @@
               },
               {
                 "constant": false,
-                "id": 909,
+                "id": 915,
                 "name": "deviceYear",
                 "nodeType": "VariableDeclaration",
-                "scope": 912,
+                "scope": 918,
                 "src": "568:17:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -786,7 +786,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 908,
+                  "id": 914,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "568:6:3",
@@ -800,10 +800,10 @@
               },
               {
                 "constant": false,
-                "id": 911,
+                "id": 917,
                 "name": "batteryWearLevel",
                 "nodeType": "VariableDeclaration",
-                "scope": 912,
+                "scope": 918,
                 "src": "589:23:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -812,7 +812,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 910,
+                  "id": 916,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "589:6:3",
@@ -827,27 +827,27 @@
             ],
             "name": "DeviceData",
             "nodeType": "StructDefinition",
-            "scope": 998,
+            "scope": 1004,
             "src": "524:92:3",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 996,
+              "id": 1002,
               "nodeType": "Block",
               "src": "652:593:3",
               "statements": [
                 {
                   "assignments": [
-                    916
+                    922
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 916,
+                      "id": 922,
                       "name": "address1",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "656:16:3",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -856,7 +856,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 915,
+                        "id": 921,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "656:7:3",
@@ -869,11 +869,11 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 918,
+                  "id": 924,
                   "initialValue": {
                     "argumentTypes": null,
                     "hexValue": "307862436363373134643536626330646130666433336439366432613837623638306444364430444636",
-                    "id": 917,
+                    "id": 923,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -893,15 +893,15 @@
                 },
                 {
                   "assignments": [
-                    920
+                    926
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 920,
+                      "id": 926,
                       "name": "address2",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "721:16:3",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -910,7 +910,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 919,
+                        "id": 925,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "721:7:3",
@@ -923,11 +923,11 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 922,
+                  "id": 928,
                   "initialValue": {
                     "argumentTypes": null,
                     "hexValue": "307861656539303546644433454438353165343864323230353935373562394634323435413832423034",
-                    "id": 921,
+                    "id": 927,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -948,7 +948,7 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 927,
+                    "id": 933,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -957,25 +957,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 923,
+                        "id": 929,
                         "name": "uints1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 893,
+                        "referencedDeclaration": 899,
                         "src": "787:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 925,
+                      "id": 931,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 924,
+                        "id": 930,
                         "name": "address1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 916,
+                        "referencedDeclaration": 922,
                         "src": "794:8:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -998,7 +998,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "3838",
-                      "id": 926,
+                      "id": 932,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1019,14 +1019,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 928,
+                  "id": 934,
                   "nodeType": "ExpressionStatement",
                   "src": "787:21:3"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 933,
+                    "id": 939,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1035,25 +1035,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 929,
+                        "id": 935,
                         "name": "uints1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 893,
+                        "referencedDeclaration": 899,
                         "src": "812:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 931,
+                      "id": 937,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 930,
+                        "id": 936,
                         "name": "address2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 920,
+                        "referencedDeclaration": 926,
                         "src": "819:8:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1076,7 +1076,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "3939",
-                      "id": 932,
+                      "id": 938,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1097,26 +1097,26 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 934,
+                  "id": 940,
                   "nodeType": "ExpressionStatement",
                   "src": "812:21:3"
                 },
                 {
                   "assignments": [
-                    935
+                    941
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 935,
+                      "id": 941,
                       "name": "dev1",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "838:8:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData"
                       },
                       "typeName": null,
@@ -1124,14 +1124,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 941,
+                  "id": 947,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963654272616e64",
-                        "id": 937,
+                        "id": 943,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1149,7 +1149,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "64657669636559656172",
-                        "id": 938,
+                        "id": 944,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1167,7 +1167,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "776561724c6576656c",
-                        "id": 939,
+                        "id": 945,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1198,18 +1198,18 @@
                           "typeString": "literal_string \"wearLevel\""
                         }
                       ],
-                      "id": 936,
+                      "id": 942,
                       "name": "DeviceData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 912,
+                      "referencedDeclaration": 918,
                       "src": "849:10:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$912_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$918_storage_ptr_$",
                         "typeString": "type(struct ComplexStorage.DeviceData storage pointer)"
                       }
                     },
-                    "id": 940,
+                    "id": 946,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -1219,7 +1219,7 @@
                     "nodeType": "FunctionCall",
                     "src": "849:52:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_memory",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_memory",
                       "typeString": "struct ComplexStorage.DeviceData memory"
                     }
                   },
@@ -1228,20 +1228,20 @@
                 },
                 {
                   "assignments": [
-                    942
+                    948
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 942,
+                      "id": 948,
                       "name": "dev2",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "905:8:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData"
                       },
                       "typeName": null,
@@ -1249,14 +1249,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 948,
+                  "id": 954,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963654272616e6432",
-                        "id": 944,
+                        "id": 950,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1274,7 +1274,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963655965617232",
-                        "id": 945,
+                        "id": 951,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1292,7 +1292,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "776561724c6576656c32",
-                        "id": 946,
+                        "id": 952,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1323,18 +1323,18 @@
                           "typeString": "literal_string \"wearLevel2\""
                         }
                       ],
-                      "id": 943,
+                      "id": 949,
                       "name": "DeviceData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 912,
+                      "referencedDeclaration": 918,
                       "src": "916:10:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$912_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$918_storage_ptr_$",
                         "typeString": "type(struct ComplexStorage.DeviceData storage pointer)"
                       }
                     },
-                    "id": 947,
+                    "id": 953,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -1344,7 +1344,7 @@
                     "nodeType": "FunctionCall",
                     "src": "916:55:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_memory",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_memory",
                       "typeString": "struct ComplexStorage.DeviceData memory"
                     }
                   },
@@ -1353,20 +1353,20 @@
                 },
                 {
                   "assignments": [
-                    949
+                    955
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 949,
+                      "id": 955,
                       "name": "dev3",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "981:8:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData"
                       },
                       "typeName": null,
@@ -1374,14 +1374,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 955,
+                  "id": 961,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963654272616e6433",
-                        "id": 951,
+                        "id": 957,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1399,7 +1399,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963655965617233",
-                        "id": 952,
+                        "id": 958,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1417,7 +1417,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "776561724c6576656c33",
-                        "id": 953,
+                        "id": 959,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1448,18 +1448,18 @@
                           "typeString": "literal_string \"wearLevel3\""
                         }
                       ],
-                      "id": 950,
+                      "id": 956,
                       "name": "DeviceData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 912,
+                      "referencedDeclaration": 918,
                       "src": "992:10:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$912_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$918_storage_ptr_$",
                         "typeString": "type(struct ComplexStorage.DeviceData storage pointer)"
                       }
                     },
-                    "id": 954,
+                    "id": 960,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -1469,85 +1469,12 @@
                     "nodeType": "FunctionCall",
                     "src": "992:55:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_memory",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_memory",
                       "typeString": "struct ComplexStorage.DeviceData memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
                   "src": "981:66:3"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 960,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "baseExpression": {
-                        "argumentTypes": null,
-                        "id": 956,
-                        "name": "structs1",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 897,
-                        "src": "1052:8:3",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$912_storage_$",
-                          "typeString": "mapping(address => struct ComplexStorage.DeviceData storage ref)"
-                        }
-                      },
-                      "id": 958,
-                      "indexExpression": {
-                        "argumentTypes": null,
-                        "id": 957,
-                        "name": "address1",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 916,
-                        "src": "1061:8:3",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_address",
-                          "typeString": "address"
-                        }
-                      },
-                      "isConstant": false,
-                      "isLValue": true,
-                      "isPure": false,
-                      "lValueRequested": true,
-                      "nodeType": "IndexAccess",
-                      "src": "1052:18:3",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_storage",
-                        "typeString": "struct ComplexStorage.DeviceData storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 959,
-                      "name": "dev1",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 935,
-                      "src": "1073:4:3",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
-                        "typeString": "struct ComplexStorage.DeviceData memory"
-                      }
-                    },
-                    "src": "1052:25:3",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_storage",
-                      "typeString": "struct ComplexStorage.DeviceData storage ref"
-                    }
-                  },
-                  "id": 961,
-                  "nodeType": "ExpressionStatement",
-                  "src": "1052:25:3"
                 },
                 {
                   "expression": {
@@ -1565,10 +1492,10 @@
                         "name": "structs1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 897,
-                        "src": "1081:8:3",
+                        "referencedDeclaration": 903,
+                        "src": "1052:8:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$912_storage_$",
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$918_storage_$",
                           "typeString": "mapping(address => struct ComplexStorage.DeviceData storage ref)"
                         }
                       },
@@ -1576,10 +1503,83 @@
                       "indexExpression": {
                         "argumentTypes": null,
                         "id": 963,
+                        "name": "address1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 922,
+                        "src": "1061:8:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1052:18:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_DeviceData_$918_storage",
+                        "typeString": "struct ComplexStorage.DeviceData storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 965,
+                      "name": "dev1",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 941,
+                      "src": "1073:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
+                        "typeString": "struct ComplexStorage.DeviceData memory"
+                      }
+                    },
+                    "src": "1052:25:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DeviceData_$918_storage",
+                      "typeString": "struct ComplexStorage.DeviceData storage ref"
+                    }
+                  },
+                  "id": 967,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1052:25:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 972,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 968,
+                        "name": "structs1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 903,
+                        "src": "1081:8:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$918_storage_$",
+                          "typeString": "mapping(address => struct ComplexStorage.DeviceData storage ref)"
+                        }
+                      },
+                      "id": 970,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 969,
                         "name": "address2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 920,
+                        "referencedDeclaration": 926,
                         "src": "1090:8:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1593,7 +1593,7 @@
                       "nodeType": "IndexAccess",
                       "src": "1081:18:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_storage",
                         "typeString": "struct ComplexStorage.DeviceData storage ref"
                       }
                     },
@@ -1601,45 +1601,45 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 965,
+                      "id": 971,
                       "name": "dev2",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 942,
+                      "referencedDeclaration": 948,
                       "src": "1102:4:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData memory"
                       }
                     },
                     "src": "1081:25:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_storage",
                       "typeString": "struct ComplexStorage.DeviceData storage ref"
                     }
                   },
-                  "id": 967,
+                  "id": 973,
                   "nodeType": "ExpressionStatement",
                   "src": "1081:25:3"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 970,
+                    "id": 976,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 968,
+                      "id": 974,
                       "name": "singleDD",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 905,
+                      "referencedDeclaration": 911,
                       "src": "1116:8:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_storage",
                         "typeString": "struct ComplexStorage.DeviceData storage ref"
                       }
                     },
@@ -1647,24 +1647,24 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 969,
+                      "id": 975,
                       "name": "dev3",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 949,
+                      "referencedDeclaration": 955,
                       "src": "1127:4:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData memory"
                       }
                     },
                     "src": "1116:15:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_storage",
                       "typeString": "struct ComplexStorage.DeviceData storage ref"
                     }
                   },
-                  "id": 971,
+                  "id": 977,
                   "nodeType": "ExpressionStatement",
                   "src": "1116:15:3"
                 },
@@ -1675,7 +1675,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "38303030",
-                        "id": 975,
+                        "id": 981,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1700,18 +1700,18 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 972,
+                        "id": 978,
                         "name": "uintarray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 900,
+                        "referencedDeclaration": 906,
                         "src": "1136:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
                           "typeString": "uint256[] storage ref"
                         }
                       },
-                      "id": 974,
+                      "id": 980,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1725,7 +1725,7 @@
                         "typeString": "function (uint256) returns (uint256)"
                       }
                     },
-                    "id": 976,
+                    "id": 982,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1739,7 +1739,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 977,
+                  "id": 983,
                   "nodeType": "ExpressionStatement",
                   "src": "1136:20:3"
                 },
@@ -1750,7 +1750,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "39303030",
-                        "id": 981,
+                        "id": 987,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1775,18 +1775,18 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 978,
+                        "id": 984,
                         "name": "uintarray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 900,
+                        "referencedDeclaration": 906,
                         "src": "1160:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
                           "typeString": "uint256[] storage ref"
                         }
                       },
-                      "id": 980,
+                      "id": 986,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1800,7 +1800,7 @@
                         "typeString": "function (uint256) returns (uint256)"
                       }
                     },
-                    "id": 982,
+                    "id": 988,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1814,7 +1814,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 983,
+                  "id": 989,
                   "nodeType": "ExpressionStatement",
                   "src": "1160:20:3"
                 },
@@ -1824,14 +1824,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 987,
+                        "id": 993,
                         "name": "dev1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 935,
+                        "referencedDeclaration": 941,
                         "src": "1206:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                          "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                           "typeString": "struct ComplexStorage.DeviceData memory"
                         }
                       }
@@ -1839,24 +1839,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                          "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                           "typeString": "struct ComplexStorage.DeviceData memory"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 984,
+                        "id": 990,
                         "name": "deviceDataArray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 903,
+                        "referencedDeclaration": 909,
                         "src": "1185:15:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_DeviceData_$912_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_DeviceData_$918_storage_$dyn_storage",
                           "typeString": "struct ComplexStorage.DeviceData storage ref[] storage ref"
                         }
                       },
-                      "id": 986,
+                      "id": 992,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1866,11 +1866,11 @@
                       "referencedDeclaration": null,
                       "src": "1185:20:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_DeviceData_$912_storage_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_DeviceData_$918_storage_$returns$_t_uint256_$",
                         "typeString": "function (struct ComplexStorage.DeviceData storage ref) returns (uint256)"
                       }
                     },
-                    "id": 988,
+                    "id": 994,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1884,7 +1884,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 989,
+                  "id": 995,
                   "nodeType": "ExpressionStatement",
                   "src": "1185:26:3"
                 },
@@ -1894,14 +1894,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 993,
+                        "id": 999,
                         "name": "dev2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 942,
+                        "referencedDeclaration": 948,
                         "src": "1236:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                          "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                           "typeString": "struct ComplexStorage.DeviceData memory"
                         }
                       }
@@ -1909,24 +1909,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                          "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                           "typeString": "struct ComplexStorage.DeviceData memory"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 990,
+                        "id": 996,
                         "name": "deviceDataArray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 903,
+                        "referencedDeclaration": 909,
                         "src": "1215:15:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_DeviceData_$912_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_DeviceData_$918_storage_$dyn_storage",
                           "typeString": "struct ComplexStorage.DeviceData storage ref[] storage ref"
                         }
                       },
-                      "id": 992,
+                      "id": 998,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1936,11 +1936,11 @@
                       "referencedDeclaration": null,
                       "src": "1215:20:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_DeviceData_$912_storage_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_DeviceData_$918_storage_$returns$_t_uint256_$",
                         "typeString": "function (struct ComplexStorage.DeviceData storage ref) returns (uint256)"
                       }
                     },
-                    "id": 994,
+                    "id": 1000,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1954,14 +1954,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 995,
+                  "id": 1001,
                   "nodeType": "ExpressionStatement",
                   "src": "1215:26:3"
                 }
               ]
             },
             "documentation": null,
-            "id": 997,
+            "id": 1003,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1969,26 +1969,26 @@
             "name": "ComplexStorage",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 913,
+              "id": 919,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "642:2:3"
             },
             "payable": false,
             "returnParameters": {
-              "id": 914,
+              "id": 920,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "652:0:3"
             },
-            "scope": 998,
+            "scope": 1004,
             "src": "619:626:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 999,
+        "scope": 1005,
         "src": "25:1222:3"
       }
     ],
@@ -1998,14 +1998,14 @@
     "absolutePath": "/Users/hari/Harvard/cs144r/datachain/contracts/ComplexStorage.sol",
     "exportedSymbols": {
       "ComplexStorage": [
-        998
+        1004
       ]
     },
-    "id": 999,
+    "id": 1005,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 866,
+        "id": 872,
         "literals": [
           "solidity",
           "^",
@@ -2021,19 +2021,19 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 998,
+        "id": 1004,
         "linearizedBaseContracts": [
-          998
+          1004
         ],
         "name": "ComplexStorage",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 869,
+            "id": 875,
             "name": "storeduint1",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "53:28:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2042,7 +2042,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 867,
+              "id": 873,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "53:4:3",
@@ -2054,7 +2054,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3135",
-              "id": 868,
+              "id": 874,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -2073,10 +2073,10 @@
           },
           {
             "constant": true,
-            "id": 872,
+            "id": 878,
             "name": "constuint",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "84:35:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2085,7 +2085,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 870,
+              "id": 876,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "84:4:3",
@@ -2097,7 +2097,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3136",
-              "id": 871,
+              "id": 877,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -2116,10 +2116,10 @@
           },
           {
             "constant": false,
-            "id": 875,
+            "id": 881,
             "name": "investmentsLimit",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "122:39:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2128,7 +2128,7 @@
               "typeString": "uint128"
             },
             "typeName": {
-              "id": 873,
+              "id": 879,
               "name": "uint128",
               "nodeType": "ElementaryTypeName",
               "src": "122:7:3",
@@ -2140,7 +2140,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3137303535",
-              "id": 874,
+              "id": 880,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -2159,10 +2159,10 @@
           },
           {
             "constant": false,
-            "id": 880,
+            "id": 886,
             "name": "investmentsDeadlineTimeStamp",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "164:56:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2171,7 +2171,7 @@
               "typeString": "uint32"
             },
             "typeName": {
-              "id": 876,
+              "id": 882,
               "name": "uint32",
               "nodeType": "ElementaryTypeName",
               "src": "164:6:3",
@@ -2185,11 +2185,11 @@
               "arguments": [
                 {
                   "argumentTypes": null,
-                  "id": 878,
+                  "id": 884,
                   "name": "now",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2030,
+                  "referencedDeclaration": 2043,
                   "src": "216:3:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
@@ -2204,7 +2204,7 @@
                     "typeString": "uint256"
                   }
                 ],
-                "id": 877,
+                "id": 883,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
@@ -2217,7 +2217,7 @@
                 },
                 "typeName": "uint32"
               },
-              "id": 879,
+              "id": 885,
               "isConstant": false,
               "isLValue": false,
               "isPure": false,
@@ -2235,10 +2235,10 @@
           },
           {
             "constant": false,
-            "id": 883,
+            "id": 889,
             "name": "string1",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "224:32:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2247,7 +2247,7 @@
               "typeString": "bytes16"
             },
             "typeName": {
-              "id": 881,
+              "id": 887,
               "name": "bytes16",
               "nodeType": "ElementaryTypeName",
               "src": "224:7:3",
@@ -2259,7 +2259,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "7465737431",
-              "id": 882,
+              "id": 888,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -2278,10 +2278,10 @@
           },
           {
             "constant": false,
-            "id": 886,
+            "id": 892,
             "name": "string2",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "259:35:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2290,7 +2290,7 @@
               "typeString": "bytes32"
             },
             "typeName": {
-              "id": 884,
+              "id": 890,
               "name": "bytes32",
               "nodeType": "ElementaryTypeName",
               "src": "259:7:3",
@@ -2302,7 +2302,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "7465737431323336",
-              "id": 885,
+              "id": 891,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -2321,10 +2321,10 @@
           },
           {
             "constant": false,
-            "id": 889,
+            "id": 895,
             "name": "string3",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "297:47:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2333,7 +2333,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 887,
+              "id": 893,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "297:6:3",
@@ -2345,7 +2345,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "6c65747320737472696e6720736f6d657468696e67",
-              "id": 888,
+              "id": 894,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -2364,10 +2364,10 @@
           },
           {
             "constant": false,
-            "id": 893,
+            "id": 899,
             "name": "uints1",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "348:32:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2376,9 +2376,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 892,
+              "id": 898,
               "keyType": {
-                "id": 890,
+                "id": 896,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "357:7:3",
@@ -2394,7 +2394,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 891,
+                "id": 897,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "368:4:3",
@@ -2409,21 +2409,21 @@
           },
           {
             "constant": false,
-            "id": 897,
+            "id": 903,
             "name": "structs1",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "383:40:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$912_storage_$",
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$918_storage_$",
               "typeString": "mapping(address => struct ComplexStorage.DeviceData)"
             },
             "typeName": {
-              "id": 896,
+              "id": 902,
               "keyType": {
-                "id": 894,
+                "id": 900,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "392:7:3",
@@ -2435,18 +2435,18 @@
               "nodeType": "Mapping",
               "src": "383:31:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$912_storage_$",
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$918_storage_$",
                 "typeString": "mapping(address => struct ComplexStorage.DeviceData)"
               },
               "valueType": {
                 "contractScope": null,
-                "id": 895,
+                "id": 901,
                 "name": "DeviceData",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 912,
+                "referencedDeclaration": 918,
                 "src": "403:10:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_DeviceData_$912_storage_ptr",
+                  "typeIdentifier": "t_struct$_DeviceData_$918_storage_ptr",
                   "typeString": "struct ComplexStorage.DeviceData"
                 }
               }
@@ -2456,10 +2456,10 @@
           },
           {
             "constant": false,
-            "id": 900,
+            "id": 906,
             "name": "uintarray",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "427:23:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2469,7 +2469,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 898,
+                "id": 904,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "427:4:3",
@@ -2478,7 +2478,7 @@
                   "typeString": "uint256"
                 }
               },
-              "id": 899,
+              "id": 905,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "427:6:3",
@@ -2492,36 +2492,36 @@
           },
           {
             "constant": false,
-            "id": 903,
+            "id": 909,
             "name": "deviceDataArray",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "453:35:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_DeviceData_$912_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_DeviceData_$918_storage_$dyn_storage",
               "typeString": "struct ComplexStorage.DeviceData[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 901,
+                "id": 907,
                 "name": "DeviceData",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 912,
+                "referencedDeclaration": 918,
                 "src": "453:10:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_DeviceData_$912_storage_ptr",
+                  "typeIdentifier": "t_struct$_DeviceData_$918_storage_ptr",
                   "typeString": "struct ComplexStorage.DeviceData"
                 }
               },
-              "id": 902,
+              "id": 908,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "453:12:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_DeviceData_$912_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_DeviceData_$918_storage_$dyn_storage_ptr",
                 "typeString": "struct ComplexStorage.DeviceData[]"
               }
             },
@@ -2530,26 +2530,26 @@
           },
           {
             "constant": false,
-            "id": 905,
+            "id": 911,
             "name": "singleDD",
             "nodeType": "VariableDeclaration",
-            "scope": 998,
+            "scope": 1004,
             "src": "494:26:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+              "typeIdentifier": "t_struct$_DeviceData_$918_storage",
               "typeString": "struct ComplexStorage.DeviceData"
             },
             "typeName": {
               "contractScope": null,
-              "id": 904,
+              "id": 910,
               "name": "DeviceData",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 912,
+              "referencedDeclaration": 918,
               "src": "494:10:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_DeviceData_$912_storage_ptr",
+                "typeIdentifier": "t_struct$_DeviceData_$918_storage_ptr",
                 "typeString": "struct ComplexStorage.DeviceData"
               }
             },
@@ -2558,14 +2558,14 @@
           },
           {
             "canonicalName": "ComplexStorage.DeviceData",
-            "id": 912,
+            "id": 918,
             "members": [
               {
                 "constant": false,
-                "id": 907,
+                "id": 913,
                 "name": "deviceBrand",
                 "nodeType": "VariableDeclaration",
-                "scope": 912,
+                "scope": 918,
                 "src": "546:18:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2574,7 +2574,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 906,
+                  "id": 912,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "546:6:3",
@@ -2588,10 +2588,10 @@
               },
               {
                 "constant": false,
-                "id": 909,
+                "id": 915,
                 "name": "deviceYear",
                 "nodeType": "VariableDeclaration",
-                "scope": 912,
+                "scope": 918,
                 "src": "568:17:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2600,7 +2600,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 908,
+                  "id": 914,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "568:6:3",
@@ -2614,10 +2614,10 @@
               },
               {
                 "constant": false,
-                "id": 911,
+                "id": 917,
                 "name": "batteryWearLevel",
                 "nodeType": "VariableDeclaration",
-                "scope": 912,
+                "scope": 918,
                 "src": "589:23:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2626,7 +2626,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 910,
+                  "id": 916,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "589:6:3",
@@ -2641,27 +2641,27 @@
             ],
             "name": "DeviceData",
             "nodeType": "StructDefinition",
-            "scope": 998,
+            "scope": 1004,
             "src": "524:92:3",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 996,
+              "id": 1002,
               "nodeType": "Block",
               "src": "652:593:3",
               "statements": [
                 {
                   "assignments": [
-                    916
+                    922
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 916,
+                      "id": 922,
                       "name": "address1",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "656:16:3",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -2670,7 +2670,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 915,
+                        "id": 921,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "656:7:3",
@@ -2683,11 +2683,11 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 918,
+                  "id": 924,
                   "initialValue": {
                     "argumentTypes": null,
                     "hexValue": "307862436363373134643536626330646130666433336439366432613837623638306444364430444636",
-                    "id": 917,
+                    "id": 923,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -2707,15 +2707,15 @@
                 },
                 {
                   "assignments": [
-                    920
+                    926
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 920,
+                      "id": 926,
                       "name": "address2",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "721:16:3",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -2724,7 +2724,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 919,
+                        "id": 925,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "721:7:3",
@@ -2737,11 +2737,11 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 922,
+                  "id": 928,
                   "initialValue": {
                     "argumentTypes": null,
                     "hexValue": "307861656539303546644433454438353165343864323230353935373562394634323435413832423034",
-                    "id": 921,
+                    "id": 927,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -2762,7 +2762,7 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 927,
+                    "id": 933,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2771,25 +2771,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 923,
+                        "id": 929,
                         "name": "uints1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 893,
+                        "referencedDeclaration": 899,
                         "src": "787:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 925,
+                      "id": 931,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 924,
+                        "id": 930,
                         "name": "address1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 916,
+                        "referencedDeclaration": 922,
                         "src": "794:8:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -2812,7 +2812,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "3838",
-                      "id": 926,
+                      "id": 932,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2833,14 +2833,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 928,
+                  "id": 934,
                   "nodeType": "ExpressionStatement",
                   "src": "787:21:3"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 933,
+                    "id": 939,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2849,25 +2849,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 929,
+                        "id": 935,
                         "name": "uints1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 893,
+                        "referencedDeclaration": 899,
                         "src": "812:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 931,
+                      "id": 937,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 930,
+                        "id": 936,
                         "name": "address2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 920,
+                        "referencedDeclaration": 926,
                         "src": "819:8:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -2890,7 +2890,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "3939",
-                      "id": 932,
+                      "id": 938,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2911,26 +2911,26 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 934,
+                  "id": 940,
                   "nodeType": "ExpressionStatement",
                   "src": "812:21:3"
                 },
                 {
                   "assignments": [
-                    935
+                    941
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 935,
+                      "id": 941,
                       "name": "dev1",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "838:8:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData"
                       },
                       "typeName": null,
@@ -2938,14 +2938,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 941,
+                  "id": 947,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963654272616e64",
-                        "id": 937,
+                        "id": 943,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -2963,7 +2963,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "64657669636559656172",
-                        "id": 938,
+                        "id": 944,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -2981,7 +2981,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "776561724c6576656c",
-                        "id": 939,
+                        "id": 945,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3012,18 +3012,18 @@
                           "typeString": "literal_string \"wearLevel\""
                         }
                       ],
-                      "id": 936,
+                      "id": 942,
                       "name": "DeviceData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 912,
+                      "referencedDeclaration": 918,
                       "src": "849:10:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$912_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$918_storage_ptr_$",
                         "typeString": "type(struct ComplexStorage.DeviceData storage pointer)"
                       }
                     },
-                    "id": 940,
+                    "id": 946,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -3033,7 +3033,7 @@
                     "nodeType": "FunctionCall",
                     "src": "849:52:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_memory",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_memory",
                       "typeString": "struct ComplexStorage.DeviceData memory"
                     }
                   },
@@ -3042,20 +3042,20 @@
                 },
                 {
                   "assignments": [
-                    942
+                    948
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 942,
+                      "id": 948,
                       "name": "dev2",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "905:8:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData"
                       },
                       "typeName": null,
@@ -3063,14 +3063,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 948,
+                  "id": 954,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963654272616e6432",
-                        "id": 944,
+                        "id": 950,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3088,7 +3088,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963655965617232",
-                        "id": 945,
+                        "id": 951,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3106,7 +3106,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "776561724c6576656c32",
-                        "id": 946,
+                        "id": 952,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3137,18 +3137,18 @@
                           "typeString": "literal_string \"wearLevel2\""
                         }
                       ],
-                      "id": 943,
+                      "id": 949,
                       "name": "DeviceData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 912,
+                      "referencedDeclaration": 918,
                       "src": "916:10:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$912_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$918_storage_ptr_$",
                         "typeString": "type(struct ComplexStorage.DeviceData storage pointer)"
                       }
                     },
-                    "id": 947,
+                    "id": 953,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -3158,7 +3158,7 @@
                     "nodeType": "FunctionCall",
                     "src": "916:55:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_memory",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_memory",
                       "typeString": "struct ComplexStorage.DeviceData memory"
                     }
                   },
@@ -3167,20 +3167,20 @@
                 },
                 {
                   "assignments": [
-                    949
+                    955
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 949,
+                      "id": 955,
                       "name": "dev3",
                       "nodeType": "VariableDeclaration",
-                      "scope": 997,
+                      "scope": 1003,
                       "src": "981:8:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData"
                       },
                       "typeName": null,
@@ -3188,14 +3188,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 955,
+                  "id": 961,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963654272616e6433",
-                        "id": 951,
+                        "id": 957,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3213,7 +3213,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "6465766963655965617233",
-                        "id": 952,
+                        "id": 958,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3231,7 +3231,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "776561724c6576656c33",
-                        "id": 953,
+                        "id": 959,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3262,18 +3262,18 @@
                           "typeString": "literal_string \"wearLevel3\""
                         }
                       ],
-                      "id": 950,
+                      "id": 956,
                       "name": "DeviceData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 912,
+                      "referencedDeclaration": 918,
                       "src": "992:10:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$912_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_DeviceData_$918_storage_ptr_$",
                         "typeString": "type(struct ComplexStorage.DeviceData storage pointer)"
                       }
                     },
-                    "id": 954,
+                    "id": 960,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -3283,85 +3283,12 @@
                     "nodeType": "FunctionCall",
                     "src": "992:55:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_memory",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_memory",
                       "typeString": "struct ComplexStorage.DeviceData memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
                   "src": "981:66:3"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 960,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "baseExpression": {
-                        "argumentTypes": null,
-                        "id": 956,
-                        "name": "structs1",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 897,
-                        "src": "1052:8:3",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$912_storage_$",
-                          "typeString": "mapping(address => struct ComplexStorage.DeviceData storage ref)"
-                        }
-                      },
-                      "id": 958,
-                      "indexExpression": {
-                        "argumentTypes": null,
-                        "id": 957,
-                        "name": "address1",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 916,
-                        "src": "1061:8:3",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_address",
-                          "typeString": "address"
-                        }
-                      },
-                      "isConstant": false,
-                      "isLValue": true,
-                      "isPure": false,
-                      "lValueRequested": true,
-                      "nodeType": "IndexAccess",
-                      "src": "1052:18:3",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_storage",
-                        "typeString": "struct ComplexStorage.DeviceData storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 959,
-                      "name": "dev1",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 935,
-                      "src": "1073:4:3",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
-                        "typeString": "struct ComplexStorage.DeviceData memory"
-                      }
-                    },
-                    "src": "1052:25:3",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_storage",
-                      "typeString": "struct ComplexStorage.DeviceData storage ref"
-                    }
-                  },
-                  "id": 961,
-                  "nodeType": "ExpressionStatement",
-                  "src": "1052:25:3"
                 },
                 {
                   "expression": {
@@ -3379,10 +3306,10 @@
                         "name": "structs1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 897,
-                        "src": "1081:8:3",
+                        "referencedDeclaration": 903,
+                        "src": "1052:8:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$912_storage_$",
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$918_storage_$",
                           "typeString": "mapping(address => struct ComplexStorage.DeviceData storage ref)"
                         }
                       },
@@ -3390,10 +3317,83 @@
                       "indexExpression": {
                         "argumentTypes": null,
                         "id": 963,
+                        "name": "address1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 922,
+                        "src": "1061:8:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1052:18:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_DeviceData_$918_storage",
+                        "typeString": "struct ComplexStorage.DeviceData storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 965,
+                      "name": "dev1",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 941,
+                      "src": "1073:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
+                        "typeString": "struct ComplexStorage.DeviceData memory"
+                      }
+                    },
+                    "src": "1052:25:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DeviceData_$918_storage",
+                      "typeString": "struct ComplexStorage.DeviceData storage ref"
+                    }
+                  },
+                  "id": 967,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1052:25:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 972,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 968,
+                        "name": "structs1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 903,
+                        "src": "1081:8:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_DeviceData_$918_storage_$",
+                          "typeString": "mapping(address => struct ComplexStorage.DeviceData storage ref)"
+                        }
+                      },
+                      "id": 970,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 969,
                         "name": "address2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 920,
+                        "referencedDeclaration": 926,
                         "src": "1090:8:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -3407,7 +3407,7 @@
                       "nodeType": "IndexAccess",
                       "src": "1081:18:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_storage",
                         "typeString": "struct ComplexStorage.DeviceData storage ref"
                       }
                     },
@@ -3415,45 +3415,45 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 965,
+                      "id": 971,
                       "name": "dev2",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 942,
+                      "referencedDeclaration": 948,
                       "src": "1102:4:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData memory"
                       }
                     },
                     "src": "1081:25:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_storage",
                       "typeString": "struct ComplexStorage.DeviceData storage ref"
                     }
                   },
-                  "id": 967,
+                  "id": 973,
                   "nodeType": "ExpressionStatement",
                   "src": "1081:25:3"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 970,
+                    "id": 976,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 968,
+                      "id": 974,
                       "name": "singleDD",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 905,
+                      "referencedDeclaration": 911,
                       "src": "1116:8:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_storage",
                         "typeString": "struct ComplexStorage.DeviceData storage ref"
                       }
                     },
@@ -3461,24 +3461,24 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 969,
+                      "id": 975,
                       "name": "dev3",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 949,
+                      "referencedDeclaration": 955,
                       "src": "1127:4:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                        "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                         "typeString": "struct ComplexStorage.DeviceData memory"
                       }
                     },
                     "src": "1116:15:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_DeviceData_$912_storage",
+                      "typeIdentifier": "t_struct$_DeviceData_$918_storage",
                       "typeString": "struct ComplexStorage.DeviceData storage ref"
                     }
                   },
-                  "id": 971,
+                  "id": 977,
                   "nodeType": "ExpressionStatement",
                   "src": "1116:15:3"
                 },
@@ -3489,7 +3489,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "38303030",
-                        "id": 975,
+                        "id": 981,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3514,18 +3514,18 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 972,
+                        "id": 978,
                         "name": "uintarray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 900,
+                        "referencedDeclaration": 906,
                         "src": "1136:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
                           "typeString": "uint256[] storage ref"
                         }
                       },
-                      "id": 974,
+                      "id": 980,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3539,7 +3539,7 @@
                         "typeString": "function (uint256) returns (uint256)"
                       }
                     },
-                    "id": 976,
+                    "id": 982,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3553,7 +3553,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 977,
+                  "id": 983,
                   "nodeType": "ExpressionStatement",
                   "src": "1136:20:3"
                 },
@@ -3564,7 +3564,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "39303030",
-                        "id": 981,
+                        "id": 987,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3589,18 +3589,18 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 978,
+                        "id": 984,
                         "name": "uintarray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 900,
+                        "referencedDeclaration": 906,
                         "src": "1160:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
                           "typeString": "uint256[] storage ref"
                         }
                       },
-                      "id": 980,
+                      "id": 986,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3614,7 +3614,7 @@
                         "typeString": "function (uint256) returns (uint256)"
                       }
                     },
-                    "id": 982,
+                    "id": 988,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3628,7 +3628,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 983,
+                  "id": 989,
                   "nodeType": "ExpressionStatement",
                   "src": "1160:20:3"
                 },
@@ -3638,14 +3638,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 987,
+                        "id": 993,
                         "name": "dev1",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 935,
+                        "referencedDeclaration": 941,
                         "src": "1206:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                          "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                           "typeString": "struct ComplexStorage.DeviceData memory"
                         }
                       }
@@ -3653,24 +3653,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                          "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                           "typeString": "struct ComplexStorage.DeviceData memory"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 984,
+                        "id": 990,
                         "name": "deviceDataArray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 903,
+                        "referencedDeclaration": 909,
                         "src": "1185:15:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_DeviceData_$912_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_DeviceData_$918_storage_$dyn_storage",
                           "typeString": "struct ComplexStorage.DeviceData storage ref[] storage ref"
                         }
                       },
-                      "id": 986,
+                      "id": 992,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3680,11 +3680,11 @@
                       "referencedDeclaration": null,
                       "src": "1185:20:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_DeviceData_$912_storage_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_DeviceData_$918_storage_$returns$_t_uint256_$",
                         "typeString": "function (struct ComplexStorage.DeviceData storage ref) returns (uint256)"
                       }
                     },
-                    "id": 988,
+                    "id": 994,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3698,7 +3698,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 989,
+                  "id": 995,
                   "nodeType": "ExpressionStatement",
                   "src": "1185:26:3"
                 },
@@ -3708,14 +3708,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 993,
+                        "id": 999,
                         "name": "dev2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 942,
+                        "referencedDeclaration": 948,
                         "src": "1236:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                          "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                           "typeString": "struct ComplexStorage.DeviceData memory"
                         }
                       }
@@ -3723,24 +3723,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_DeviceData_$912_memory_ptr",
+                          "typeIdentifier": "t_struct$_DeviceData_$918_memory_ptr",
                           "typeString": "struct ComplexStorage.DeviceData memory"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 990,
+                        "id": 996,
                         "name": "deviceDataArray",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 903,
+                        "referencedDeclaration": 909,
                         "src": "1215:15:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_DeviceData_$912_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_DeviceData_$918_storage_$dyn_storage",
                           "typeString": "struct ComplexStorage.DeviceData storage ref[] storage ref"
                         }
                       },
-                      "id": 992,
+                      "id": 998,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3750,11 +3750,11 @@
                       "referencedDeclaration": null,
                       "src": "1215:20:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_DeviceData_$912_storage_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_DeviceData_$918_storage_$returns$_t_uint256_$",
                         "typeString": "function (struct ComplexStorage.DeviceData storage ref) returns (uint256)"
                       }
                     },
-                    "id": 994,
+                    "id": 1000,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3768,14 +3768,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 995,
+                  "id": 1001,
                   "nodeType": "ExpressionStatement",
                   "src": "1215:26:3"
                 }
               ]
             },
             "documentation": null,
-            "id": 997,
+            "id": 1003,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -3783,26 +3783,26 @@
             "name": "ComplexStorage",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 913,
+              "id": 919,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "642:2:3"
             },
             "payable": false,
             "returnParameters": {
-              "id": 914,
+              "id": 920,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "652:0:3"
             },
-            "scope": 998,
+            "scope": 1004,
             "src": "619:626:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 999,
+        "scope": 1005,
         "src": "25:1222:3"
       }
     ],
@@ -3816,10 +3816,10 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x2c9e9eaaa3ffeda67f2fa352f72d4dc10dc95c7c",
-      "transactionHash": "0x3895c982a541bda1ebd5bd8ab4cdd7398eebbbdbf1cec25367bd5f84ab2cdabc"
+      "address": "0xcd74a42d02f4c71a6327116c28a1ad2b461bfbe0",
+      "transactionHash": "0x0925f893acb02dc374fc36551d281840d43c121fcdfb3ec1ec432241d20b828e"
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-04-25T00:40:25.235Z"
+  "updatedAt": "2018-04-25T03:01:23.631Z"
 }
