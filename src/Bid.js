@@ -9,7 +9,7 @@ import { default as Web3} from 'web3';
 //contracts
 import { default as contract } from 'truffle-contract'
 import auctionFactory from './contracts/AuctionFactory.json'
-import auction from './contracts/Auction.json'
+import auction from './contracts/dataAuction.json'
 import {TxnConsensus} from './block-verify.js';
 import Auth from './auth.js'
 
@@ -40,7 +40,7 @@ export default class BidAuction extends Component {
 
      this.state = { 
       doAuth: false,
-      bidder: '0x3ad78130DCff93d6c942c37aA45F0A004A0Ffe0C',
+      bidder: null,
       amt: null
 
     };
@@ -89,33 +89,18 @@ export default class BidAuction extends Component {
     console.log('bid details '+ bidder + " " + bidAmount);
     
     console.log('Auction id from props ' + this.props.auctionId);
+    Auction.at(this.props.auctionId).then(bidAuction => {
 
-      var bidAuction = Auction.at(this.props.auctionId);
+       console.log('got auction ' + bidAuction);
 
-      console.log('got auction ' + bidAuction);
+       // var unlocked = web3.personal.unlockAccount(bidder, 'welcome123', 10);
+       // console.log('unlocked ' + unlocked);
 
-      // var unlocked = web3.personal.unlockAccount(bidder, 'welcome123', 10);
-      // console.log('unlocked ' + unlocked);
-
-      bidAuction.bid.sendTransaction(bidAmount, {gas: 4000000, from:bidder}).then(function(txnHash) {
-        console.log("Transaction Id " + txnHash, false, false);
-        //Magic Numbers : wait for 3 confirmations at 4000ms intervals for 4 repetitions
-        //these three params should be configs. change to 12 confirmations eventually
-        TxnConsensus(web3, txnHash, 3, 4000, 4, function(err, receipt) { 
-          // console.log("Got result from block confirmation");
-          if(receipt) {
-            console.log("receipt blockHash " + receipt.blockHash);
-            console.log("receipt blockNumber " + receipt.blockNumber);
-            console.log("receipt transactionIndex " + receipt.transactionIndex);            
-          } else {
-            console.log("err from poll " + err);
-            me.props.notifier("Error bidding for ticket " + err, true, false);
-          }
-        });
-      });
-       
-
-} // getDetails
+       bidAuction.bid.sendTransaction({gas: 4000000, value: bidAmount, from: bidder}).then(function (txnHash) {
+         console.log("Transaction Id " + txnHash, false, false);
+       });
+     });
+    }
 
 
   render() {

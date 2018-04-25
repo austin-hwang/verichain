@@ -161,7 +161,7 @@ contract dataAuction {
     }
     
     /// End the auction and set state to locked
-    function auctionEnd() public {
+    function endAuction() public {
 
         require(now >= auctionEnd); // auction did not yet end
         require(!ended); // this function has already been called

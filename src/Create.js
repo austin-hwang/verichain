@@ -9,7 +9,7 @@ import { default as Web3} from 'web3';
 //contracts
 import { default as contract } from 'truffle-contract'
 import auctionFactory from './contracts/AuctionFactory.json'
-import auction from './contracts/Auction.json'
+import auction from './contracts/dataAuction.json'
 
     //var watching = false; //start watching to events only 
     // var passwd = false;
@@ -51,15 +51,15 @@ export default class CreateAuction extends Component {
       this.props.notifier(null, false, false, true);
 
        try {
-          let auctioneerHash = this.refs.auctioneerId.value; 
-          let totalTkts = this.refs.totakTickets.value; 
-          let tktPerPerson = this.refs.ticketsPerPerson.value;
-          let validity = this.refs.endTimeInHours.value;
-          let minAmt = this.refs.minBidAmt.value;
-          console.log(auctioneerHash + " " + totalTkts + " " +tktPerPerson + " " +validity+ " " +minAmt);
+          let beneficiary = this.refs.beneficiary.value; 
+          let metadata = this.refs.metadata.value; 
+          let sellerHash = this.refs.sellerHash.value;
+          let collectionPeriod = this.refs.collectionPeriod.value;
+          let biddingTime = this.refs.biddingTime.value;
+    
 
           ///// CHANGE TO USER AUTH
-          var unlocked = web3.personal.unlockAccount(auctioneerHash, 'welcome123', 10);
+          var unlocked = web3.personal.unlockAccount(beneficiary, 'welcome123', 10);
           //var info = '';
           console.log('unlocked' + unlocked);
         //   // if(!unlockaccount(auctioneerHash, phrase)) {
@@ -70,9 +70,9 @@ export default class CreateAuction extends Component {
           AuctionFactory.deployed().then(function(factoryInstance) {
             console.log("AuctionFactory " + factoryInstance);
             // me.writeMsg("TEEETETE", false, false);
-            factoryInstance.createAuction( tktPerPerson, totalTkts, minAmt, validity,{gas:1500000,from:auctioneerHash}).then(function(auction) {
-                me.props.notifier("Auction created for "+ auctioneerHash, false, false);
-                me.props.onAuctionDetails(auction, auctioneerHash);
+            factoryInstance.createAuction( biddingTime, beneficiary, collectionPeriod, sellerHash, metadata,{gas:1500000,from:beneficiary}).then(function(auction) {
+                me.props.notifier("Auction created for "+ beneficiary, false, false);
+                me.props.onAuctionDetails(auction, beneficiary);
              });
           });
         } catch (err) {
@@ -92,31 +92,31 @@ export default class CreateAuction extends Component {
                 <div className="card-body">
 
                   <div className="form-group">
-                    <label htmlFor="auctioneerId">Auctioneer Address</label>
-                    <input className="form-control" ref="auctioneerId"  defaultValue="0xE7D4fb00EA93027a10101A48F9b791626f232Ac6" placeholder="Auctioneer Address" />
+                    <label htmlFor="beneficiary">Beneficiary</label>
+                    <input className="form-control" ref="beneficiary"  defaultValue="0xE7D4fb00EA93027a10101A48F9b791626f232Ac6" placeholder="Beneficiary" />
                   </div>
 
                   <div className="form-group">
                     <div className="form-row">
                       <div className="col-md-6">
-                        <label htmlFor="totakTickets">Total Tickets</label>
-                        <input className="form-control" ref="totakTickets" min="1" type="number" placeholder="Total Tickets" />
+                        <label htmlFor="metadata">Metadata</label>
+                        <input className="form-control" ref="metadata" placeholder="Metadata" />
                       </div>                    
                       <div className="col-md-6">
-                        <label htmlFor="ticketsPerPerson">Tickets Per Person</label>
-                        <input className="form-control" ref="ticketsPerPerson" type="number" min="1" aria-describedby="nameHelp" placeholder="Tickets Per Person" />
+                        <label htmlFor="sellerHash">Seller Hash</label>
+                        <input className="form-control" ref="sellerHash" aria-describedby="nameHelp" placeholder="Seller Hash" />
                       </div>
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="form-row">
                       <div className="col-md-6">
-                        <label htmlFor="minBidAmt">Minimum Bid Amount</label>
-                        <input className="form-control" ref="minBidAmt" type="number" min="1"  placeholder="Minimum Bid Amount" />
+                        <label htmlFor="collectionPeriod">Collection Period</label>
+                        <input className="form-control" ref="collectionPeriod" type="number" min="1"  placeholder="Collection Period" />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="endTimeInHours">Duration in Hours</label>
-                        <input className="form-control" ref="endTimeInHours" type="number" min="1" placeholder="Duration in Hours" />
+                        <label htmlFor="biddingTime">Bidding Time</label>
+                        <input className="form-control" ref="biddingTime" type="number" min="1" placeholder="Duration in Hours" />
                       </div>
                     </div>
                   </div>

@@ -1,3 +1,4 @@
+
 //react and Front End imports
 import React, { Component } from 'react';
 
@@ -54,8 +55,8 @@ class App extends Component {
 
     if(pAuctionObj) {
       this.setState({auctionId: pAuctionId});
-      //start listening to events when the auction is created
-      watchEvents(pAuctionObj, pAuctionId, this.updateStatus);
+      // start listening to events when the auction is created
+      // watchEvents(pAuctionObj, pAuctionId, this.updateStatus);
     }
   }
 
