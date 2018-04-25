@@ -67,10 +67,12 @@ export default class AuctionDetails extends Component {
           myAuction.beneficiary.call().then(function (beneficiary) {
             me.setState({beneficiary});
           });
+
           myAuction.auctionEnd.call().then(function (auctionEnd) {
-            console.log(auctionEnd)
-            me.setState({auctionEnd});
+            const dateStr = new Date(1000 * auctionEnd['c']).toUTCString()
+            me.setState({auctionEnd: dateStr});
           });
+
           myAuction.metadata.call().then(function (metadata) {
             me.setState({metadata});
           });

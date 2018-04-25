@@ -98,19 +98,6 @@ export default class BidAuction extends Component {
 
        bidAuction.bid.sendTransaction({gas: 4000000, value: bidAmount, from: bidder}).then(function (txnHash) {
          console.log("Transaction Id " + txnHash, false, false);
-         //Magic Numbers : wait for 3 confirmations at 4000ms intervals for 4 repetitions
-         //these three params should be configs. change to 12 confirmations eventually
-         TxnConsensus(web3, txnHash, 3, 4000, 4, function (err, receipt) {
-           // console.log("Got result from block confirmation");
-           if (receipt) {
-             console.log("receipt blockHash " + receipt.blockHash);
-             console.log("receipt blockNumber " + receipt.blockNumber);
-             console.log("receipt transactionIndex " + receipt.transactionIndex);
-           } else {
-             console.log("err from poll " + err);
-             me.props.notifier("Error bidding for ticket " + err, true, false);
-           }
-         });
        });
      });
     }
