@@ -1310,7 +1310,7 @@ input:focus, select:focus, textarea:focus, input:active, select:active, textarea
     color: #9e56ce;
     margin: 0;
     margin-bottom: 10px;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     position: relative;
     font-weight: bold;
 }
@@ -1318,7 +1318,7 @@ input:focus, select:focus, textarea:focus, input:active, select:active, textarea
     text-align: left;
     width: 100%;
     background: white;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0px 5px 18px 0px rgba(141, 143, 143, 0.2);
     border-radius: 8px;
     color: initial;
@@ -1333,7 +1333,7 @@ input:focus, select:focus, textarea:focus, input:active, select:active, textarea
     margin: 0;
     margin-left: 30px;
     margin-bottom: 15px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     list-style: disc !important;
 }
 .spnDetailBox p {

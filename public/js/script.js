@@ -199,9 +199,9 @@ $(function () {
             $('#status').fadeOut();
             $('#preloader').delay(350).fadeOut('slow');
             $('body').delay(350).css({'overflow':'visible'});
-            setTimeout(function() {
-                notificationBarShow();
-            }, 2000);
+            // setTimeout(function() {
+            //     notificationBarShow();
+            // }, 2000);
           })
     //]]>
 
