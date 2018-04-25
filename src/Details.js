@@ -68,6 +68,8 @@ function formatMetadata(metadata) {
   );
 }
 
+const states = ['Open', 'Locked', 'Completed', 'Incomplete'];
+
 export default class AuctionDetails extends Component {
   constructor(props) {
     super(props);
@@ -114,8 +116,8 @@ export default class AuctionDetails extends Component {
     let highestBidder = await myAuction.highestBidder.call();
     let highestBid = parseInt(await myAuction.highestBid.call());
     let collectionEnd = parseInt(await myAuction.collectionEnd.call());
-    //let incomplete = await myAuction.incomplete.call();
-    //let auctionStatus = incomplete ? 'Active' : 'Expired';
+    let idx = parseInt(await myAuction.state.call());
+    let auctionStatus = states[idx];
 
     return {
       beneficiary,
@@ -123,7 +125,8 @@ export default class AuctionDetails extends Component {
       metadata,
       highestBidder,
       highestBid,
-      collectionEnd
+      collectionEnd,
+      auctionStatus
     };
   }
 
@@ -224,7 +227,7 @@ export default class AuctionDetails extends Component {
                       <td>Collection End</td>
                       <td>{collectionEnd}</td>
                     </tr>
-                    <tr>
+                    <tr style={{borderBottom: "5px solid #000"}}>
                       <td>Auction Status</td>
                       <td>{auctionStatus}</td>
                     </tr>

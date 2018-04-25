@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 
 import CreateAuction from './Create.js'
 import AuctionDetails from './Details.js'
-import BidAuction from './Bid.js'
 import PurchaseTicket from './PurchaseTicket.js'
 import Settlement from './Settlement.js'
 
@@ -82,9 +81,6 @@ class App extends Component {
                     <a onClick={ () => { this.setState({sub_feature : 'View'}) } }>View</a>
                   </li>
                   <li>
-                    <a onClick={ () => { this.setState({sub_feature : 'Bid'}) } }>Bid</a>
-                  </li>
-                  <li>
                     <a onClick={ () => { this.setState({sub_feature : 'Pay'}) } }>Pay Ticket</a>
                   </li>
                   <li>
@@ -119,9 +115,6 @@ class App extends Component {
                     <AuctionDetails auctioneerId={this.state.auctioneerId} onAuctionId={this.setAuctionId} notifier={this.updateStatus} />
                    } 
 
-                  { this.state.sub_feature === 'Bid' && 
-                    <BidAuction auctionId={this.state.auctionId} notifier={this.updateStatus} />
-                   } 
 
                   { this.state.sub_feature === 'Pay' && 
                     <PurchaseTicket auctionId={this.state.auctionId} notifier={this.updateStatus} />
@@ -130,8 +123,6 @@ class App extends Component {
                   { this.state.sub_feature === 'Settle' && 
                     <Settlement auctioneerId={this.state.auctioneerId} auctionId={this.state.auctionId} notifier={this.updateStatus}/>
                   } 
-
-
 
             </div> 
           </div>
