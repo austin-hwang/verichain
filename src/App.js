@@ -20,9 +20,7 @@ class App extends Component {
         this.state = {
           currAuction: null,
           auctionId: null,
-          auctioneerId: '0xE7D4fb00EA93027a10101A48F9b791626f232Ac6',
-          feature: 'A',
-          sub_feature: 'bid',
+      sub_feature: "Create",
           message: null
         }
   }
@@ -76,7 +74,7 @@ class App extends Component {
                   
                   <span className="nav-link-text">Auction Management</span>
                 </a>
-                <ul className="sidenav-second-level collapse" id="collapseExamplePages">
+                <ul className="sidenav-second-level" id="collapseExamplePages">
                   <li>
                     <a onClick={ () => { this.setState({sub_feature : 'Create'}) } }>Create</a>
                   </li>
