@@ -42,6 +42,10 @@ contract AuctionFactory {
       return auctions[index];
   }
 
+  function numAuctions() returns (uint256) {
+    return auctions.length;
+  }
+
     // function getEscrow(address auction) returns (address) {
     //     return escrows[auction];
     // }
