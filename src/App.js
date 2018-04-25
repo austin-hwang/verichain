@@ -81,10 +81,10 @@ class App extends Component {
                     <a onClick={ () => { this.setState({sub_feature : 'View'}) } }>View</a>
                   </li>
                   <li>
-                    <a onClick={ () => { this.setState({sub_feature : 'Pay'}) } }>Pay Ticket</a>
+                    <a onClick={ () => { this.setState({sub_feature : 'Withdraw'}) } }>Withdraw</a>
                   </li>
                   <li>
-                    <a onClick={ () => { this.setState({sub_feature : 'Settle'}) } }>Settle Payments</a>
+                    <a onClick={ () => { this.setState({sub_feature : 'Verification'}) } }>Verification</a>
                   </li>
                   <li>
                      <a onClick={ () => { this.setState({feature : 'A'}); this.setState({sub_feature : 'Delete'}) } }>Remove</a>
@@ -116,11 +116,11 @@ class App extends Component {
                    } 
 
 
-                  { this.state.sub_feature === 'Pay' && 
+                  { this.state.sub_feature === 'Withdraw' && 
                     <PurchaseTicket auctionId={this.state.auctionId} notifier={this.updateStatus} />
                    } 
 
-                  { this.state.sub_feature === 'Settle' && 
+                  { this.state.sub_feature === 'Verification' && 
                     <Settlement auctioneerId={this.state.auctioneerId} auctionId={this.state.auctionId} notifier={this.updateStatus}/>
                   } 
 

@@ -177,7 +177,7 @@ export default class PurchaseTicket extends Component {
     return (
       <form>
         <div className="card mb-3">
-          <div className="card-header">Confirm and Settle Tickets</div>
+          <div className="card-header">Confirm and Verify Data</div>
             <div className="card-body">
               <div className="table-responsive">
                 <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
@@ -200,10 +200,10 @@ export default class PurchaseTicket extends Component {
               <div className="form-group">
                 <div className="form-row">
                   <div className="col-md-3">
-                      <a className="btn btn-primary btn-block" onClick={this.confirmTktReceipt}>Confirm Ticket Receipt</a>
+                      <a className="btn btn-primary btn-block" onClick={this.confirmTktReceipt}>Send Data Hash</a>
                   </div>
                   <div className="col-md-3">
-                      <a className="btn btn-primary btn-block" onClick={this.releaseFunds}>Release To Auctioneer</a>
+                      <a className="btn btn-primary btn-block" onClick={this.releaseFunds}>Obtain API Key</a>
                   </div>
                 </div>
               </div>              

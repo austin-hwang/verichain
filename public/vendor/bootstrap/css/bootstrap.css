@@ -2306,6 +2306,10 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 
+a.btn {
+  color: white !important;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #916ed0;
@@ -2314,8 +2318,8 @@ fieldset[disabled] a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #46287c;
+  border-color: #46287c;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -4094,10 +4098,14 @@ tbody.collapse.show {
   margin-left: 1.25rem;
 }
 
+div.card-header {
+  color: white !important;
+}
+
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color:#916ed0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -5721,7 +5729,7 @@ a.bg-light:focus, a.bg-light:hover {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #46287c !important;
 }
 
 a.bg-dark:focus, a.bg-dark:hover {
