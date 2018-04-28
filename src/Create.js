@@ -51,6 +51,7 @@ export default class CreateAuction extends Component {
       let sellerHash = this.refs.sellerHash.value;
       let collectionPeriod = this.refs.collectionPeriod.value;
       let biddingTime = this.refs.biddingTime.value;
+      let apiKey = this.refs.apiKey.value;
 
       ///// CHANGE TO USER AUTH
       var unlocked = web3.personal.unlockAccount(beneficiary, "welcome123", 10);
@@ -71,6 +72,7 @@ export default class CreateAuction extends Component {
             collectionPeriod,
             sellerHash,
             metadata,
+            apiKey,
             { gas: 1500000, from: beneficiary }
           )
           .then(function(auction) {
@@ -137,7 +139,7 @@ export default class CreateAuction extends Component {
                     placeholder="Collection Period"
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-2">
                   <label htmlFor="biddingTime">Bidding Time</label>
                   <input
                     className="form-control"
@@ -145,6 +147,14 @@ export default class CreateAuction extends Component {
                     type="number"
                     min="1"
                     placeholder="Duration in Hours"
+                  />
+                </div>
+                <div className="col-md-4">
+                  <label htmlFor="biddingTime">API Key</label>
+                  <input
+                    className="form-control"
+                    ref="apiKey"
+                    placeholder="API Key"
                   />
                 </div>
               </div>
