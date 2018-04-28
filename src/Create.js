@@ -100,7 +100,7 @@ export default class CreateAuction extends Component {
               <input
                 className="form-control"
                 ref="beneficiary"
-                defaultValue="0x0Ea55fd4140012e999a0c397DCcf2d2FD46bf112"
+                defaultValue="0x90F9a8eaF5c40d1002ed9b07Be8FE734D388C7ba"
                 placeholder="Beneficiary"
               />
             </div>
@@ -123,6 +123,7 @@ export default class CreateAuction extends Component {
                     ref="sellerHash"
                     aria-describedby="nameHelp"
                     placeholder="Seller Hash"
+                    defaultValue="0x12345678910"
                   />
                 </div>
               </div>
@@ -136,7 +137,8 @@ export default class CreateAuction extends Component {
                     ref="collectionPeriod"
                     type="number"
                     min="1"
-                    placeholder="Collection Period"
+                    defaultValue="120"
+                    placeholder="Collection Period in Seconds"
                   />
                 </div>
                 <div className="col-md-2">
@@ -145,6 +147,7 @@ export default class CreateAuction extends Component {
                     className="form-control"
                     ref="biddingTime"
                     type="number"
+                    defaultValue="120"
                     min="1"
                     placeholder="Duration in Seconds"
                   />
@@ -155,6 +158,7 @@ export default class CreateAuction extends Component {
                     className="form-control"
                     ref="apiKey"
                     placeholder="API Key"
+                    defaultValue="hari_is_a_cutiepie"
                   />
                 </div>
               </div>
