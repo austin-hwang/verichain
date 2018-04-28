@@ -26,10 +26,10 @@ contract AuctionFactory {
 		factoryOwner = msg.sender;
 	}
 	
-  function createAuction(uint biddingTime, address beneficiary, uint collectionPeriod, bytes32 sellerHash, string metadata) returns (address auctionAddress) {
+  function createAuction(uint biddingTime, address beneficiary, uint collectionPeriod, bytes32 sellerHash, string metadata, string apiKey) returns (address auctionAddress) {
       
       address owner = msg.sender;
-      dataAuction auction = new dataAuction(biddingTime, beneficiary, collectionPeriod, sellerHash, metadata); 
+      dataAuction auction = new dataAuction(biddingTime, beneficiary, collectionPeriod, sellerHash, metadata, apiKey); 
       auctions.push(auction);
       // AuctionEscrow escrow = new AuctionEscrow(owner, auction);
       // escrows[auction] = escrow;
