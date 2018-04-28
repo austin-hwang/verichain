@@ -146,7 +146,7 @@ export default class CreateAuction extends Component {
                     ref="biddingTime"
                     type="number"
                     min="1"
-                    placeholder="Duration in Hours"
+                    placeholder="Duration in Seconds"
                   />
                 </div>
                 <div className="col-md-4">
