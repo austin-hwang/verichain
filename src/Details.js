@@ -21,8 +21,17 @@ var Auction = contract(auction);
 // else ctx is not visible from anonymous functions and we cant call other functions like writeMsg
 var me = null;
 
+const sensors = [
+  "any",
+  "humidity",
+  "temperature",
+  "voiceSearches",
+  "fridgeContents",
+  "heartRate",
+  "moisture"
+];
+
 function formatMetadata(metadata) {
-  metadata = JSON.parse(metadata);
   return (
     <table>
       <thead>
@@ -80,6 +89,7 @@ export default class AuctionDetails extends Component {
     Auction.setProvider(web3.currentProvider);
 
     this.state = {
+      searchResults: {},
       auctions: [],
       auction: null,
       selectedAuction: ""
@@ -97,13 +107,14 @@ export default class AuctionDetails extends Component {
       auctions.push(auction);
     }
     this.setState({ auctions });
-    if (auctions.length) {
-      let auction = await this.getAuctionInfo(auctions[0]);
-      this.setState({
-        auction,
-        selectedAuction: auctions[0]
-      });
-    }
+    console.log(auctions.length);
+    // if (auctions.length) {
+    //   let auction = await this.getAuctionInfo(auctions[0]);
+    //   this.setState({
+    //     auction,
+    //     selectedAuction: auctions[0]
+    //   });
+    // }
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -112,7 +123,7 @@ export default class AuctionDetails extends Component {
     let beneficiary = await myAuction.beneficiary.call();
     let auctionEndEpoch = await myAuction.auctionEnd.call();
     let auctionEnd = new Date(1000 * auctionEndEpoch["c"]).toUTCString();
-    let metadata = await myAuction.metadata.call();
+    let metadata = JSON.parse(await myAuction.metadata.call());
     let highestBidder = await myAuction.highestBidder.call();
     let highestBid = parseInt(await myAuction.highestBid.call());
     let collectionEnd = parseInt(await myAuction.collectionEnd.call());
@@ -156,7 +167,21 @@ export default class AuctionDetails extends Component {
       });
     }
   }
-
+  searchAuctions = async () => {
+    const sensor = this.refs.sensorType.value;
+    let searchResults = {};
+    for (const auctionAddr of this.state.auctions) {
+      const info = await this.getAuctionInfo(auctionAddr);
+      if (Object.keys(info.metadata.properties).includes(sensor)) {
+        searchResults[auctionAddr] = info;
+      }
+    }
+    const queriedKeys = Object.keys(searchResults);
+    this.setState({
+      searchResults: searchResults,
+      selectedAuction: queriedKeys.length ? queriedKeys[0] : ""
+    });
+  };
   async handleChange(event) {
     let auctionAddress = event.target.value;
     let auction = await me.getAuctionInfo(auctionAddress);
@@ -168,7 +193,7 @@ export default class AuctionDetails extends Component {
   }
 
   render() {
-    if (this.state.auction)
+    if (this.state.selectedAuction)
       var {
         beneficiary,
         auctionEnd,
@@ -177,13 +202,31 @@ export default class AuctionDetails extends Component {
         highestBid,
         collectionEnd,
         auctionStatus
-      } = this.state.auction;
-
+      } = this.state.searchResults[this.state.selectedAuction];
     return (
       <form>
         <div className="card mb-3">
           <div className="card-header"> Auction Details</div>
           <div className="card-body">
+            <div className="col-md-4">
+              <select
+                className="form-control"
+                value={this.state.selectedSensor}
+                ref="sensorType"
+              >
+                {sensors.map(sensor => (
+                  <option value={sensor}>{sensor}</option>
+                ))}
+              </select>
+            </div>
+            <div className="col-md-2">
+              <a
+                className="btn btn-primary btn-block"
+                onClick={this.searchAuctions}
+              >
+                Search
+              </a>
+            </div>
             <div className="table-responsive">
               {this.state.auction ? (
                 <table
@@ -201,9 +244,11 @@ export default class AuctionDetails extends Component {
                           value={this.state.selectedAuction}
                           onChange={this.handleChange}
                         >
-                          {this.state.auctions.map(auction => (
-                            <option value={auction}>{auction}</option>
-                          ))}
+                          {Object.keys(this.state.searchResults).map(
+                            auction => (
+                              <option value={auction}>{auction}</option>
+                            )
+                          )}
                         </select>
                       </td>
                     </tr>
@@ -299,9 +344,11 @@ export default class AuctionDetails extends Component {
                           value={this.state.selectedAuction}
                           onChange={this.handleChange}
                         >
-                          {this.state.auctions.map(auction => (
-                            <option value={auction}>{auction}</option>
-                          ))}
+                          {Object.keys(this.state.searchResults).map(
+                            auction => (
+                              <option value={auction}>{auction}</option>
+                            )
+                          )}
                         </select>
                       </td>
                     </tr>
