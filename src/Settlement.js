@@ -207,11 +207,11 @@ export default class PurchaseTicket extends Component {
               >
                 <tbody>
                   <tr>
-                    <td>Auctioneer Id</td>
+                    <td>Auctioneer ID</td>
                     <td>{this.props.auctioneerId}</td>
                   </tr>
                   <tr>
-                    <td>Auction Id</td>
+                    <td>Auction ID</td>
                     <td>{this.props.auctionId}</td>
                   </tr>
                   <tr>

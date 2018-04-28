@@ -41,7 +41,7 @@ export default class PurchaseTicket extends Component {
     Auction.setProvider(web3.currentProvider);
     AuctionEscrow.setProvider(web3.currentProvider);
 
-    console.log(" got auction id from props " + this.props.auctionId);
+    console.log(" got Auction ID from props " + this.props.auctionId);
 
     this.state = {
       payableAmt: 0
@@ -155,7 +155,7 @@ export default class PurchaseTicket extends Component {
               >
                 <tbody>
                   <tr>
-                    <td>Auction Id</td>
+                    <td>Auction ID</td>
                     <td>{this.props.auctionId}</td>
                   </tr>
                   <tr>
