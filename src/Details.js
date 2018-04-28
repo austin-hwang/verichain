@@ -194,7 +194,7 @@ export default class AuctionDetails extends Component {
                 >
                   <tbody>
                     <tr>
-                      <td>Auction Id</td>
+                      <td>Auction ID</td>
                       <td>
                         <select
                           className="form-control"
@@ -292,7 +292,7 @@ export default class AuctionDetails extends Component {
                 >
                   <tbody>
                     <tr>
-                      <td>Auction Id</td>
+                      <td>Auction ID</td>
                       <td>
                         <select
                           className="form-control"
