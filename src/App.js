@@ -15,12 +15,13 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    const userId = window.localStorage.getItem("userId");
     this.state = {
       currAuction: null,
       auctionId: null,
-      sub_feature: "Login",
+      sub_feature: userId ? "View" : "Login",
       message: null,
-      userId: null
+      userId: userId ? userId : null
     };
   }
 
