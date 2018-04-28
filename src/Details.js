@@ -68,7 +68,7 @@ function formatMetadata(metadata) {
   );
 }
 
-const states = ['Open', 'Locked', 'Completed', 'Incomplete'];
+const states = ["Open", "Locked", "Completed", "Incomplete"];
 
 export default class AuctionDetails extends Component {
   constructor(props) {
@@ -82,7 +82,7 @@ export default class AuctionDetails extends Component {
     this.state = {
       auctions: [],
       auction: null,
-      selectedAuction: "",
+      selectedAuction: ""
     };
 
     me = this;
@@ -142,13 +142,17 @@ export default class AuctionDetails extends Component {
       console.log(bidAmount + bidder);
 
       let bidAuction = await Auction.at(auction);
-      let txnHash = await bidAuction.bid.sendTransaction({gas: 2000000, value: bidAmount, from: bidder});
-      console.log("Transaction Id " + txnHash)
+      let txnHash = await bidAuction.bid.sendTransaction({
+        gas: 2000000,
+        value: bidAmount,
+        from: bidder
+      });
+      console.log("Transaction Id " + txnHash);
 
       let auctionInfo = await me.getAuctionInfo(auction);
 
       me.setState({
-        auction: auctionInfo,
+        auction: auctionInfo
       });
     }
   }
@@ -227,24 +231,55 @@ export default class AuctionDetails extends Component {
                       <td>Collection End</td>
                       <td>{collectionEnd}</td>
                     </tr>
-                    <tr style={{borderBottom: "5px solid #000"}}>
+                    <tr style={{ borderBottom: "5px solid #000" }}>
                       <td>Auction Status</td>
                       <td>{auctionStatus}</td>
                     </tr>
                     <tr>
                       <td>Bidder Id</td>
-                      <td><input className="form-control" ref="txtBidderId"  defaultValue={'0x29E31f7f33dA4835741572dD34CBed5449F9EaD8'}  placeholder="Bidder Address" /></td>
+                      <td>
+                        <input
+                          className="form-control"
+                          ref="txtBidderId"
+                          defaultValue={
+                            "0x29E31f7f33dA4835741572dD34CBed5449F9EaD8"
+                          }
+                          placeholder="Bidder Address"
+                        />
+                      </td>
                     </tr>
                     <tr>
                       <td>Private Key</td>
-                      <td><input className="form-control" ref="txtPrivateKey"  defaultValue={'f68538c02fdac6099a24985a30f37b41b859238a6d3c0d4d9ee8c492cc58b45c'}  placeholder="Bidder Address" /></td>
+                      <td>
+                        <input
+                          className="form-control"
+                          ref="txtPrivateKey"
+                          defaultValue={
+                            "f68538c02fdac6099a24985a30f37b41b859238a6d3c0d4d9ee8c492cc58b45c"
+                          }
+                          placeholder="Bidder Address"
+                        />
+                      </td>
                     </tr>
                     <tr>
                       <td>Bid Amount</td>
-                      <td><input className="form-control" ref="txtBidAmount" type='number' defaultValue={0} placeholder="Bid Amount" /></td>
+                      <td>
+                        <input
+                          className="form-control"
+                          ref="txtBidAmount"
+                          type="number"
+                          defaultValue={0}
+                          placeholder="Bid Amount"
+                        />
+                      </td>
                     </tr>
                     <tr>
-                      <a className="btn btn-primary btn-block" onClick={() => this.bid()}>Bid</a>
+                      <a
+                        className="btn btn-primary btn-block"
+                        onClick={() => this.bid()}
+                      >
+                        Bid
+                      </a>
                     </tr>
                   </tbody>
                 </table>

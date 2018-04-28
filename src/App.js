@@ -5,8 +5,7 @@ import CreateAuction from "./Create.js";
 import AuctionDetails from "./Details.js";
 import PurchaseTicket from "./PurchaseTicket.js";
 import Settlement from "./Settlement.js";
-import Login from "./Login.jsx"
-
+import Login from "./Login.jsx";
 
 import { watchEvents } from "./event-watcher.js";
 
