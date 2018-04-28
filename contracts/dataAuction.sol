@@ -7,7 +7,8 @@ contract dataAuction {
     address public beneficiary; // Owner of the auction
     uint public auctionEnd; // End time of the auction to be calculated
     string public metadata; // Auction metadata, should be replaced by IPFS
-    
+    string apiKey;
+
     address public highestBidder;
     uint public highestBid;
     
@@ -65,11 +66,12 @@ contract dataAuction {
         address _beneficiary,
         uint _collectionPeriod,
         bytes32 _sellerHash,
-        string _metadata
+        string _metadata,
+        string _apiKey
     ) public {
         require(_biddingTime >= 0);
         require(_beneficiary != 0);
-        
+        apiKey = _apiKey;
         beneficiary = _beneficiary;
         auctionEnd = now + _biddingTime;
         metadata = _metadata;
@@ -147,6 +149,10 @@ contract dataAuction {
             return true;
         }
         return false;
+    }
+    // Retrieve key
+    function retrieveKey() public inState(State.Locked) onlyBuyer() returns (string) {
+        return apiKey;
     }
     
     // Allows users to check if the auction has been completed. 
