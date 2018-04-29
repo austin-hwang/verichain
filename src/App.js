@@ -182,8 +182,8 @@ class App extends Component {
 
             {this.state.sub_feature === "Verification" && (
               <Settlement
-                auctioneerId={this.state.auctioneerId}
-                auctionId={this.state.auctionId}
+                auctioneerId={this.state.userId}
+                auctionId={this.state.setAuctionId}
                 notifier={this.updateStatus}
               />
             )}

@@ -8,7 +8,7 @@ import { default as contract } from "truffle-contract";
 
 //contracts
 import auctionFactory from "./contracts/AuctionFactory.json";
-import auction from "./contracts/Auction.json";
+import auction from "./contracts/dataAuction.json";
 import auctionEscrow from "./contracts/AuctionEscrow.json";
 
 //utilities
@@ -26,7 +26,9 @@ var AuctionEscrow = contract(auctionEscrow);
 // else ctx is not visible from anonymous functions and we cant call other functions like writeMsg
 var me = null;
 
-export default class PurchaseTicket extends Component {
+const states = ["Open", "Locked", "Completed", "Incomplete"];
+
+export default class Settlement extends Component {
   // componentDidMount() {}
   // componentWillUnmount() {}
 
@@ -44,14 +46,70 @@ export default class PurchaseTicket extends Component {
     );
 
     this.state = {
+      auctions: [],
+      auction: null,
       payableAmt: 0
     };
 
     me = this;
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.notifier(null, false, false, true);
+    let factoryInstance = await AuctionFactory.deployed();
+    let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
+    let auctions = [];
+    for (var i = 0; i < auctionsLength; i++) {
+      let auction = await factoryInstance.getAuction.call(i);
+      auctions.push(auction);
+    }
+    this.setState({ auctions });
+    if (auctions.length) {
+      let auction = await this.getAuctionInfo(auctions[0]);
+      this.setState({
+        auction,
+        selectedAuction: auctions[0]
+      });
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  async getAuctionInfo(address) {
+    let myAuction = await Auction.at(address);
+    let beneficiary = await myAuction.beneficiary.call();
+    let auctionEndEpoch = await myAuction.auctionEnd.call();
+    let auctionEnd = new Date(1000 * auctionEndEpoch["c"]).toUTCString();
+    let metadata = await myAuction.metadata.call();
+    let highestBidder = await myAuction.highestBidder.call();
+    let highestBid = parseInt(await myAuction.highestBid.call());
+    let collectionEnd = parseInt(await myAuction.collectionEnd.call());
+    let idx = parseInt(await myAuction.state.call());
+    let auctionStatus = states[idx];
+    let apiKey = "Auction is not locked yet.";
+    // if (auctionStatus = "Locked") {
+    //   apiKey = await myAuction.retrieveKey.call();
+    // }
+
+    return {
+      apiKey,
+      beneficiary,
+      auctionEnd,
+      metadata,
+      highestBidder,
+      highestBid,
+      collectionEnd,
+      auctionStatus
+    };
+  }
+
+  async handleChange(event) {
+    let auctionAddress = event.target.value;
+    let auction = await me.getAuctionInfo(auctionAddress);
+
+    me.setState({
+      auction,
+      selectedAuction: auctionAddress
+    });
   }
 
   watchTkt = (escrow, id) => {
@@ -125,7 +183,7 @@ export default class PurchaseTicket extends Component {
     });
   };
 
-  releaseFunds = () => {
+  releaseKey = () => {
     this.props.notifier(null, false, false, true);
 
     let auctioneerId = this.props.auctioneerId;
@@ -192,7 +250,33 @@ export default class PurchaseTicket extends Component {
     });
   };
 
+  async getApiKey () {
+    me.props.notifier(null, false, false, true);
+    let auctionAddress = me.state.auctions[0];
+    let auction = await me.getAuctionInfo(auctionAddress);
+
+    let apiKey = auction.apiKey;
+
+    me.props.notifier(
+      "API Key: " + apiKey,
+      false,
+      false
+    );
+  }
+
   render() {
+    if (this.state.auction)
+      var {
+        apiKey,
+        beneficiary,
+        auctionEnd,
+        metadata,
+        highestBidder,
+        highestBid,
+        collectionEnd,
+        auctionStatus
+      } = this.state.auction;
+      
     return (
       <form>
         <div className="card mb-3">
@@ -207,12 +291,22 @@ export default class PurchaseTicket extends Component {
               >
                 <tbody>
                   <tr>
-                    <td>Auctioneer ID</td>
-                    <td>{this.props.auctioneerId}</td>
+                    <td>Auction ID</td>
+                    <td>
+                      <select
+                        className="form-control"
+                        value={this.state.selectedAuction}
+                        onChange={this.handleChange}
+                      >
+                        {this.state.auctions.map(auction => (
+                          <option value={auction}>{auction}</option>
+                        ))}
+                      </select>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Auction ID</td>
-                    <td>{this.props.auctionId}</td>
+                    <td>Beneficiary</td>
+                    <td>{beneficiary}</td>
                   </tr>
                   <tr>
                     <td>Buyer Address</td>
@@ -241,7 +335,7 @@ export default class PurchaseTicket extends Component {
                 <div className="col-md-3">
                   <a
                     className="btn btn-primary btn-block"
-                    onClick={this.releaseFunds}
+                    onClick={this.getApiKey}
                   >
                     Obtain API Key
                   </a>
@@ -255,7 +349,7 @@ export default class PurchaseTicket extends Component {
   }
 }
 
-PurchaseTicket.propTypes = {
+Settlement.propTypes = {
   auctionId: PropTypes.string.isRequired,
   auctioneerId: PropTypes.string.isRequired,
   notifier: PropTypes.func.isRequired

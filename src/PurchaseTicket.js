@@ -9,7 +9,7 @@ import { default as contract } from "truffle-contract";
 
 //contracts and lib
 import auctionFactory from "./contracts/AuctionFactory.json";
-import auction from "./contracts/Auction.json";
+import auction from "./contracts/dataAuction.json";
 import auctionEscrow from "./contracts/AuctionEscrow.json";
 import { TxnConsensus } from "./block-verify.js";
 
