@@ -16,12 +16,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     const userId = window.localStorage.getItem("userId");
+    const privateKey = window.localStorage.getItem("privateKey");
+
     this.state = {
       currAuction: null,
       auctionId: null,
       sub_feature: userId ? "View" : "Login",
       message: null,
-      userId: userId ? userId : null
+      userId: userId ? userId : null,
+      privateKey: privateKey ? privateKey : null
     };
   }
 
@@ -153,8 +156,12 @@ class App extends Component {
             </div>
             {this.state.sub_feature === "Login" && (
               <Login
-                onLogin={userId =>
-                  this.setState({ sub_feature: "View", userId: userId })
+                onLogin={(userId, privateKey) =>
+                  this.setState({
+                    sub_feature: "View",
+                    userId: userId,
+                    privateKey: privateKey
+                  })
                 }
               />
             )}
@@ -167,7 +174,8 @@ class App extends Component {
 
             {this.state.sub_feature === "View" && (
               <AuctionDetails
-                auctioneerId={this.state.userId}
+                bidderId={this.state.userId}
+                privateKey={this.state.privateKey}
                 onAuctionId={this.setAuctionId}
                 notifier={this.updateStatus}
               />

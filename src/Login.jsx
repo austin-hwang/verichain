@@ -26,8 +26,9 @@ var me = null;
 export default class Login extends Component {
   login = () => {
     window.localStorage.setItem("userId", this.refs.userId.value);
-    this.props.onLogin(this.refs.userId.value);
-    console.log(this.refs.userId.value);
+    window.localStorage.setItem("privateKey", this.refs.privateKey.value);
+
+    this.props.onLogin(this.refs.userId.value, this.refs.privateKey.value);
   };
 
   render() {
@@ -37,8 +38,20 @@ export default class Login extends Component {
           <div className="card-header">Login</div>
           <div className="card-body">
             <div className="form-group">
-              <label htmlFor="beneficiary">Ethereum Public Key</label>
-              <input className="form-control" ref="userId" placeholder="Key" />
+              <label htmlFor="userId">Ethereum Public Key</label>
+              <input
+                className="form-control"
+                ref="userId"
+                placeholder="Public Key"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="privateKey">Ethereum Private Key</label>
+              <input
+                className="form-control"
+                ref="privateKey"
+                placeholder="Private Key"
+              />
             </div>
             <div className="form-group">
               <div className="form-row">

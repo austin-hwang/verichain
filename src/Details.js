@@ -149,12 +149,12 @@ export default class AuctionDetails extends Component {
     };
   }
 
-  async bid() {
-    let auction = this.state.selectedAuction;
-    let bidder = this.refs.txtBidderId.value;
-    let bidAmount = this.refs.txtBidAmount.value;
-    let phrase = this.refs.txtPrivateKey.value;
-
+  async bid(
+    auction = this.state.selectedAuction,
+    bidAmount = this.refs.txtBidAmount.value,
+    bidder = this.props.bidderId,
+    phrase = this.props.privateKey
+  ) {
     if (auction) {
       let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
       console.log(unlocked);
@@ -213,6 +213,15 @@ export default class AuctionDetails extends Component {
       selectedAuction: auctionAddress
     });
   }
+
+  massBid = async () => {
+    for (const [addr, { highestBid }] of Object.entries(
+      this.state.searchResults
+    )) {
+      this.bid(addr, highestBid + 1);
+    }
+    console.log("bidded!");
+  };
 
   render() {
     if (this.state.selectedAuction)
@@ -274,6 +283,35 @@ export default class AuctionDetails extends Component {
             </div>
 
             <div className="table-responsive">
+              {this.state.searchResults !== null && (
+                <div className="form-group">
+                  <div className="form-row">
+                    <div className="col-md-6">
+                      <input
+                        className="form-control"
+                        ref="collectionPeriod"
+                        type="number"
+                        min="1"
+                        defaultValue={
+                          Object.entries(this.state.searchResults).reduce(
+                            (cur, [key, val]) => cur + val.highestBid,
+                            0
+                          ) + Object.keys(this.state.searchResults).length
+                        }
+                        placeholder="Collection Period in Seconds"
+                      />
+                    </div>
+                    <div className="col-md-2">
+                      <a
+                        className="btn btn-primary btn-block"
+                        onClick={() => this.massBid()}
+                      >
+                        Mass Bid
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
               {this.state.selectedAuction && !this.state.loading ? (
                 <table
                   className="table table-bordered"
@@ -327,39 +365,13 @@ export default class AuctionDetails extends Component {
                       <td>{auctionStatus}</td>
                     </tr>
                     <tr>
-                      <td>Bidder Id</td>
-                      <td>
-                        <input
-                          className="form-control"
-                          ref="txtBidderId"
-                          defaultValue={
-                            "0x29E31f7f33dA4835741572dD34CBed5449F9EaD8"
-                          }
-                          placeholder="Bidder Address"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Private Key</td>
-                      <td>
-                        <input
-                          className="form-control"
-                          ref="txtPrivateKey"
-                          defaultValue={
-                            "f68538c02fdac6099a24985a30f37b41b859238a6d3c0d4d9ee8c492cc58b45c"
-                          }
-                          placeholder="Bidder Address"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
                       <td>Bid Amount</td>
                       <td>
                         <input
                           className="form-control"
                           ref="txtBidAmount"
                           type="number"
-                          defaultValue={0}
+                          defaultValue={highestBid + 1}
                           placeholder="Bid Amount"
                         />
                       </td>
