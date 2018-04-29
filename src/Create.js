@@ -41,7 +41,12 @@ export default class CreateAuction extends Component {
   componentDidMount() {
     this.props.notifier(null, false, false, true);
   }
-
+  setupSampleAuctions = () => {
+    sampleMetadata.forEach(metadata => {
+      this.refs.metadata.value = JSON.stringify(metadata);
+      this.createAuction();
+    });
+  };
   createAuction = () => {
     this.props.notifier(null, false, false, true);
 
@@ -113,7 +118,7 @@ export default class CreateAuction extends Component {
                     className="form-control"
                     ref="metadata"
                     placeholder="Metadata"
-                    defaultValue={JSON.stringify(sampleMetadata)}
+                    defaultValue={JSON.stringify(sampleMetadata[0])}
                   />
                 </div>
                 <div className="col-md-6">
@@ -172,6 +177,18 @@ export default class CreateAuction extends Component {
                     onClick={this.createAuction}
                   >
                     Create
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="form-group">
+              <div className="form-row">
+                <div className="col-md-4">
+                  <a
+                    className="btn btn-primary btn-block"
+                    onClick={this.setupSampleAuctions}
+                  >
+                    Setup Sample Auctions
                   </a>
                 </div>
               </div>

@@ -9,6 +9,7 @@ import { default as Web3 } from "web3";
 import { default as contract } from "truffle-contract";
 import auctionFactory from "./contracts/AuctionFactory.json";
 import auction from "./contracts/dataAuction.json";
+import { BounceLoader } from "react-spinners";
 
 //var watching = false; //start watching to events only
 // var passwd = false;
@@ -30,6 +31,20 @@ const sensors = [
   "heartRate",
   "moisture"
 ];
+
+const units = ["any", "bpm", "percent", "celsius", "farenheight"];
+const dataTypes = ["any", "string", "number", "picture"];
+
+function propertiesIncludes(properties, val) {
+  if (val === "any") {
+    return true;
+  }
+  return (
+    Object.values(properties).filter(sensor =>
+      Object.values(sensor).includes(val)
+    ).length !== 0
+  );
+}
 
 function formatMetadata(metadata) {
   return (
@@ -89,10 +104,11 @@ export default class AuctionDetails extends Component {
     Auction.setProvider(web3.currentProvider);
 
     this.state = {
-      searchResults: {},
+      searchResults: null,
       auctions: [],
       auction: null,
-      selectedAuction: ""
+      selectedAuction: "",
+      loading: false
     };
 
     me = this;
@@ -107,14 +123,6 @@ export default class AuctionDetails extends Component {
       auctions.push(auction);
     }
     this.setState({ auctions });
-    console.log(auctions.length);
-    // if (auctions.length) {
-    //   let auction = await this.getAuctionInfo(auctions[0]);
-    //   this.setState({
-    //     auction,
-    //     selectedAuction: auctions[0]
-    //   });
-    // }
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -168,26 +176,40 @@ export default class AuctionDetails extends Component {
     }
   }
   searchAuctions = async () => {
+    this.setState({ loading: true });
     const sensor = this.refs.sensorType.value;
+    const unit = this.refs.unit.value;
+    const dataType = this.refs.dataType.value;
+
     let searchResults = {};
     for (const auctionAddr of this.state.auctions) {
       const info = await this.getAuctionInfo(auctionAddr);
-      if (Object.keys(info.metadata.properties).includes(sensor)) {
-        searchResults[auctionAddr] = info;
+      if (
+        !Object.keys(info.metadata.properties).includes(sensor) &&
+        !sensor === "any"
+      ) {
+        continue;
       }
+      if (!propertiesIncludes(info.metadata.properties, unit)) {
+        continue;
+      }
+      if (!propertiesIncludes(info.metadata.properties, dataType)) {
+        continue;
+      }
+      searchResults[auctionAddr] = info;
     }
     const queriedKeys = Object.keys(searchResults);
     this.setState({
       searchResults: searchResults,
-      selectedAuction: queriedKeys.length ? queriedKeys[0] : ""
+      selectedAuction: queriedKeys.length ? queriedKeys[0] : "",
+      loading: false
     });
   };
+
   async handleChange(event) {
     let auctionAddress = event.target.value;
-    let auction = await me.getAuctionInfo(auctionAddress);
 
     me.setState({
-      auction,
       selectedAuction: auctionAddress
     });
   }
@@ -208,27 +230,51 @@ export default class AuctionDetails extends Component {
         <div className="card mb-3">
           <div className="card-header"> Auction Details</div>
           <div className="card-body">
-            <div className="col-md-4">
-              <select
-                className="form-control"
-                value={this.state.selectedSensor}
-                ref="sensorType"
-              >
-                {sensors.map(sensor => (
-                  <option value={sensor}>{sensor}</option>
-                ))}
-              </select>
+            <div className="form-group">
+              <div className="form-row">
+                <div className="col-md-2">
+                  <label htmlFor="sensorType">Sensor Type</label>
+                  <select
+                    className="form-control"
+                    ref="sensorType"
+                    id="sensorType"
+                  >
+                    {sensors.map(sensor => (
+                      <option value={sensor}>{sensor}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col-md-2">
+                  <label htmlFor="unit">Unit of Measure</label>
+                  <select className="form-control" ref="unit" id="unit">
+                    {units.map(unit => <option value={unit}>{unit}</option>)}
+                  </select>
+                </div>
+                <div className="col-md-2">
+                  <label htmlFor="dataType">Data Type</label>
+                  <select className="form-control" ref="dataType" id="dataType">
+                    {dataTypes.map(dataType => (
+                      <option value={dataType}>{dataType}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
             </div>
-            <div className="col-md-2">
-              <a
-                className="btn btn-primary btn-block"
-                onClick={this.searchAuctions}
-              >
-                Search
-              </a>
+            <div className="form-group">
+              <div className="form-row">
+                <div className="col-md-2">
+                  <a
+                    className="btn btn-primary btn-block"
+                    onClick={this.searchAuctions}
+                  >
+                    Search
+                  </a>
+                </div>
+              </div>
             </div>
+
             <div className="table-responsive">
-              {this.state.auction ? (
+              {this.state.selectedAuction && !this.state.loading ? (
                 <table
                   className="table table-bordered"
                   id="dataTable"
@@ -241,8 +287,8 @@ export default class AuctionDetails extends Component {
                       <td>
                         <select
                           className="form-control"
-                          value={this.state.selectedAuction}
-                          onChange={this.handleChange}
+                          defaultValue={this.state.selectedAuction}
+                          onSelect={this.handleChange}
                         >
                           {Object.keys(this.state.searchResults).map(
                             auction => (
@@ -319,41 +365,32 @@ export default class AuctionDetails extends Component {
                       </td>
                     </tr>
                     <tr>
-                      <a
-                        className="btn btn-primary btn-block"
-                        onClick={() => this.bid()}
-                      >
-                        Bid
-                      </a>
-                    </tr>
-                  </tbody>
-                </table>
-              ) : (
-                <table
-                  className="table table-bordered"
-                  id="dataTable"
-                  width="100%"
-                  cellSpacing="0"
-                >
-                  <tbody>
-                    <tr>
-                      <td>Auction ID</td>
                       <td>
-                        <select
-                          className="form-control"
-                          value={this.state.selectedAuction}
-                          onChange={this.handleChange}
+                        <a
+                          className="btn btn-primary btn-block"
+                          onClick={() => this.bid()}
                         >
-                          {Object.keys(this.state.searchResults).map(
-                            auction => (
-                              <option value={auction}>{auction}</option>
-                            )
-                          )}
-                        </select>
+                          Bid
+                        </a>
                       </td>
                     </tr>
                   </tbody>
                 </table>
+              ) : (
+                <div>
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{ display: "inline-block" }}>
+                      <BounceLoader
+                        color={"#6f42c1"}
+                        loading={this.state.loading}
+                      />
+                      {this.state.searchResults !== null &&
+                        !Object.keys(this.state.searchResults).length &&
+                        !this.state.loading &&
+                        "Your Search Returned No Results!"}
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           </div>

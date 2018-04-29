@@ -1,27 +1,111 @@
-{
-  "links": [
-    { "rel": "properties", "href": "/things/pi/properties" },
-    { "rel": "actions", "href": "/things/pi/actions" },
-    { "rel": "events", "href": "/things/pi/events" },
-    { "rel": "alternate", "href": "wss://mywebthingserver.com/things/pi" },
-    { "href": "/things/pi", "rel": "alternate", "mediaType": "text/html" }
-  ],
-  "name": "WoT Pi",
-  "events": { "reboot": { "description": "Going down for reboot" } },
-  "type": "thing",
-  "description": "A WoT-connected Raspberry Pi",
-  "properties": {
-    "humidity": {
-      "type": "number",
-      "unit": "percent",
-      "href": "/things/pi/properties/humidity"
-    },
-    "temperature": {
-      "type": "number",
-      "unit": "celsius",
-      "description": "An ambient temperature sensor",
-      "href": "/things/pi/properties/temperature"
+[
+  {
+    "links": [
+      { "rel": "properties", "href": "/things/pi/properties" },
+      { "rel": "events", "href": "/things/pi/events" },
+      { "rel": "alternate", "href": "wss://mywebthingserver.com/things/pi" },
+      { "href": "/things/pi", "rel": "alternate", "mediaType": "text/html" }
+    ],
+    "name": "WoT Pi",
+    "type": "thing",
+    "description": "A Household WoT-connected Raspberry Pi",
+    "properties": {
+      "humidity": {
+        "type": "number",
+        "frequency": "60",
+        "unit": "percent",
+        "error": ".01",
+        "description": "A humidity sensor",
+        "href": "/things/pi/properties/humidity"
+      },
+      "temperature": {
+        "type": "number",
+        "unit": "celsius",
+        "frequency": "1",
+        "error": ".1",
+        "description": "An ambient temperature sensor",
+        "href": "/things/pi/properties/temperature"
+      }
     }
   },
-  "actions": { "reboot": { "description": "Reboot the device" } }
-}
+  {
+    "links": [
+      { "rel": "properties", "href": "/things/pi/properties" },
+      { "rel": "events", "href": "/things/pi/events" },
+      { "rel": "alternate", "href": "wss://mywebthingserver.com/things/pi" },
+      { "href": "/things/pi", "rel": "alternate", "mediaType": "text/html" }
+    ],
+    "name": "Echo Dot",
+    "type": "thing",
+    "description": "An Amazon Echo Dot",
+    "properties": {
+      "voiceSearches": {
+        "type": "string",
+        "frequency": "86400",
+        "description": "The user's daily voice searches",
+        "href": "/things/pi/properties/voiceSearches"
+      }
+    }
+  },
+  {
+    "links": [
+      { "rel": "properties", "href": "/things/pi/properties" },
+      { "rel": "events", "href": "/things/pi/events" },
+      { "rel": "alternate", "href": "wss://mywebthingserver.com/things/pi" },
+      { "href": "/things/pi", "rel": "alternate", "mediaType": "text/html" }
+    ],
+    "name": "Samsung RF22N9781SG/AA",
+    "type": "thing",
+    "description": "A household Samsung Family Hub fridge",
+    "properties": {
+      "fridgeContents": {
+        "type": "picture",
+        "frequency": "86400",
+        "description": "Pictures of the user's fridge contents",
+        "href": "/things/pi/properties/fridgeContents"
+      }
+    }
+  },
+  {
+    "links": [
+      { "rel": "properties", "href": "/things/pi/properties" },
+      { "rel": "events", "href": "/things/pi/events" },
+      { "rel": "alternate", "href": "wss://mywebthingserver.com/things/pi" },
+      { "href": "/things/pi", "rel": "alternate", "mediaType": "text/html" }
+    ],
+    "name": "Fitbit Versa",
+    "type": "thing",
+    "description": "A smartwatch with a heartrate sensor",
+    "properties": {
+      "heartRate": {
+        "type": "number",
+        "unit": "bpm",
+        "frequency": "600",
+        "error": "3",
+        "description": "A heart rate sensor on user's wrist",
+        "href": "/things/pi/properties/heartRate"
+      }
+    }
+  },
+  {
+    "links": [
+      { "rel": "properties", "href": "/things/pi/properties" },
+      { "rel": "events", "href": "/things/pi/events" },
+      { "rel": "alternate", "href": "wss://mywebthingserver.com/things/pi" },
+      { "href": "/things/pi", "rel": "alternate", "mediaType": "text/html" }
+    ],
+    "name": "SEN-13322",
+    "type": "thing",
+    "description": "A soil moisture sensor at a corn farm",
+    "properties": {
+      "moisture": {
+        "type": "number",
+        "unit": "percent",
+        "frequency": "3600",
+        "error": ".1",
+        "description": "A soil moisture sensor",
+        "href": "/things/pi/properties/moisture"
+      }
+    }
+  }
+]
