@@ -157,22 +157,23 @@ export default class AuctionDetails extends Component {
   ) {
     if (auction) {
       let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
-      console.log(unlocked);
-      console.log(bidAmount + bidder);
+      console.log("Balance: ", web3.fromWei(web3.eth.getBalance(bidder)));
+      console.log("Unlocked: " + unlocked);
+      console.log(bidAmount, bidder);
 
       let bidAuction = await Auction.at(auction);
-      let txnHash = await bidAuction.bid.sendTransaction({
-        gas: 2000000,
-        value: bidAmount,
-        from: bidder
-      });
-      console.log("Transaction Id " + txnHash);
+      try {
+        let txnHash = await bidAuction.bid.sendTransaction({
+          gas: 2000000,
+          value: bidAmount,
+          from: bidder
+        });
 
-      let auctionInfo = await me.getAuctionInfo(auction);
-
-      me.setState({
-        auction: auctionInfo
-      });
+        console.log("Transaction Id " + txnHash);
+      } catch (e) {
+        console.log(e.message);
+      }
+      this.refreshResult(auction);
     }
   }
   searchAuctions = async () => {
@@ -214,13 +215,18 @@ export default class AuctionDetails extends Component {
     });
   }
 
+  refreshResult = async addr => {
+    this.state.searchResults[addr] = await this.getAuctionInfo(addr);
+
+    this.setState({ searchResults: this.state.searchResults });
+  };
+
   massBid = async () => {
     for (const [addr, { highestBid }] of Object.entries(
       this.state.searchResults
     )) {
       this.bid(addr, highestBid + 1);
     }
-    console.log("bidded!");
   };
 
   render() {
@@ -234,6 +240,12 @@ export default class AuctionDetails extends Component {
         collectionEnd,
         auctionStatus
       } = this.state.searchResults[this.state.selectedAuction];
+    let minBid = this.state.searchResults
+      ? Object.entries(this.state.searchResults).reduce(
+          (cur, [key, val]) => cur + val.highestBid,
+          0
+        ) + Object.keys(this.state.searchResults).length
+      : 0;
     return (
       <form>
         <div className="card mb-3">
@@ -289,16 +301,10 @@ export default class AuctionDetails extends Component {
                     <div className="col-md-6">
                       <input
                         className="form-control"
-                        ref="collectionPeriod"
+                        ref="massBid"
                         type="number"
-                        min="1"
-                        defaultValue={
-                          Object.entries(this.state.searchResults).reduce(
-                            (cur, [key, val]) => cur + val.highestBid,
-                            0
-                          ) + Object.keys(this.state.searchResults).length
-                        }
-                        placeholder="Collection Period in Seconds"
+                        min={minBid}
+                        defaultValue={minBid}
                       />
                     </div>
                     <div className="col-md-2">
