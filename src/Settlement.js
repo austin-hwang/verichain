@@ -117,9 +117,12 @@ export default class Settlement extends Component {
     let apiKey = "No API Key available";
     for (const auctionAddr of me.state.auctions) {
       const info = await me.getAuctionInfo(auctionAddr);
-      if (info.auctionStatus === "Closed" && info.highestBidder === buyer) {
-        apiKey += await auction.myAuction.retrieveKey.call() + "\n";
-      }
+        info.myAuction.retrieveKey.call()
+        .then(function(api) {
+            apiKey += api + "\n";
+        }, function(error) {
+            console.log("Cannot get API Key")
+        })
     }
 
     me.props.notifier(
@@ -132,20 +135,21 @@ export default class Settlement extends Component {
   async getMoney () {
     me.props.notifier(null, false, false, true);
     let buyer = me.refs.buyerAddress.value;
-    let apiKey = "No API Key available";
     for (const auctionAddr of me.state.auctions) {
       const info = await me.getAuctionInfo(auctionAddr);
-      if (info.auctionStatus === "Completed" && info.highestBidder === buyer) {
-        await auction.myAuction.withdrawReward.call();
-      }
+       info.myAuction.withdrawReward.call()
+        .then(function(api) {
+          me.props.notifier(
+            "Money sent.",
+            false,
+            false
+          );
+        }, function(error) {
+            console.log("Cannot get money yet")
+        })
     }
-
-    me.props.notifier(
-      "Money sent.",
-      false,
-      false
-    );
   }
+  
   render() {
     if (this.state.auction)
       var {
