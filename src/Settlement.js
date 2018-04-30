@@ -85,13 +85,12 @@ export default class Settlement extends Component {
     let collectionEnd = parseInt(await myAuction.collectionEnd.call());
     let idx = parseInt(await myAuction.state.call());
     let auctionStatus = states[idx];
-    let apiKey = "Auction is not locked yet.";
     // if (auctionStatus = "Locked") {
-    //   apiKey = await myAuction.retrieveKey.call();
+    //     apiKey = await myAuction.retrieveKey.call();
     // }
 
     return {
-      apiKey,
+      myAuction,
       beneficiary,
       auctionEnd,
       metadata,
@@ -112,150 +111,16 @@ export default class Settlement extends Component {
     });
   }
 
-  watchTkt = (escrow, id) => {
-    console.log("Watching tkt " + escrow + " esc id " + id);
-    var event = escrow.TicketReceipt({
-      fromBlock: "latest",
-      toBlock: "latest",
-      address: id
-    });
-    event.watch(function(error, result) {
-      if (!error) {
-        me.props.notifier(
-          "Ticket Receipt confirmed for buyer " + result.args.buyer,
-          false,
-          true
-        );
-      } else {
-        me.props.notifier("Error confirming ticket :; " + error, true, true);
-      }
-    });
-  };
-
-  confirmTktReceipt = () => {
-    this.props.notifier(null, false, false, true);
-
-    let buyer = this.refs.tktReceiptId.value;
-
-    // console.log("confirmTktReceipt details " + buyer + " " + auctioneerId);
-    var unlocked = web3.personal.unlockAccount(buyer, "welcome123", 10);
-    console.log("unlocked " + unlocked);
-
-    AuctionFactory.deployed().then(function(factInstance) {
-      factInstance.getEscrow.call(me.props.auctionId).then(function(escId) {
-        var pEscrow = AuctionEscrow.at(escId);
-        // console.log(" conftkt auctionId " + auctionId + " esc id :: " + escId);
-
-        me.watchTkt(pEscrow, escId);
-
-        pEscrow.recordTicketReceipt
-          .sendTransaction({ from: buyer, gas: 4000000 })
-          .then(function(txnHash) {
-            // writeMsg("Transaction Id " + txnHash, false, false);
-            console.log("Transaction Id " + txnHash);
-            TxnConsensus(web3, txnHash, 3, 4000, 4, function(err, receipt) {
-              // console.log("Got result from block confirmation");
-              if (receipt) {
-                console.log(
-                  "recordTicketReceipt Receipt status " + receipt.status
-                );
-                console.log(
-                  "recordTicketReceipt receipt blockHash " + receipt.blockHash
-                );
-                console.log(
-                  "recordTicketReceipt receipt blockNumber " +
-                    receipt.blockNumber
-                );
-                console.log(
-                  "recordTicketReceipt receipt transactionIndex " +
-                    receipt.transactionIndex
-                );
-              } else {
-                me.props.notifier(
-                  "Error confirming ticket receipt " + err,
-                  true,
-                  false
-                );
-              }
-            });
-          });
-      });
-    });
-  };
-
-  releaseKey = () => {
-    this.props.notifier(null, false, false, true);
-
-    let auctioneerId = this.props.auctioneerId;
-    let buyer = this.refs.tktReceiptId.value;
-
-    console.log(" details " + buyer + " " + auctioneerId);
-
-    var unlocked = web3.personal.unlockAccount(auctioneerId, "welcome123", 10);
-    console.log("unlocked " + unlocked);
-    // if(!unlockaccount(auctioneerId, phrase)) {
-    //   return;
-    // }
-
-    AuctionFactory.deployed().then(function(factInstance) {
-      factInstance.getEscrow.call(me.props.auctionId).then(function(escId) {
-        var pEscrow = AuctionEscrow.at(escId);
-
-        pEscrow.PaymentRelease().watch((err, response) => {
-          //once the event has been detected, take actions as desired
-          //writeMsg('Funds of tickets for buyer : ' + response.args.buyer + " released to auctioneer " + auctioneerId, false, true);
-          console.log(
-            "Funds of tickets for buyer : " +
-              response.args.buyer +
-              " released to auctioneer " +
-              auctioneerId
-          );
-        });
-
-        pEscrow.PaymentReleaseFail().watch((err, response) => {
-          //once the event has been detected, take actions as desired
-          //writeMsg('Relase Funds failed of tickets for buyer : ' + response.args.buyer + " with total price " + response.args.price, true, true);
-          console.log(
-            "Relase Funds failed of tickets for buyer : " +
-              response.args.buyer +
-              " with total price " +
-              response.args.price
-          );
-        });
-
-        pEscrow.releasePayment
-          .sendTransaction(buyer, { from: auctioneerId, gas: 400000 })
-          .then(function(txnHash) {
-            // writeMsg("Transaction Id " + txnHash, false, false);
-            console.log("Transaction Id " + txnHash);
-            TxnConsensus(web3, txnHash, 3, 4000, 4, function(err, receipt) {
-              // console.log("Got result from block confirmation");
-              if (receipt) {
-                me.props.notifier(
-                  "Funds released successfully. Txn Id : " + txnHash
-                );
-                console.log("releaseFunds Receipt status " + receipt.status);
-                console.log("receipt blockHash " + receipt.blockHash);
-                console.log("receipt blockNumber " + receipt.blockNumber);
-                console.log(
-                  "receipt transactionIndex " + receipt.transactionIndex
-                );
-              } else {
-                // writeMsg("Error reading receipt " + err, true, true);
-                me.props.notifier("Error releasing funds " + err, true, false);
-              }
-            });
-          });
-      });
-    });
-  };
-
   async getApiKey () {
     me.props.notifier(null, false, false, true);
-    let auctionAddress = me.state.auctions[0];
-    let auction = await me.getAuctionInfo(auctionAddress);
-
-    let apiKey = auction.apiKey;
+    let buyer = me.refs.buyerAddress.value;
+    let apiKey = "No API Key available";
+    for (const auctionAddr of me.state.auctions) {
+      const info = await me.getAuctionInfo(auctionAddr);
+      if (info.auctionStatus === "Closed" && info.highestBidder === buyer) {
+        apiKey += await auction.myAuction.retrieveKey.call() + "\n";
+      }
+    }
 
     me.props.notifier(
       "API Key: " + apiKey,
@@ -264,16 +129,27 @@ export default class Settlement extends Component {
     );
   }
 
+  async getMoney () {
+    me.props.notifier(null, false, false, true);
+    let buyer = me.refs.buyerAddress.value;
+    let apiKey = "No API Key available";
+    for (const auctionAddr of me.state.auctions) {
+      const info = await me.getAuctionInfo(auctionAddr);
+      if (info.auctionStatus === "Completed" && info.highestBidder === buyer) {
+        await auction.myAuction.withdrawReward.call();
+      }
+    }
+
+    me.props.notifier(
+      "Money sent.",
+      false,
+      false
+    );
+  }
   render() {
     if (this.state.auction)
       var {
-        apiKey,
         beneficiary,
-        auctionEnd,
-        metadata,
-        highestBidder,
-        highestBid,
-        collectionEnd,
         auctionStatus
       } = this.state.auction;
       
@@ -313,7 +189,7 @@ export default class Settlement extends Component {
                     <td>
                       <input
                         className="form-control"
-                        ref="tktReceiptId"
+                        ref="buyerAddress"
                         defaultValue="0x3ad78130DCff93d6c942c37aA45F0A004A0Ffe0C"
                         placeholder="Buyer Address"
                       />
@@ -327,7 +203,7 @@ export default class Settlement extends Component {
                 <div className="col-md-3">
                   <a
                     className="btn btn-primary btn-block"
-                    onClick={this.confirmTktReceipt}
+                    onClick={this.getMoney}
                   >
                     Send Data Hash
                   </a>
