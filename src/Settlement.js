@@ -9,7 +9,6 @@ import { default as contract } from "truffle-contract";
 //contracts
 import auctionFactory from "./contracts/AuctionFactory.json";
 import auction from "./contracts/dataAuction.json";
-import auctionEscrow from "./contracts/AuctionEscrow.json";
 
 //utilities
 import { TxnConsensus } from "./block-verify.js";
@@ -20,7 +19,6 @@ import { TxnConsensus } from "./block-verify.js";
 var web3 = null;
 var AuctionFactory = contract(auctionFactory);
 var Auction = contract(auction);
-var AuctionEscrow = contract(auctionEscrow);
 
 //variable to refer to currnet component context
 // else ctx is not visible from anonymous functions and we cant call other functions like writeMsg
@@ -39,7 +37,6 @@ export default class Settlement extends Component {
     console.warn("webb3 connected  " + web3);
     AuctionFactory.setProvider(web3.currentProvider);
     Auction.setProvider(web3.currentProvider);
-    AuctionEscrow.setProvider(web3.currentProvider);
 
     console.log(
       " props " + this.props.auctionId + " " + this.props.auctioneerId
