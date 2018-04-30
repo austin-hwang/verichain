@@ -148,6 +148,23 @@ export default class AuctionDetails extends Component {
       auctionStatus
     };
   }
+  async endAuctions (auction = this.state.selectedAuction, bidder = this.props.bidderId,
+    phrase = this.props.privateKey) {
+    if (auction) {
+      let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
+      let bidAuction = await Auction.at(auction);
+      try {
+        await bidAuction.endAuction.call({
+          gas: 2000000
+        });
+        console.log("Auction Ended");
+      } catch (e) {
+        console.log(e.message);
+      }
+
+      this.refreshResult(auction);
+    }
+  }
 
   async bid(
     auction = this.state.selectedAuction,
@@ -389,6 +406,14 @@ export default class AuctionDetails extends Component {
                           onClick={() => this.bid()}
                         >
                           Bid
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          className="btn btn-primary btn-block"
+                          onClick={() => this.endAuctions()}
+                        >
+                          End Auction
                         </a>
                       </td>
                     </tr>
