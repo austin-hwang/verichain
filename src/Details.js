@@ -35,6 +35,15 @@ const sensors = [
 const units = ["any", "bpm", "percent", "celsius", "farenheight"];
 const dataTypes = ["any", "string", "number", "picture"];
 
+function minBidPrice(searchResults) {
+  return searchResults
+    ? Object.entries(searchResults).reduce(
+        (cur, [key, val]) => cur + val.highestBid,
+        0
+      ) + Object.keys(searchResults).length
+    : 0;
+}
+
 function propertiesIncludes(properties, val) {
   if (val === "any") {
     return true;
@@ -108,7 +117,8 @@ export default class AuctionDetails extends Component {
       auctions: [],
       auction: null,
       selectedAuction: "",
-      loading: false
+      loading: false,
+      relevantAuctionsView: false
     };
 
     me = this;
@@ -155,7 +165,6 @@ export default class AuctionDetails extends Component {
     if (auction) {
       let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
       let bidAuction = await Auction.at(auction);
-      console.log(await bidAuction.beneficiary.call());
       try {
         const result = await bidAuction.endAuction({ from: bidder });
         console.log(await bidAuction.state.call());
@@ -208,12 +217,27 @@ export default class AuctionDetails extends Component {
       selectedAuction: this.props.relevantAuctions.length
         ? this.props.relevantAuctions[0]
         : "",
-      loading: false
+      loading: false,
+      relevantAuctionsView: true
     });
   };
 
+  endExpired = async () => {
+    const now = Date.now();
+    for (const addr of this.props.relevantAuctions.filter(
+      addr =>
+        this.state.searchResults[addr].auctionEnd < now &&
+        this.state.searchResults[addr].auctionStatus === "Open"
+    )) {
+      this.endAuctions(addr);
+    }
+  };
+
   searchAuctions = async () => {
-    this.setState({ loading: true });
+    this.setState({
+      loading: true,
+      relevantAuctionsView: false
+    });
     const sensor = this.refs.sensorType.value;
     const unit = this.refs.unit.value;
     const dataType = this.refs.dataType.value;
@@ -266,8 +290,9 @@ export default class AuctionDetails extends Component {
     )) {
       this.bid(addr, highestBid + 1);
     }
+    this.refs.massBid.value = minBidPrice(this.state.searchResults);
   };
-
+  massBid;
   render() {
     if (this.state.selectedAuction)
       var {
@@ -279,12 +304,7 @@ export default class AuctionDetails extends Component {
         collectionEnd,
         auctionStatus
       } = this.state.searchResults[this.state.selectedAuction];
-    let minBid = this.state.searchResults
-      ? Object.entries(this.state.searchResults).reduce(
-          (cur, [key, val]) => cur + val.highestBid,
-          0
-        ) + Object.keys(this.state.searchResults).length
-      : 0;
+    const minBid = minBidPrice(this.state.searchResults);
     return (
       <form>
         <div className="card mb-3">
@@ -349,7 +369,7 @@ export default class AuctionDetails extends Component {
               {this.state.searchResults !== null && (
                 <div className="form-group">
                   <div className="form-row">
-                    <div className="col-md-6">
+                    <div className="col-md-2">
                       <input
                         className="form-control"
                         ref="massBid"
@@ -366,6 +386,16 @@ export default class AuctionDetails extends Component {
                         Mass Bid
                       </a>
                     </div>
+                    {this.state.relevantAuctionsView && (
+                      <div className="col-md-2">
+                        <a
+                          className="btn btn-primary btn-block"
+                          onClick={this.endExpired}
+                        >
+                          End Expired
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -383,11 +413,13 @@ export default class AuctionDetails extends Component {
                         <select
                           className="form-control"
                           defaultValue={this.state.selectedAuction}
-                          onSelect={this.handleChange}
+                          onInput={this.handleChange}
                         >
                           {Object.keys(this.state.searchResults).map(
                             auction => (
-                              <option key={auction} value={auction}>{auction}</option>
+                              <option key={auction} value={auction}>
+                                {auction}
+                              </option>
                             )
                           )}
                         </select>
