@@ -38,9 +38,7 @@ export default class Settlement extends Component {
     AuctionFactory.setProvider(web3.currentProvider);
     Auction.setProvider(web3.currentProvider);
 
-    console.log(
-      " props " + this.props.auctionId + " " + this.props.auctioneerId
-    );
+    console.log(" props " + this.props.auctionId + " " + this.props.userId);
 
     this.state = {
       auctions: [],
@@ -108,24 +106,15 @@ export default class Settlement extends Component {
     });
   }
 
-  async getApiKey() {
+  getApiKey = async () => {
     me.props.notifier(null, false, false, true);
-    let buyer = me.refs.buyerAddress.value;
-    let apiKey = "No API Key available";
-    for (const auctionAddr of me.state.auctions) {
-      const info = await me.getAuctionInfo(auctionAddr);
-      info.myAuction.retrieveKey.call().then(
-        function(api) {
-          apiKey += api + "\n";
-        },
-        function(error) {
-          console.log("Cannot get API Key");
-        }
-      );
-    }
-
+    let buyer = this.props,
+      userId;
+    let apiKey = await (await Auction.at(
+      me.refs.auctionId.value
+    )).retrieveKey.call();
     me.props.notifier("API Key: " + apiKey, false, false);
-  }
+  };
 
   async getMoney() {
     me.props.notifier(null, false, false, true);
@@ -167,9 +156,12 @@ export default class Settlement extends Component {
                         className="form-control"
                         value={this.state.selectedAuction}
                         onChange={this.handleChange}
+                        ref="auctionId"
                       >
                         {this.props.auctions.map(auction => (
-                          <option value={auction}>{auction}</option>
+                          <option key={auction} value={auction}>
+                            {auction}
+                          </option>
                         ))}
                       </select>
                     </td>
@@ -178,7 +170,7 @@ export default class Settlement extends Component {
                     <td>Beneficiary</td>
                     <td>{beneficiary}</td>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <td>Buyer Address</td>
                     <td>
                       <input
@@ -188,7 +180,7 @@ export default class Settlement extends Component {
                         placeholder="Buyer Address"
                       />
                     </td>
-                  </tr>
+                  </tr> */}
                 </tbody>
               </table>
             </div>

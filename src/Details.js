@@ -149,19 +149,18 @@ export default class AuctionDetails extends Component {
   }
   async endAuctions(
     auction = this.state.selectedAuction,
-    bidder = this.props.bidderId,
+    bidder = this.props.userId,
     phrase = this.props.privateKey
   ) {
     if (auction) {
       let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
       let bidAuction = await Auction.at(auction);
+      console.log(await bidAuction.beneficiary.call());
       try {
-        await bidAuction.endAuction.call({
-          gas: 2000000
-        });
-        console.log("Auction Ended");
+        const result = await bidAuction.endAuction({ from: bidder });
+        console.log(await bidAuction.state.call());
       } catch (e) {
-        console.log(e.message);
+        console.log(e);
       }
 
       this.refreshResult(auction);
@@ -171,7 +170,7 @@ export default class AuctionDetails extends Component {
   async bid(
     auction = this.state.selectedAuction,
     bidAmount = this.refs.txtBidAmount.value,
-    bidder = this.props.bidderId,
+    bidder = this.props.userId,
     phrase = this.props.privateKey
   ) {
     if (auction) {
@@ -196,6 +195,23 @@ export default class AuctionDetails extends Component {
       this.props.onBid(auction);
     }
   }
+
+  getRelevantAuctions = async () => {
+    this.setState({ loading: true });
+    let auctionDetails = {};
+    for (const addr of this.props.relevantAuctions) {
+      auctionDetails[addr] = await this.getAuctionInfo(addr);
+    }
+
+    this.setState({
+      searchResults: auctionDetails,
+      selectedAuction: this.props.relevantAuctions.length
+        ? this.props.relevantAuctions[0]
+        : "",
+      loading: false
+    });
+  };
+
   searchAuctions = async () => {
     this.setState({ loading: true });
     const sensor = this.refs.sensorType.value;
@@ -284,7 +300,9 @@ export default class AuctionDetails extends Component {
                     id="sensorType"
                   >
                     {sensors.map(sensor => (
-                      <option value={sensor}>{sensor}</option>
+                      <option key={sensor} value={sensor}>
+                        {sensor}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -298,7 +316,9 @@ export default class AuctionDetails extends Component {
                   <label htmlFor="dataType">Data Type</label>
                   <select className="form-control" ref="dataType" id="dataType">
                     {dataTypes.map(dataType => (
-                      <option value={dataType}>{dataType}</option>
+                      <option key={dataType} value={dataType}>
+                        {dataType}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -312,6 +332,14 @@ export default class AuctionDetails extends Component {
                     onClick={this.searchAuctions}
                   >
                     Search
+                  </a>
+                </div>
+                <div className="col-md-2">
+                  <a
+                    className="btn btn-primary btn-block"
+                    onClick={this.getRelevantAuctions}
+                  >
+                    Get Relevant Auctions
                   </a>
                 </div>
               </div>
@@ -359,7 +387,7 @@ export default class AuctionDetails extends Component {
                         >
                           {Object.keys(this.state.searchResults).map(
                             auction => (
-                              <option value={auction}>{auction}</option>
+                              <option key={auction} value={auction}>{auction}</option>
                             )
                           )}
                         </select>
@@ -371,7 +399,8 @@ export default class AuctionDetails extends Component {
                     </tr>
                     <tr>
                       <td>Auction End</td>
-                      <td>{new Date(auctionEnd).toString()}</td>
+                      <td>{`In ${(auctionEnd - Date.now()) /
+                        (60 * 1000)} minutes`}</td>
                     </tr>
                     <tr>
                       <td>Metadata</td>
@@ -379,7 +408,11 @@ export default class AuctionDetails extends Component {
                     </tr>
                     <tr>
                       <td>Highest Bidder</td>
-                      <td>{highestBidder}</td>
+                      <td>
+                        {highestBidder === this.props.userId
+                          ? `Me (${highestBidder})`
+                          : highestBidder}
+                      </td>
                     </tr>
                     <tr>
                       <td>Highest Bid</td>

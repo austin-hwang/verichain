@@ -15,17 +15,15 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    const userId = window.localStorage.getItem("userId");
+    const userId = window.localStorage.getItem("userId").toLowerCase();
     const privateKey = window.localStorage.getItem("privateKey");
-
+    const relevantAuctions = window.localStorage.getItem("relevantAuctions");
     this.state = {
       curAuction: null,
       auctionId: null,
       sub_feature: userId ? "View" : "Login",
       message: null,
-      relevantAuctions: JSON.parse(
-        window.localStorage.getItem("relevantAuctions")
-      ), // ie. auctions you have bidded on that havent ended.
+      relevantAuctions: relevantAuctions ? JSON.parse(relevantAuctions) : [], // ie. auctions you have bidded on that havent ended.
       userId: userId ? userId : null,
       privateKey: privateKey ? privateKey : null
     };
@@ -190,11 +188,12 @@ class App extends Component {
 
             {this.state.sub_feature === "View" && (
               <AuctionDetails
-                bidderId={this.state.userId}
+                userId={this.state.userId}
                 privateKey={this.state.privateKey}
                 onAuctionId={this.setAuctionId}
                 notifier={this.updateStatus}
                 onBid={this.addRelevantAuction}
+                relevantAuctions={this.state.relevantAuctions}
               />
             )}
 
