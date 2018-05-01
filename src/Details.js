@@ -222,22 +222,29 @@ export default class AuctionDetails extends Component {
     });
   };
 
-  getApiKey = async auctionAddr => {
-    me.props.notifier(null, false, false, true);
-    let buyer = this.props,
-      userId;
-    let apiKey = await (await Auction.at(auctionAddr)).retrieveKey.call();
+  getApiKey = async auction => {
+    let apiKey = await auction.retrieveKey.call();
     return apiKey;
   };
-  collectKeys = async () => {
+
+  collectData = async () => {
     await this.endExpired();
     for (const addr of this.props.relevantAuctions.filter(
       addr =>
         this.state.searchResults[addr].auctionStatus === "Locked" &&
         this.props.userId === this.state.searchResults[addr].highestBidder
     )) {
-      console.log(await this.getApiKey(addr));
+      let curAuction = await Auction.at(addr);
+      console.log(await this.getApiKey(curAuction));
+      // TODO: Get Data
+      // TODO: Get Hash
+      const hash = "0x12345678910";
+      this.verifyHash(curAuction, hash);
     }
+  };
+
+  verifyHash = async (auction, hash) => {
+    await auction.confirmExchange(hash, { from: this.props.userId });
   };
 
   endExpired = async () => {
@@ -408,9 +415,9 @@ export default class AuctionDetails extends Component {
                       <div className="col-md-2">
                         <a
                           className="btn btn-primary btn-block"
-                          onClick={this.collectKeys}
+                          onClick={this.collectData}
                         >
-                          Collect Keys
+                          Collect Data
                         </a>
                       </div>
                     )}

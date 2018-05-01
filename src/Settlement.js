@@ -116,7 +116,7 @@ export default class Settlement extends Component {
     me.props.notifier("API Key: " + apiKey, false, false);
   };
 
-  async getMoney() {
+  async validateAuction() {
     me.props.notifier(null, false, false, true);
     let buyer = me.refs.buyerAddress.value;
     for (const auctionAddr of me.state.auctions) {
@@ -189,7 +189,7 @@ export default class Settlement extends Component {
                 <div className="col-md-3">
                   <a
                     className="btn btn-primary btn-block"
-                    onClick={this.getMoney}
+                    onClick={this.validateAuction}
                   >
                     Send Data Hash
                   </a>
