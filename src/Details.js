@@ -1,5 +1,5 @@
 //react and Front End imports
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 //import { Label, DropdownButton, MenuItem, Form } from 'react-bootstrap'
 
 //Eth libraries
@@ -483,36 +483,38 @@ export default class AuctionDetails extends Component {
                       <td>Auction Status</td>
                       <td>{auctionStatus}</td>
                     </tr>
-                    <tr>
-                      <td>Bid Amount</td>
-                      <td>
-                        <input
-                          className="form-control"
-                          ref="txtBidAmount"
-                          type="number"
-                          defaultValue={highestBid + 1}
-                          placeholder="Bid Amount"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <a
-                          className="btn btn-primary btn-block"
-                          onClick={() => this.bid()}
-                        >
-                          Bid
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          className="btn btn-primary btn-block"
-                          onClick={() => this.endAuctions()}
-                        >
-                          End Auction
-                        </a>
-                      </td>
-                    </tr>
+                    {auctionStatus === "Open" && [
+                      <tr>
+                        <td>Bid Amount</td>
+                        <td>
+                          <input
+                            className="form-control"
+                            ref="txtBidAmount"
+                            type="number"
+                            defaultValue={highestBid + 1}
+                            placeholder="Bid Amount"
+                          />
+                        </td>
+                      </tr>,
+                      <tr>
+                        <td>
+                          <a
+                            className="btn btn-primary btn-block"
+                            onClick={() => this.bid()}
+                          >
+                            Bid
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            className="btn btn-primary btn-block"
+                            onClick={() => this.endAuctions()}
+                          >
+                            End Auction
+                          </a>
+                        </td>
+                      </tr>
+                    ]}
                   </tbody>
                 </table>
               ) : (
