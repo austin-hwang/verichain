@@ -19,10 +19,13 @@ class App extends Component {
     const privateKey = window.localStorage.getItem("privateKey");
 
     this.state = {
-      currAuction: null,
+      curAuction: null,
       auctionId: null,
       sub_feature: userId ? "View" : "Login",
       message: null,
+      relevantAuctions: JSON.parse(
+        window.localStorage.getItem("relevantAuctions")
+      ), // ie. auctions you have bidded on that havent ended.
       userId: userId ? userId : null,
       privateKey: privateKey ? privateKey : null
     };
@@ -46,6 +49,19 @@ class App extends Component {
 
   setAuctionDetails = (pAuction, pAuctioneerId) => {
     this.setState({ auctioneerId: pAuctioneerId });
+  };
+
+  addRelevantAuction = addr => {
+    const newAuctions = Array.from(
+      new Set(this.state.relevantAuctions.concat(addr))
+    );
+    window.localStorage.setItem(
+      "relevantAuctions",
+      JSON.stringify(newAuctions)
+    );
+    this.setState({
+      relevantAuctions: newAuctions
+    });
   };
 
   setAuctionId = (pAuctionObj, pAuctionId) => {
@@ -178,6 +194,7 @@ class App extends Component {
                 privateKey={this.state.privateKey}
                 onAuctionId={this.setAuctionId}
                 notifier={this.updateStatus}
+                onBid={this.addRelevantAuction}
               />
             )}
 
@@ -190,9 +207,10 @@ class App extends Component {
 
             {this.state.sub_feature === "Verification" && (
               <Settlement
-                auctioneerId={this.state.userId}
+                userId={this.state.userId}
                 auctionId={this.state.setAuctionId}
                 notifier={this.updateStatus}
+                auctions={this.state.relevantAuctions}
               />
             )}
           </div>

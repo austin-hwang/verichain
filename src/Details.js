@@ -129,7 +129,7 @@ export default class AuctionDetails extends Component {
   async getAuctionInfo(address) {
     let myAuction = await Auction.at(address);
     let beneficiary = await myAuction.beneficiary.call();
-    let auctionEnd = await myAuction.auctionEnd.call();
+    let auctionEnd = (await myAuction.auctionEnd.call())["c"] * 1000;
     let metadata = JSON.parse(await myAuction.metadata.call());
     let highestBidder = await myAuction.highestBidder.call();
     let highestBid = parseInt(await myAuction.highestBid.call());
@@ -189,11 +189,6 @@ export default class AuctionDetails extends Component {
         });
 
         console.log("Transaction Id " + txnHash);
-        
-        let retrievedObject = JSON.parse(window.localStorage.getItem('bids'));
-        retrievedObject.push(auction);
-        console.log("Retrieved", retrievedObject);
-        window.localStorage.setItem('bids', JSON.stringify(retrievedObject));
       } catch (e) {
         console.log(e.message);
       }
@@ -376,9 +371,7 @@ export default class AuctionDetails extends Component {
                     </tr>
                     <tr>
                       <td>Auction End</td>
-                      <td>
-                        {new Date(1000 * this.state.auctionEnd["c"]).toString()}
-                      </td>
+                      <td>{new Date(auctionEnd).toString()}</td>
                     </tr>
                     <tr>
                       <td>Metadata</td>

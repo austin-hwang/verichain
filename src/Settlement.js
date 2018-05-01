@@ -51,25 +51,25 @@ export default class Settlement extends Component {
     me = this;
   }
 
-  async componentDidMount() {
-    this.props.notifier(null, false, false, true);
-    let factoryInstance = await AuctionFactory.deployed();
-    let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
-    let auctions = [];
-    for (var i = 0; i < auctionsLength; i++) {
-      let auction = await factoryInstance.getAuction.call(i);
-      auctions.push(auction);
-    }
-    this.setState({ auctions });
-    if (auctions.length) {
-      let auction = await this.getAuctionInfo(auctions[0]);
-      this.setState({
-        auction,
-        selectedAuction: auctions[0]
-      });
-    }
-    this.handleChange = this.handleChange.bind(this);
-  }
+  // async componentDidMount() {
+  //   this.props.notifier(null, false, false, true);
+  //   let factoryInstance = await AuctionFactory.deployed();
+  //   let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
+  //   let auctions = [];
+  //   for (var i = 0; i < auctionsLength; i++) {
+  //     let auction = await factoryInstance.getAuction.call(i);
+  //     auctions.push(auction);
+  //   }
+  //   this.setState({ auctions });
+  //   if (auctions.length) {
+  //     let auction = await this.getAuctionInfo(auctions[0]);
+  //     this.setState({
+  //       auction,
+  //       selectedAuction: auctions[0]
+  //     });
+  //   }
+  //   this.handleChange = this.handleChange.bind(this);
+  // }
 
   async getAuctionInfo(address) {
     let myAuction = await Auction.at(address);
@@ -108,52 +108,45 @@ export default class Settlement extends Component {
     });
   }
 
-  async getApiKey () {
+  async getApiKey() {
     me.props.notifier(null, false, false, true);
     let buyer = me.refs.buyerAddress.value;
     let apiKey = "No API Key available";
     for (const auctionAddr of me.state.auctions) {
       const info = await me.getAuctionInfo(auctionAddr);
-        info.myAuction.retrieveKey.call()
-        .then(function(api) {
-            apiKey += api + "\n";
-        }, function(error) {
-            console.log("Cannot get API Key")
-        })
+      info.myAuction.retrieveKey.call().then(
+        function(api) {
+          apiKey += api + "\n";
+        },
+        function(error) {
+          console.log("Cannot get API Key");
+        }
+      );
     }
 
-    me.props.notifier(
-      "API Key: " + apiKey,
-      false,
-      false
-    );
+    me.props.notifier("API Key: " + apiKey, false, false);
   }
 
-  async getMoney () {
+  async getMoney() {
     me.props.notifier(null, false, false, true);
     let buyer = me.refs.buyerAddress.value;
     for (const auctionAddr of me.state.auctions) {
       const info = await me.getAuctionInfo(auctionAddr);
-       info.myAuction.withdrawReward.call()
-        .then(function(api) {
-          me.props.notifier(
-            "Money sent.",
-            false,
-            false
-          );
-        }, function(error) {
-            console.log("Cannot get money yet")
-        })
+      info.myAuction.withdrawReward.call().then(
+        function(api) {
+          me.props.notifier("Money sent.", false, false);
+        },
+        function(error) {
+          console.log("Cannot get money yet");
+        }
+      );
     }
   }
-  
+
   render() {
     if (this.state.auction)
-      var {
-        beneficiary,
-        auctionStatus
-      } = this.state.auction;
-      
+      var { beneficiary, auctionStatus } = this.state.auction;
+
     return (
       <form>
         <div className="card mb-3">
@@ -175,7 +168,7 @@ export default class Settlement extends Component {
                         value={this.state.selectedAuction}
                         onChange={this.handleChange}
                       >
-                        {this.state.auctions.map(auction => (
+                        {this.props.auctions.map(auction => (
                           <option value={auction}>{auction}</option>
                         ))}
                       </select>
@@ -191,7 +184,7 @@ export default class Settlement extends Component {
                       <input
                         className="form-control"
                         ref="buyerAddress"
-                        defaultValue="0x3ad78130DCff93d6c942c37aA45F0A004A0Ffe0C"
+                        defaultValue={this.props.userId}
                         placeholder="Buyer Address"
                       />
                     </td>
@@ -228,6 +221,6 @@ export default class Settlement extends Component {
 
 Settlement.propTypes = {
   auctionId: PropTypes.string.isRequired,
-  auctioneerId: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
   notifier: PropTypes.func.isRequired
 };

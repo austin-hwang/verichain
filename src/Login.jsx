@@ -27,7 +27,7 @@ export default class Login extends Component {
   login = () => {
     window.localStorage.setItem("userId", this.refs.userId.value);
     window.localStorage.setItem("privateKey", this.refs.privateKey.value);
-    window.localStorage.setItem("bids", JSON.stringify([]));
+    window.localStorage.setItem("relevantAuctions", JSON.stringify([]));
 
     this.props.onLogin(this.refs.userId.value, this.refs.privateKey.value);
   };
