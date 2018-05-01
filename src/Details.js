@@ -129,8 +129,7 @@ export default class AuctionDetails extends Component {
   async getAuctionInfo(address) {
     let myAuction = await Auction.at(address);
     let beneficiary = await myAuction.beneficiary.call();
-    let auctionEndEpoch = await myAuction.auctionEnd.call();
-    let auctionEnd = new Date(1000 * auctionEndEpoch["c"]).toString();
+    let auctionEnd = await myAuction.auctionEnd.call();
     let metadata = JSON.parse(await myAuction.metadata.call());
     let highestBidder = await myAuction.highestBidder.call();
     let highestBid = parseInt(await myAuction.highestBid.call());
@@ -148,8 +147,11 @@ export default class AuctionDetails extends Component {
       auctionStatus
     };
   }
-  async endAuctions (auction = this.state.selectedAuction, bidder = this.props.bidderId,
-    phrase = this.props.privateKey) {
+  async endAuctions(
+    auction = this.state.selectedAuction,
+    bidder = this.props.bidderId,
+    phrase = this.props.privateKey
+  ) {
     if (auction) {
       let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
       let bidAuction = await Auction.at(auction);
@@ -191,6 +193,7 @@ export default class AuctionDetails extends Component {
         console.log(e.message);
       }
       this.refreshResult(auction);
+      this.props.onBid(auction);
     }
   }
   searchAuctions = async () => {
@@ -202,6 +205,9 @@ export default class AuctionDetails extends Component {
     let searchResults = {};
     for (const auctionAddr of this.state.auctions) {
       const info = await this.getAuctionInfo(auctionAddr);
+      if (Date.now() > info.auctionEnd) {
+        continue;
+      }
       if (
         !Object.keys(info.metadata.properties).includes(sensor) &&
         !sensor === "any"
@@ -365,7 +371,9 @@ export default class AuctionDetails extends Component {
                     </tr>
                     <tr>
                       <td>Auction End</td>
-                      <td>{auctionEnd}</td>
+                      <td>
+                        {new Date(1000 * this.state.auctionEnd["c"]).toString()}
+                      </td>
                     </tr>
                     <tr>
                       <td>Metadata</td>
