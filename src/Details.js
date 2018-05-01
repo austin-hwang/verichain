@@ -130,7 +130,7 @@ export default class AuctionDetails extends Component {
     let myAuction = await Auction.at(address);
     let beneficiary = await myAuction.beneficiary.call();
     let auctionEndEpoch = await myAuction.auctionEnd.call();
-    let auctionEnd = new Date(1000 * auctionEndEpoch["c"]).toUTCString();
+    let auctionEnd = new Date(1000 * auctionEndEpoch["c"]).toString();
     let metadata = JSON.parse(await myAuction.metadata.call());
     let highestBidder = await myAuction.highestBidder.call();
     let highestBid = parseInt(await myAuction.highestBid.call());
