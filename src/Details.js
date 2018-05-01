@@ -187,6 +187,11 @@ export default class AuctionDetails extends Component {
         });
 
         console.log("Transaction Id " + txnHash);
+        
+        let retrievedObject = JSON.parse(window.localStorage.getItem('bids'));
+        retrievedObject.push(auction);
+        console.log("Retrieved", retrievedObject);
+        window.localStorage.setItem('bids', JSON.stringify(retrievedObject));
       } catch (e) {
         console.log(e.message);
       }
