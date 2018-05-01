@@ -389,7 +389,7 @@ export default class AuctionDetails extends Component {
                 </div>
               </div>
             </div>
-
+            {this.state.searchResults !== null && <hr />}
             <div className="table-responsive">
               {this.state.searchResults !== null && (
                 <div className="form-group">
