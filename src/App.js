@@ -49,6 +49,8 @@ class App extends Component {
     this.setState({ auctioneerId: pAuctioneerId });
   };
 
+  
+
   addRelevantAuction = addr => {
     const newAuctions = Array.from(
       new Set(this.state.relevantAuctions.concat(addr))

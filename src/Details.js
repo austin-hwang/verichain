@@ -222,6 +222,24 @@ export default class AuctionDetails extends Component {
     });
   };
 
+  getApiKey = async auctionAddr => {
+    me.props.notifier(null, false, false, true);
+    let buyer = this.props,
+      userId;
+    let apiKey = await (await Auction.at(auctionAddr)).retrieveKey.call();
+    return apiKey;
+  };
+  collectKeys = async () => {
+    await this.endExpired();
+    for (const addr of this.props.relevantAuctions.filter(
+      addr =>
+        this.state.searchResults[addr].auctionStatus === "Locked" &&
+        this.props.userId === this.state.searchResults[addr].highestBidder
+    )) {
+      console.log(await this.getApiKey(addr));
+    }
+  };
+
   endExpired = async () => {
     const now = Date.now();
     for (const addr of this.props.relevantAuctions.filter(
@@ -390,9 +408,9 @@ export default class AuctionDetails extends Component {
                       <div className="col-md-2">
                         <a
                           className="btn btn-primary btn-block"
-                          onClick={this.endExpired}
+                          onClick={this.collectKeys}
                         >
-                          End Expired
+                          Collect Keys
                         </a>
                       </div>
                     )}
