@@ -1,4 +1,5 @@
 var sha256 = require("js-sha256");
+var faker = require("faker")
 //react and Front End imports
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -107,6 +108,25 @@ export default class Settlement extends Component {
     });
   }
 
+  getData = () => {
+    var random = faker.internet.userAgent() + "\n" + 
+                 faker.internet.ipv6() + "\n" + 
+                 faker.database.engine() + "\n" + 
+                 faker.internet.mac() + "\n" + 
+                 faker.finance.bitcoinAddress();
+    console.log(random);
+    var a = window.document.createElement('a');
+    a.href = window.URL.createObjectURL(new Blob([random], {type: 'text/txt'}));
+    a.download = 'test.txt';
+
+    // Append anchor to body.
+    document.body.appendChild(a);
+    a.click();
+
+    // Remove anchor from body
+    document.body.removeChild(a);
+  }
+
   getApiKey = async () => {
     me.props.notifier(null, false, false, true);
     let buyer = this.props,
@@ -117,19 +137,11 @@ export default class Settlement extends Component {
     me.props.notifier("API Key: " + apiKey, false, false);
   };
 
-  async validateAuction() {
+  async withdraw() {
     me.props.notifier(null, false, false, true);
-    let buyer = me.refs.buyerAddress.value;
     for (const auctionAddr of me.state.auctions) {
       const info = await me.getAuctionInfo(auctionAddr);
-      info.myAuction.withdrawReward.call().then(
-        function(api) {
-          me.props.notifier("Money sent.", false, false);
-        },
-        function(error) {
-          console.log("Cannot get money yet");
-        }
-      );
+      await info.myAuction.withdrawReward({ from: info.myAuction.beneficiary })
     }
   }
 
@@ -217,6 +229,22 @@ export default class Settlement extends Component {
                     onClick={this.getApiKey}
                   >
                     Obtain API Key
+                  </a>
+                </div>
+                <div className="col-md-3">
+                  <a
+                    className="btn btn-primary btn-block"
+                    onClick={this.withdraw}
+                  >
+                    Withdraw Reward
+                  </a>
+                </div>
+                <div className="col-md-3">
+                  <a
+                    className="btn btn-primary btn-block"
+                    onClick={this.getData}
+                  >
+                    Get Data
                   </a>
                 </div>
               </div>
