@@ -1,3 +1,4 @@
+var sha256 = require("js-sha256");
 //react and Front End imports
 import React, { Component, Fragment } from "react";
 //import { Label, DropdownButton, MenuItem, Form } from 'react-bootstrap'
@@ -238,7 +239,7 @@ export default class AuctionDetails extends Component {
       console.log(await this.getApiKey(curAuction));
       // TODO: Get Data
       // TODO: Get Hash
-      const hash = "0x12345678910";
+      const hash = "0x" + sha256("12345678910");
       this.verifyHash(curAuction, hash);
     }
   };

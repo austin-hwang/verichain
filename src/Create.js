@@ -1,3 +1,4 @@
+var sha256 = require('js-sha256');
 //react and Front End imports
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -128,7 +129,7 @@ export default class CreateAuction extends Component {
                     ref="sellerHash"
                     aria-describedby="nameHelp"
                     placeholder="Seller Hash"
-                    defaultValue="0x12345678910"
+                    defaultValue={"0x" + sha256("12345678910")}
                   />
                 </div>
               </div>

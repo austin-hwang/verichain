@@ -1,3 +1,4 @@
+var sha256 = require("js-sha256");
 //react and Front End imports
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -131,6 +132,22 @@ export default class Settlement extends Component {
       );
     }
   }
+
+  async sendHash 
+  (auction = this.state.selectedAuction,
+    bidder = this.props.userId,
+    phrase = this.props.privateKey) 
+  {
+    me.props.notifier(null, false, false, true);
+    let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
+    let hash = "0x" + sha256("12345678910");
+    console.log("hash: ", hash );
+    let status = await (await Auction.at(
+      me.refs.auctionId.value
+    )).confirmExchange( hash, { from: bidder });
+    me.props.notifier("Hash result" + status, false, false);
+  }
+
 
   render() {
     if (this.state.auction)
