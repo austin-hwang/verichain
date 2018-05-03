@@ -15,7 +15,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    const userId = window.localStorage.getItem("userId").toLowerCase();
+    const userId = window.localStorage.getItem("userId") ? window.localStorage.getItem("userId").toLowerCase() : null;
     const privateKey = window.localStorage.getItem("privateKey");
     const relevantAuctions = window.localStorage.getItem("relevantAuctions");
     this.state = {
@@ -24,7 +24,7 @@ class App extends Component {
       sub_feature: userId ? "View" : "Login",
       message: null,
       relevantAuctions: relevantAuctions ? JSON.parse(relevantAuctions) : [], // ie. auctions you have bidded on that havent ended.
-      userId: userId ? userId : null,
+      userId: userId,
       privateKey: privateKey ? privateKey : null
     };
   }
