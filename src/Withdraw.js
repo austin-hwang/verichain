@@ -26,7 +26,7 @@ var Auction = contract(auction);
 // else ctx is not visible from anonymous functions and we cant call other functions like writeMsg
 var me = null;
 
-export default class PurchaseTicket extends Component {
+export default class Withdraw extends Component {
   // componentDidMount() {}
   // componentWillUnmount() {}
 
@@ -41,6 +41,8 @@ export default class PurchaseTicket extends Component {
     console.log(" got Auction ID from props " + this.props.auctionId);
 
     this.state = {
+      auctions: [],
+      auction: null,
       payableAmt: 0
     };
 
@@ -61,6 +63,24 @@ export default class PurchaseTicket extends Component {
       });
   };
 
+  refund = async () => {
+      me.props.notifier(null, false, false, true);
+      for (const auctionAddr of me.state.auctions) {
+        const info = await me.getAuctionInfo(auctionAddr);
+        await info.myAuction.refundBid({ from: me.props.userId })
+      }
+  }
+
+  async handleChange(event) {
+    let auctionAddress = event.target.value;
+    let auction = await me.getAuctionInfo(auctionAddress);
+
+    me.setState({
+      auction,
+      selectedAuction: auctionAddress
+    });
+  }
+
   render() {
     return (
       <form>
@@ -77,7 +97,18 @@ export default class PurchaseTicket extends Component {
                 <tbody>
                   <tr>
                     <td>Auction ID</td>
-                    <td>{this.props.auctionId}</td>
+                    <td> <select
+                        className="form-control"
+                        value={this.state.selectedAuction}
+                        onChange={this.handleChange}
+                        ref="auctionId"
+                      >
+                        {this.props.auctions.map(auction => (
+                          <option key={auction} value={auction}>
+                            {auction}
+                          </option>
+                        ))}
+                      </select></td>
                   </tr>
                   <tr>
                     <td>Verification</td>
@@ -90,10 +121,6 @@ export default class PurchaseTicket extends Component {
                       />
                     </td>
                   </tr>
-                  <tr>
-                    <td>Total Payable</td>
-                    <td>{this.state.payableAmt}</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -102,9 +129,9 @@ export default class PurchaseTicket extends Component {
                 <div className="col-md-3">
                   <a
                     className="btn btn-primary btn-block"
-                    onClick={this.getPayable}
+                    onClick={this.refund}
                   >
-                    Get Payable
+                    Refund
                   </a>
                 </div>
                 <div className="col-md-3">
@@ -121,7 +148,8 @@ export default class PurchaseTicket extends Component {
   }
 }
 
-PurchaseTicket.propTypes = {
+Withdraw.propTypes = {
+  userId: PropTypes.string.isRequired,
   auctionId: PropTypes.string.isRequired,
   notifier: PropTypes.func.isRequired
 };

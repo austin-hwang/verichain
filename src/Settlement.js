@@ -129,11 +129,10 @@ export default class Settlement extends Component {
 
   getApiKey = async () => {
     me.props.notifier(null, false, false, true);
-    let buyer = this.props,
-      userId;
+    let buyer = this.props.userId;
     let apiKey = await (await Auction.at(
       me.refs.auctionId.value
-    )).retrieveKey.call();
+    )).retrieveKey.call({ from: buyer });
     me.props.notifier("API Key: " + apiKey, false, false);
   };
 
@@ -141,23 +140,20 @@ export default class Settlement extends Component {
     me.props.notifier(null, false, false, true);
     for (const auctionAddr of me.state.auctions) {
       const info = await me.getAuctionInfo(auctionAddr);
-      await info.myAuction.withdrawReward({ from: info.myAuction.beneficiary })
+      let status = await info.myAuction.withdrawReward.call({ from: info.myAuction.beneficiary })
     }
+    me.props.notifier("Hash result: " + status, false, false);
   }
 
-  async sendHash 
-  (auction = this.state.selectedAuction,
-    bidder = this.props.userId,
-    phrase = this.props.privateKey) 
-  {
+  async sendHash () {
     me.props.notifier(null, false, false, true);
-    let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
+    let bidder = me.props.userId
     let hash = "0x" + sha256("12345678910");
     console.log("hash: ", hash );
     let status = await (await Auction.at(
       me.refs.auctionId.value
-    )).confirmExchange( hash, { from: bidder });
-    me.props.notifier("Hash result" + status, false, false);
+    )).confirmExchange.call( hash, { from: bidder });
+    me.props.notifier("Withdraw: " + status, false, false);
   }
 
 
@@ -218,7 +214,7 @@ export default class Settlement extends Component {
                 <div className="col-md-3">
                   <a
                     className="btn btn-primary btn-block"
-                    onClick={this.validateAuction}
+                    onClick={this.sendHash}
                   >
                     Send Data Hash
                   </a>

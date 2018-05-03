@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 import CreateAuction from "./Create.js";
 import AuctionDetails from "./Details.js";
-import PurchaseTicket from "./PurchaseTicket.js";
+import Withdraw from "./Withdraw.js";
 import Settlement from "./Settlement.js";
 import Login from "./Login.jsx";
 
@@ -200,9 +200,11 @@ class App extends Component {
             )}
 
             {this.state.sub_feature === "Withdraw" && (
-              <PurchaseTicket
-                auctionId={this.state.auctionId}
-                notifier={this.updateStatus}
+              <Withdraw
+              userId={this.state.userId}
+              auctionId={this.state.setAuctionId}
+              notifier={this.updateStatus}
+              auctions={this.state.relevantAuctions}
               />
             )}
 
