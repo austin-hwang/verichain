@@ -35,13 +35,17 @@ export default class CreateAuction extends Component {
     console.warn("webb3 connected  " + web3);
     AuctionFactory.setProvider(web3.currentProvider);
     Auction.setProvider(web3.currentProvider);
-
     me = this;
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.notifier(null, false, false, true);
+    web3.eth.getAccounts(function(error, accounts) {
+        me.refs.beneficiary.value = accounts[0];
+        console.log(accounts[0]);
+    });
   }
+
   setupSampleAuctions = () => {
     sampleMetadata.forEach(metadata => {
       this.refs.metadata.value = JSON.stringify(metadata);
@@ -106,7 +110,6 @@ export default class CreateAuction extends Component {
               <input
                 className="form-control"
                 ref="beneficiary"
-                defaultValue="0x90F9a8eaF5c40d1002ed9b07Be8FE734D388C7ba"
                 placeholder="Beneficiary"
               />
             </div>
