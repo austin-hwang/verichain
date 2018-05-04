@@ -355,14 +355,18 @@ export default class AuctionDetails extends Component {
       const hash = "0x" + sha256(data.slice(0, 128));
       await this.verifyHash(curAuction, hash);
       this.props.completeAuction(addr);
-      var a = window.document.createElement('a');
-      a.href = window.URL.createObjectURL(new Blob([data], {type: 'text/txt'}));
-      a.download = 'data.txt';
-  
+      var a = window.document.createElement("a");
+      a.href = window.URL.createObjectURL(
+        new Blob([data], { type: "text/txt" })
+      );
+      a.download = `${
+        Object.keys(this.state.searchResults[addr].metadata.properties)[0]
+      }.json`;
+
       // Append anchor to body.
       document.body.appendChild(a);
       a.click();
-  
+
       // Remove anchor from body
       document.body.removeChild(a);
     }
