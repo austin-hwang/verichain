@@ -213,7 +213,7 @@ export default class AuctionDetails extends Component {
 
   async refreshAuctions() {
     let factoryInstance = await AuctionFactory.at(
-      "0xc4a324b35f1121ba66ab5f7b366d983f252c1fd7"
+      "0xb2f46e431480fb2377a04506c76955196116b0d1"
     );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
