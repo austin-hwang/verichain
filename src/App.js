@@ -3,8 +3,6 @@ import React, { Component } from "react";
 
 import CreateAuction from "./Create.js";
 import AuctionDetails from "./Details.js";
-import Withdraw from "./Withdraw.js";
-import Settlement from "./Settlement.js";
 import Login from "./Login.jsx";
 
 class App extends Component {
@@ -149,24 +147,6 @@ class App extends Component {
                       View
                     </a>
                   </li>
-                  <li>
-                    <a
-                      onClick={() => {
-                        this.setState({ sub_feature: "Withdraw" });
-                      }}
-                    >
-                      Withdraw
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      onClick={() => {
-                        this.setState({ sub_feature: "Verification" });
-                      }}
-                    >
-                      Verification
-                    </a>
-                  </li>
                 </ul>
               </li>
             </ul>
@@ -197,24 +177,6 @@ class App extends Component {
                 onBid={this.addRelevantAuction}
                 completeAuction={this.completeAuction}
                 relevantAuctions={this.state.relevantAuctions}
-              />
-            )}
-
-            {this.state.sub_feature === "Withdraw" && (
-              <Withdraw
-                userId={this.state.userId}
-                auctionId={this.state.setAuctionId}
-                notifier={this.updateStatus}
-                auctions={this.state.relevantAuctions}
-              />
-            )}
-
-            {this.state.sub_feature === "Verification" && (
-              <Settlement
-                userId={this.state.userId}
-                auctionId={this.state.setAuctionId}
-                notifier={this.updateStatus}
-                auctions={this.state.relevantAuctions}
               />
             )}
           </div>
