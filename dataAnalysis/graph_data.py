@@ -2,7 +2,8 @@ from glob import glob
 import plotly as py
 import plotly.graph_objs as go
 import pandas as pd
-
+py.tools.set_credentials_file(
+    username='thesiti92', api_key='EJlcEUd49BIj9uTVpthA')
 df = pd.read_json((glob("*.json")[0]))
 data = [go.Scatter(
     x=df.date,
@@ -11,9 +12,6 @@ data = [go.Scatter(
 py.offline.plot(data)
 
 
-# import plotly
-# plotly.tools.set_credentials_file(
-#     username='thesiti92', api_key='EJlcEUd49BIj9uTVpthA')
 # print(datetime.strptime(data[0]["date"], "%Y-%m-%dT%H:%M:%S.%fZ").timestamp())
 
 
