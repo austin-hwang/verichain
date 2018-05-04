@@ -1,4 +1,5 @@
 var sha256 = require("js-sha256");
+import Autosuggest from 'react-autosuggest';
 //react and Front End imports
 import React, { Component, Fragment } from "react";
 //import { Label, DropdownButton, MenuItem, Form } from 'react-bootstrap'
@@ -11,6 +12,7 @@ import { default as contract } from "truffle-contract";
 import auctionFactory from "./contracts/AuctionFactory.json";
 import auction from "./contracts/dataAuction.json";
 import { BounceLoader } from "react-spinners";
+import countries from "./countries.json";
 
 //var watching = false; //start watching to events only
 // var passwd = false;
@@ -35,6 +37,32 @@ const sensors = [
 
 const units = ["any", "bpm", "percent", "celsius", "farenheight"];
 const dataTypes = ["any", "string", "number", "picture"];
+
+function escapeRegexCharacters(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function getSuggestions(value) {
+  const escapedValue = escapeRegexCharacters(value.trim());
+  
+  if (escapedValue === '') {
+    return [];
+  }
+
+  const regex = new RegExp('^' + escapedValue, 'i');
+
+  return countries.filter(language => regex.test(language));
+}
+
+function getSuggestionValue(suggestion) {
+  return suggestion;
+}
+
+function renderSuggestion(suggestion) {
+  return (
+    <span>{suggestion}</span>
+  );
+}
 
 function minBidPrice(searchResults) {
   return searchResults
@@ -142,6 +170,8 @@ export default class AuctionDetails extends Component {
     Auction.setProvider(web3.currentProvider);
 
     this.state = {
+      value: '',
+      suggestions: [],
       searchResults: null,
       auctions: [],
       auction: null,
@@ -153,6 +183,24 @@ export default class AuctionDetails extends Component {
     me = this;
   }
 
+  onChange = (event, { newValue, method }) => {
+    this.setState({
+      value: newValue
+    });
+    this.refs.region.style.display = "block";
+  };
+  
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({
+      suggestions: getSuggestions(value)
+    });
+  };
+
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: []
+    });
+  };
   async componentDidMount() {
     let factoryInstance = await AuctionFactory.deployed();
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
@@ -163,6 +211,7 @@ export default class AuctionDetails extends Component {
     }
     this.setState({ auctions });
     this.handleChange = this.handleChange.bind(this);
+    this.refs.region.style.display = "none";
   }
 
   async getAuctionInfo(address) {
@@ -251,7 +300,7 @@ export default class AuctionDetails extends Component {
   };
 
   getApiKey = async auction => {
-    let apiKey = await auction.retrieveKey.call();
+    let apiKey = await auction.retrieveKey.call( {from: this.props.userId} );
     return apiKey;
   };
 
@@ -274,7 +323,7 @@ export default class AuctionDetails extends Component {
   };
 
   verifyHash = async (auction, hash) => {
-    await auction.confirmExchange(hash, { from: this.props.userId });
+    await auction.confirmExchange.call(hash, { from: this.props.userId });
   };
 
   endExpired = async () => {
@@ -367,6 +416,13 @@ export default class AuctionDetails extends Component {
     this.refs.massBid.value = minBidPrice(this.state.searchResults);
   };
   render() {
+    const { value, suggestions } = this.state;
+    const inputProps = {
+      placeholder: "Search by country.",
+      value,
+      onChange: this.onChange
+    };
+
     if (this.state.selectedAuction)
       var {
         beneficiary,
@@ -460,8 +516,25 @@ export default class AuctionDetails extends Component {
                     className="btn btn-primary btn-block"
                     onClick={this.getRelevantAuctions}
                   >
-                    Get Relevant Auctions
+                    Relevant Auctions
                   </a>
+                </div>
+                <div className="col-md-2">
+                <Autosuggest 
+                  suggestions={suggestions}
+                  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                  getSuggestionValue={getSuggestionValue}
+                  renderSuggestion={renderSuggestion}
+                  inputProps={inputProps} />
+                </div>
+                <div className="col-md-2">
+                  <input
+                        className="form-control"
+                        ref="region"
+                        type="text"
+                        defaultValue="Enter region."
+                  />
                 </div>
               </div>
             </div>

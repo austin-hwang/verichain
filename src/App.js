@@ -96,6 +96,7 @@ class App extends Component {
 
   render() {
     return (
+      this.state.userId ? 
       <div>
         <nav
           className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
@@ -124,10 +125,11 @@ class App extends Component {
                   <li>
                     <a
                       onClick={() => {
-                        this.setState({ sub_feature: "Login" });
+                        window.localStorage.clear();
+                        window.location.reload();
                       }}
                     >
-                      Login
+                      Logout
                     </a>
                   </li>
                   <li>
@@ -166,16 +168,6 @@ class App extends Component {
                       Verification
                     </a>
                   </li>
-                  <li>
-                    <a
-                      onClick={() => {
-                        this.setState({ feature: "A" });
-                        this.setState({ sub_feature: "Delete" });
-                      }}
-                    >
-                      Remove
-                    </a>
-                  </li>
                 </ul>
               </li>
             </ul>
@@ -184,25 +176,10 @@ class App extends Component {
 
         <div className="content-wrapper">
           <div className="container-fluid">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item active">Auction</li>
-              <li className="breadcrumb-item">{this.state.sub_feature}</li>
-            </ol>
 
             <div>
               <div dangerouslySetInnerHTML={{ __html: this.state.message }} />
             </div>
-            {this.state.sub_feature === "Login" && (
-              <Login
-                onLogin={(userId, privateKey) =>
-                  this.setState({
-                    sub_feature: "View",
-                    userId: userId,
-                    privateKey: privateKey
-                  })
-                }
-              />
-            )}
             {this.state.sub_feature === "Create" && (
               <CreateAuction
                 onAuctionDetails={this.setAuctionDetails}
@@ -237,6 +214,71 @@ class App extends Component {
                 auctionId={this.state.setAuctionId}
                 notifier={this.updateStatus}
                 auctions={this.state.relevantAuctions}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+      : 
+      <div>
+        <nav
+          className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+          id="mainNav"
+        >
+          <div className="collapse navbar-collapse" id="navbarResponsive">
+            <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
+              <li
+                className="nav-item"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Auction Management"
+              >
+                <a
+                  onClick={() => {
+                    this.setState({ sub_feature: "view" });
+                  }}
+                  className="nav-link nav-link-collapse collapsed"
+                  data-toggle="collapse"
+                  href="#collapseExamplePages"
+                  data-parent="#exampleAccordion"
+                >
+                  <span className="nav-link-text">Auction Management</span>
+                </a>
+                <ul className="sidenav-second-level" id="collapseExamplePages">
+                  <li>
+                    <a
+                      onClick={() => {
+                        this.setState({ sub_feature: "Login" });
+                      }}
+                    >
+                      Login
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div className="content-wrapper">
+          <div className="container-fluid">
+
+            <div>
+              <div dangerouslySetInnerHTML={{ __html: this.state.message }} />
+            </div>
+            {this.state.sub_feature === "Login" && (
+              <Login
+                onLogin={(userId, privateKey) =>
+                  {if (userId === "" || privateKey === "") {
+                    window.location.reload();
+                  } else {
+                    this.setState({
+                      sub_feature: "View",
+                      userId: userId,
+                      privateKey: privateKey
+                    })
+                  }}
+                }
               />
             )}
           </div>
