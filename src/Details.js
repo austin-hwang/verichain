@@ -1,5 +1,5 @@
 var sha256 = require("js-sha256");
-import Autosuggest from 'react-autosuggest';
+import Autosuggest from "react-autosuggest";
 //react and Front End imports
 import React, { Component, Fragment } from "react";
 //import { Label, DropdownButton, MenuItem, Form } from 'react-bootstrap'
@@ -39,17 +39,17 @@ const units = ["any", "bpm", "percent", "celsius", "farenheight"];
 const dataTypes = ["any", "string", "number", "picture"];
 
 function escapeRegexCharacters(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function getSuggestions(value) {
   const escapedValue = escapeRegexCharacters(value.trim());
-  
-  if (escapedValue === '') {
+
+  if (escapedValue === "") {
     return [];
   }
 
-  const regex = new RegExp('^' + escapedValue, 'i');
+  const regex = new RegExp("^" + escapedValue, "i");
 
   return countries.filter(language => regex.test(language));
 }
@@ -59,8 +59,17 @@ function getSuggestionValue(suggestion) {
 }
 
 function renderSuggestion(suggestion) {
+  return <span>{suggestion}</span>;
+}
+function renderSuggestionsContainer({ containerProps, children, query }) {
   return (
-    <span>{suggestion}</span>
+    <div
+      {...containerProps}
+      style={{ width: 90, minWidth: 0, position: "absolute" }}
+      className={`dropdown-menu ${query && children ? "show" : ""}`}
+    >
+      {children}
+    </div>
   );
 }
 
@@ -170,7 +179,7 @@ export default class AuctionDetails extends Component {
     Auction.setProvider(web3.currentProvider);
 
     this.state = {
-      value: '',
+      value: "",
       suggestions: [],
       searchResults: null,
       auctions: [],
@@ -187,9 +196,8 @@ export default class AuctionDetails extends Component {
     this.setState({
       value: newValue
     });
-    this.refs.region.style.display = "block";
   };
-  
+
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: getSuggestions(value)
@@ -211,7 +219,6 @@ export default class AuctionDetails extends Component {
     }
     this.setState({ auctions });
     this.handleChange = this.handleChange.bind(this);
-    this.refs.region.style.display = "none";
   }
 
   async getAuctionInfo(address) {
@@ -300,7 +307,7 @@ export default class AuctionDetails extends Component {
   };
 
   getApiKey = async auction => {
-    let apiKey = await auction.retrieveKey.call( {from: this.props.userId} );
+    let apiKey = await auction.retrieveKey.call({ from: this.props.userId });
     return apiKey;
   };
 
@@ -348,7 +355,7 @@ export default class AuctionDetails extends Component {
     const sensor = this.refs.sensorType.value;
     const unit = this.refs.unit.value;
     const dataType = this.refs.dataType.value;
-    const country = this.refs.country.value;
+    const country = this.state.value;
     const region = this.refs.region && this.refs.region.value;
 
     let searchResults = {};
@@ -418,9 +425,12 @@ export default class AuctionDetails extends Component {
   render() {
     const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Search by country.",
+      placeholder: "Country",
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
+      className: "form-control",
+      minLength: 2,
+      maxLength: 2
     };
 
     if (this.state.selectedAuction)
@@ -473,32 +483,34 @@ export default class AuctionDetails extends Component {
                 </div>
                 <div className="col-md-1">
                   <label htmlFor="country">Country</label>
-                  <input
-                    id="country"
-                    type="text"
-                    className="form-control"
-                    ref="country"
-                    placeholder="US"
-                    minLength="2"
-                    maxLength="2"
-                    onInput={() => this.forceUpdate()}
+                  <Autosuggest
+                    suggestions={suggestions}
+                    onSuggestionsFetchRequested={
+                      this.onSuggestionsFetchRequested
+                    }
+                    onSuggestionsClearRequested={
+                      this.onSuggestionsClearRequested
+                    }
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    inputProps={inputProps}
+                    renderSuggestionsContainer={renderSuggestionsContainer}
                   />
                 </div>
-                {this.refs.country &&
-                  this.refs.country.value.length === 2 && (
-                    <div className="col-md-1">
-                      <label htmlFor="region">Region/State</label>
-                      <input
-                        id="region"
-                        type="text"
-                        className="form-control"
-                        ref="region"
-                        placeholder="MA"
-                        minLength="2"
-                        maxLength="5"
-                      />
-                    </div>
-                  )}
+                {this.state.value.length === 2 && (
+                  <div className="col-md-1">
+                    <label htmlFor="region">Region/State</label>
+                    <input
+                      id="region"
+                      type="text"
+                      className="form-control"
+                      ref="region"
+                      placeholder="MA"
+                      minLength="2"
+                      maxLength="5"
+                    />
+                  </div>
+                )}
               </div>
             </div>
             <div className="form-group">
@@ -518,23 +530,6 @@ export default class AuctionDetails extends Component {
                   >
                     Relevant Auctions
                   </a>
-                </div>
-                <div className="col-md-2">
-                <Autosuggest 
-                  suggestions={suggestions}
-                  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                  getSuggestionValue={getSuggestionValue}
-                  renderSuggestion={renderSuggestion}
-                  inputProps={inputProps} />
-                </div>
-                <div className="col-md-2">
-                  <input
-                        className="form-control"
-                        ref="region"
-                        type="text"
-                        defaultValue="Enter region."
-                  />
                 </div>
               </div>
             </div>
