@@ -210,7 +210,7 @@ export default class AuctionDetails extends Component {
     });
   };
   async componentDidMount() {
-    let factoryInstance = await AuctionFactory.deployed();
+    let factoryInstance = await AuctionFactory.at('0x7a235958ce125688e9d22767c7bb734b9cbfd1d2');
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
     for (var i = 0; i < auctionsLength; i++) {

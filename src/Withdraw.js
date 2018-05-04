@@ -8,7 +8,6 @@ import { default as Web3 } from "web3";
 import { default as contract } from "truffle-contract";
 
 //contracts and lib
-import auctionFactory from "./contracts/AuctionFactory.json";
 import auction from "./contracts/dataAuction.json";
 import { TxnConsensus } from "./block-verify.js";
 
@@ -19,7 +18,6 @@ import { TxnConsensus } from "./block-verify.js";
 // var passwd = false;
 
 var web3 = null;
-var AuctionFactory = contract(auctionFactory);
 var Auction = contract(auction);
 
 //variable to refer to currnet component context
@@ -35,7 +33,6 @@ export default class Withdraw extends Component {
     //the url should come from config /props
     web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     console.warn("webb3 connected  " + web3);
-    AuctionFactory.setProvider(web3.currentProvider);
     Auction.setProvider(web3.currentProvider);
 
     console.log(" got Auction ID from props " + this.props.auctionId);
