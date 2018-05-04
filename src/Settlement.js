@@ -12,7 +12,6 @@ import { default as contract } from "truffle-contract";
 import auction from "./contracts/dataAuction.json";
 
 //utilities
-import { TxnConsensus } from "./block-verify.js";
 
 //var watching = false; //start watching to events only
 // var passwd = false;

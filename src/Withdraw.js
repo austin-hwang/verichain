@@ -9,8 +9,6 @@ import { default as contract } from "truffle-contract";
 
 //contracts and lib
 import auction from "./contracts/dataAuction.json";
-import { TxnConsensus } from "./block-verify.js";
-
 //styles?? can remove later
 //import './App.css';
 
