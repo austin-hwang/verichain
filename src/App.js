@@ -182,6 +182,7 @@ class App extends Component {
             </div>
             {this.state.sub_feature === "Create" && (
               <CreateAuction
+                web3={this.props.web3}
                 onAuctionDetails={this.setAuctionDetails}
                 notifier={this.updateStatus}
               />
@@ -189,6 +190,7 @@ class App extends Component {
 
             {this.state.sub_feature === "View" && (
               <AuctionDetails
+                web3={this.props.web3}
                 userId={this.state.userId}
                 privateKey={this.state.privateKey}
                 onAuctionId={this.setAuctionId}

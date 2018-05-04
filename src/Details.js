@@ -17,7 +17,6 @@ import countries from "./countries.json";
 //var watching = false; //start watching to events only
 // var passwd = false;
 
-var web3 = null;
 var AuctionFactory = contract(auctionFactory);
 var Auction = contract(auction);
 
@@ -173,10 +172,8 @@ export default class AuctionDetails extends Component {
   constructor(props) {
     super(props);
     //the url should come from config /props
-    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-    console.warn("webb3 connected  " + web3);
-    AuctionFactory.setProvider(web3.currentProvider);
-    Auction.setProvider(web3.currentProvider);
+    AuctionFactory.setProvider(this.props.web3.currentProvider);
+    Auction.setProvider(this.props.web3.currentProvider);
 
     this.state = {
       value: "",
@@ -248,7 +245,7 @@ export default class AuctionDetails extends Component {
     phrase = this.props.privateKey
   ) {
     if (auction) {
-      let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
+      let unlocked = await this.props.web3.personal.unlockAccount(bidder, phrase, 10);
       let bidAuction = await Auction.at(auction);
       try {
         const result = await bidAuction.endAuction({ from: bidder });
@@ -267,8 +264,8 @@ export default class AuctionDetails extends Component {
     phrase = this.props.privateKey
   ) {
     if (auction) {
-      let unlocked = await web3.personal.unlockAccount(bidder, phrase, 10);
-      console.log("Balance: ", web3.fromWei(web3.eth.getBalance(bidder)));
+      let unlocked = await this.props.web3.personal.unlockAccount(bidder, phrase, 10);
+      console.log("Balance: ", this.props.web3.fromWei(this.props.web3.eth.getBalance(bidder)));
       console.log("Unlocked: " + unlocked);
       console.log(bidAmount, bidder);
 

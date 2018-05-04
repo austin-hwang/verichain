@@ -67,12 +67,11 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "truffle compile && rm -rf src/contracts && mv build/contracts src && node scripts/start.js",
-    "test": "truffle compile && node scripts/start.js",
+    "start": "truffle compile && rm -rf src/contracts && mv build/contracts src && NODE_ENV=production node scripts/start.js",
+    "test": "truffle compile && NODE_ENV=development node scripts/start.js",
     "build": "node scripts/build.js",
     "chain": "geth --datadir=\"/tmp/eth/60/01\" --nodiscover --maxpeers 0 --port 30301 --rpc --rpcapi \"db,eth,net,web3\" --rpcport 8101 --verbosity 6 console"
   },
-  "proxy": "http://localhost:5000",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
