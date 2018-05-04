@@ -56,7 +56,7 @@ function propertiesIncludes(properties, val) {
   );
 }
 
-function formatMetadata(metadata) {
+function formatDescription(metadata) {
   return (
     <table>
       <thead>
@@ -96,6 +96,34 @@ function formatMetadata(metadata) {
               </tbody>
             </table>
           </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+
+function formatLocation(metadata) {
+  if (!metadata.location) {
+    return "No location provided";
+  }
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Region/State</th>
+          <th>Zip</th>
+          <th>Lat</th>
+          <th>Lon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{metadata.location.country}</td>
+          <td>{metadata.location.region}</td>
+          <td>{metadata.location.zip}</td>
+          <td>{metadata.location.ll[0]}</td>
+          <td>{metadata.location.ll[1]}</td>
         </tr>
       </tbody>
     </table>
@@ -168,7 +196,6 @@ export default class AuctionDetails extends Component {
       let bidAuction = await Auction.at(auction);
       try {
         const result = await bidAuction.endAuction({ from: bidder });
-        console.log(await bidAuction.state.call());
       } catch (e) {
         console.log(e);
       }
@@ -229,10 +256,11 @@ export default class AuctionDetails extends Component {
   };
 
   collectData = async () => {
-    await this.endExpired();
+    const endedAuctions = await this.endExpired();
     for (const addr of this.props.relevantAuctions.filter(
       addr =>
-        this.state.searchResults[addr].auctionStatus === "Locked" &&
+        (this.state.searchResults[addr].auctionStatus === "Locked" ||
+          endedAuctions.includes(addr)) &&
         this.props.userId === this.state.searchResults[addr].highestBidder
     )) {
       let curAuction = await Auction.at(addr);
@@ -240,7 +268,8 @@ export default class AuctionDetails extends Component {
       // TODO: Get Data
       // TODO: Get Hash
       const hash = "0x" + sha256("12345678910");
-      this.verifyHash(curAuction, hash);
+      await this.verifyHash(curAuction, hash);
+      this.props.completeAuction(addr);
     }
   };
 
@@ -250,13 +279,16 @@ export default class AuctionDetails extends Component {
 
   endExpired = async () => {
     const now = Date.now();
+    let endedAuctions = [];
     for (const addr of this.props.relevantAuctions.filter(
       addr =>
         this.state.searchResults[addr].auctionEnd < now &&
         this.state.searchResults[addr].auctionStatus === "Open"
     )) {
-      this.endAuctions(addr);
+      await this.endAuctions(addr);
+      endedAuctions.push(addr);
     }
+    return endedAuctions;
   };
 
   searchAuctions = async () => {
@@ -267,6 +299,8 @@ export default class AuctionDetails extends Component {
     const sensor = this.refs.sensorType.value;
     const unit = this.refs.unit.value;
     const dataType = this.refs.dataType.value;
+    const country = this.refs.country.value;
+    const region = this.refs.region && this.refs.region.value;
 
     let searchResults = {};
     for (const auctionAddr of this.state.auctions) {
@@ -284,6 +318,20 @@ export default class AuctionDetails extends Component {
         continue;
       }
       if (!propertiesIncludes(info.metadata.properties, dataType)) {
+        continue;
+      }
+      if (
+        country &&
+        (!info.metadata.location.country ||
+          info.metadata.location.country !== country)
+      ) {
+        continue;
+      }
+      if (
+        region &&
+        (!info.metadata.location.region ||
+          info.metadata.location.region !== region)
+      ) {
         continue;
       }
       searchResults[auctionAddr] = info;
@@ -318,7 +366,6 @@ export default class AuctionDetails extends Component {
     }
     this.refs.massBid.value = minBidPrice(this.state.searchResults);
   };
-  massBid;
   render() {
     if (this.state.selectedAuction)
       var {
@@ -332,7 +379,7 @@ export default class AuctionDetails extends Component {
       } = this.state.searchResults[this.state.selectedAuction];
     const minBid = minBidPrice(this.state.searchResults);
     return (
-      <form>
+      <form onSubmit={e => e.preventDefault()}>
         <div className="card mb-3">
           <div className="card-header"> Auction Details</div>
           <div className="card-body">
@@ -368,6 +415,34 @@ export default class AuctionDetails extends Component {
                     ))}
                   </select>
                 </div>
+                <div className="col-md-1">
+                  <label htmlFor="country">Country</label>
+                  <input
+                    id="country"
+                    type="text"
+                    className="form-control"
+                    ref="country"
+                    placeholder="US"
+                    minLength="2"
+                    maxLength="2"
+                    onInput={() => this.forceUpdate()}
+                  />
+                </div>
+                {this.refs.country &&
+                  this.refs.country.value.length === 2 && (
+                    <div className="col-md-1">
+                      <label htmlFor="region">Region/State</label>
+                      <input
+                        id="region"
+                        type="text"
+                        className="form-control"
+                        ref="region"
+                        placeholder="MA"
+                        minLength="2"
+                        maxLength="5"
+                      />
+                    </div>
+                  )}
               </div>
             </div>
             <div className="form-group">
@@ -391,7 +466,7 @@ export default class AuctionDetails extends Component {
               </div>
             </div>
             {this.state.searchResults !== null && <hr />}
-            <div className="table-responsive">
+            <div className="table-responsive" style={{ overflowX: "hidden" }}>
               {this.state.searchResults !== null && (
                 <div className="form-group">
                   <div className="form-row">
@@ -422,6 +497,16 @@ export default class AuctionDetails extends Component {
                         </a>
                       </div>
                     )}
+                    <div className="col-md-2">
+                      <a
+                        className="btn btn-primary btn-block"
+                        onClick={() =>
+                          this.refreshResult(this.state.selectedAuction)
+                        }
+                      >
+                        Refresh Auction
+                      </a>
+                    </div>
                   </div>
                 </div>
               )}
@@ -461,8 +546,12 @@ export default class AuctionDetails extends Component {
                         (60 * 1000)} minutes`}</td>
                     </tr>
                     <tr>
-                      <td>Metadata</td>
-                      <td>{formatMetadata(metadata)}</td>
+                      <td>Device Description</td>
+                      <td>{formatDescription(metadata)}</td>
+                    </tr>
+                    <tr>
+                      <td>Location</td>
+                      <td>{formatLocation(metadata)}</td>
                     </tr>
                     <tr>
                       <td>Highest Bidder</td>
