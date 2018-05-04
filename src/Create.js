@@ -16,7 +16,6 @@ import sampleMetadata from "./sampleMetadata.json";
 //var watching = false; //start watching to events only
 // var passwd = false;
 
-var web3 = null;
 var AuctionFactory = contract(auctionFactory);
 var Auction = contract(auction);
 
@@ -31,16 +30,14 @@ export default class CreateAuction extends Component {
   constructor(props) {
     super(props);
     //the url should come from config /props
-    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-    console.warn("webb3 connected  " + web3);
-    AuctionFactory.setProvider(web3.currentProvider);
-    Auction.setProvider(web3.currentProvider);
+    AuctionFactory.setProvider(this.props.web3.currentProvider);
+    Auction.setProvider(this.props.web3.currentProvider);
     me = this;
   }
 
   async componentDidMount() {
     this.props.notifier(null, false, false, true);
-    web3.eth.getAccounts(function(error, accounts) {
+    this.props.web3.eth.getAccounts(function(error, accounts) {
         me.refs.beneficiary.value = accounts[0];
         console.log(accounts[0]);
     });
@@ -64,9 +61,6 @@ export default class CreateAuction extends Component {
       let apiKey = this.refs.apiKey.value;
 
       ///// CHANGE TO USER AUTH
-      var unlocked = web3.personal.unlockAccount(beneficiary, "welcome123", 10);
-      //var info = '';
-      console.log("unlocked" + unlocked);
       //   // if(!unlockaccount(auctioneerHash, phrase)) {
       //   //   return;
       //   }
