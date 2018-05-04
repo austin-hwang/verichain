@@ -209,16 +209,22 @@ export default class AuctionDetails extends Component {
       suggestions: []
     });
   };
-  async componentDidMount() {
-    let factoryInstance = await AuctionFactory.at('0x7a235958ce125688e9d22767c7bb734b9cbfd1d2');
+  componentDidMount() {
+    this.refreshAuctions();
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  async refreshAuctions() {
+    let factoryInstance = await AuctionFactory.at(
+      "0x0257606217e4412b7f66a69a30472690d5edbd11"
+    );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
-    for (var i = 0; i < auctionsLength; i++) {
+    for (var i = auctionsLength - 1; i < auctionsLength; i++) {
       let auction = await factoryInstance.getAuction.call(i);
       auctions.push(auction);
     }
     this.setState({ auctions });
-    this.handleChange = this.handleChange.bind(this);
   }
 
   async getAuctionInfo(address) {
@@ -311,8 +317,22 @@ export default class AuctionDetails extends Component {
     return apiKey;
   };
 
+  requestData = async (apiKey, metadata) => {
+    const uri =
+      metadata.links.filter(val => val.rel === "root")[0].href +
+      metadata.properties[Object.keys(metadata.properties)[1]].href;
+    return await (await fetch(uri, {
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": apiKey
+      },
+      method: "GET"
+    })).text();
+  };
+
   collectData = async () => {
     const endedAuctions = await this.endExpired();
+    console.log(endedAuctions);
     for (const addr of this.props.relevantAuctions.filter(
       addr =>
         (this.state.searchResults[addr].auctionStatus === "Locked" ||
@@ -320,17 +340,20 @@ export default class AuctionDetails extends Component {
         this.props.userId === this.state.searchResults[addr].highestBidder
     )) {
       let curAuction = await Auction.at(addr);
-      console.log(await this.getApiKey(curAuction));
-      // TODO: Get Data
-      // TODO: Get Hash
-      const hash = "0x" + sha256("12345678910");
+      const data = await this.requestData(
+        await this.getApiKey(curAuction),
+        this.state.searchResults[addr].metadata
+      );
+      const hash = "0x" + sha256(data.slice(0, 128));
       await this.verifyHash(curAuction, hash);
       this.props.completeAuction(addr);
     }
   };
 
   verifyHash = async (auction, hash) => {
-    await auction.confirmExchange.call(hash, { from: this.props.userId });
+    return await auction.confirmExchange(hash, {
+      from: this.props.userId
+    });
   };
 
   endExpired = async () => {
@@ -348,6 +371,7 @@ export default class AuctionDetails extends Component {
   };
 
   searchAuctions = async () => {
+    await this.refreshAuctions();
     this.setState({
       loading: true,
       relevantAuctionsView: false
