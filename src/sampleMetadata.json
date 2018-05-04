@@ -26,6 +26,13 @@
         "description": "An ambient temperature sensor",
         "href": "/things/pi/properties/temperature"
       }
+    },
+    "location": {
+      "city": "Cambridge",
+      "country": "US",
+      "region": "MA",
+      "zip": "02138",
+      "ll": [42.38, -71.1329]
     }
   },
   {
@@ -45,6 +52,13 @@
         "description": "The user's daily voice searches",
         "href": "/things/pi/properties/voiceSearches"
       }
+    },
+    "location": {
+      "country": "US",
+      "region": "TX",
+      "city": "San Antonio",
+      "ll": [29.4889, -98.3987],
+      "zip": "78218"
     }
   },
   {
@@ -64,6 +78,13 @@
         "description": "Pictures of the user's fridge contents",
         "href": "/things/pi/properties/fridgeContents"
       }
+    },
+    "location": {
+      "country": "US",
+      "region": "MA",
+      "city": "Arlington",
+      "ll": [42.4166, -71.1469],
+      "zip": "02474"
     }
   },
   {
@@ -85,6 +106,13 @@
         "description": "A heart rate sensor on user's wrist",
         "href": "/things/pi/properties/heartRate"
       }
+    },
+    "location": {
+      "country": "US",
+      "region": "CA",
+      "city": "Palo Alto",
+      "ll": [37.4576, -122.1041],
+      "zip": "94303"
     }
   },
   {
@@ -106,6 +134,13 @@
         "description": "A soil moisture sensor",
         "href": "/things/pi/properties/moisture"
       }
+    },
+    "location": {
+      "country": "US",
+      "region": "CA",
+      "city": "Palo Alto",
+      "ll": [37.4576, -122.1041],
+      "zip": "94303"
     }
   }
 ]
