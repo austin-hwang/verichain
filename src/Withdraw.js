@@ -49,9 +49,20 @@ export default class Withdraw extends Component {
     me = this;
   }
 
+  test = () => {
+    fetch('http://localhost:5000/things/pi/properties/temperature', {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': '48df94307f54091675c98f406f23bc98',
+      },
+      method: 'GET',
+    }).then(function(res) {
+      console.log(res.json());
+    })
+  }
+
   getPayable = () => {
     this.props.notifier(null, false, false, true);
-
     let buyer = this.refs.txtBuyerId.value;
     var auction = Auction.at(this.props.auctionId);
 
@@ -135,8 +146,8 @@ export default class Withdraw extends Component {
                   </a>
                 </div>
                 <div className="col-md-3">
-                  <a className="btn btn-primary btn-block" onClick={this.pay}>
-                    Pay
+                  <a className="btn btn-primary btn-block" onClick={this.test}>
+                    Test Fetch
                   </a>
                 </div>
               </div>
