@@ -224,7 +224,7 @@ export default class AuctionDetails extends Component {
   };
 
   getApiKey = async auction => {
-    let apiKey = await auction.retrieveKey.call();
+    let apiKey = await auction.retrieveKey.call( {from: this.props.userId} );
     return apiKey;
   };
 
@@ -245,7 +245,7 @@ export default class AuctionDetails extends Component {
   };
 
   verifyHash = async (auction, hash) => {
-    await auction.confirmExchange(hash, { from: this.props.userId });
+    await auction.confirmExchange.call(hash, { from: this.props.userId });
   };
 
   endExpired = async () => {
