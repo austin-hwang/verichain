@@ -6,7 +6,6 @@ import AuctionDetails from "./Details.js";
 import Withdraw from "./Withdraw.js";
 import Settlement from "./Settlement.js";
 import Login from "./Login.jsx";
-import { watchEvents } from "./event-watcher.js";
 
 class App extends Component {
   // componentDidMount() {}
