@@ -22,6 +22,8 @@ contract AuctionFactory {
 	address[] public auctions;
 	// mapping( address => address) public escrows;
 
+  event AuctionCreated(address auction, address beneficiary);
+
 	function AuctionFactory() {
 		factoryOwner = msg.sender;
 	}
@@ -33,8 +35,7 @@ contract AuctionFactory {
       auctions.push(auction);
       // AuctionEscrow escrow = new AuctionEscrow(owner, auction);
       // escrows[auction] = escrow;
-
-  return auction;
+      AuctionCreated(address(auction), owner);
   
   }
 
