@@ -213,7 +213,7 @@ export default class AuctionDetails extends Component {
 
   async refreshAuctions() {
     let factoryInstance = await AuctionFactory.at(
-      "0x0257606217e4412b7f66a69a30472690d5edbd11"
+      "0xc4a324b35f1121ba66ab5f7b366d983f252c1fd7"
     );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
@@ -251,7 +251,11 @@ export default class AuctionDetails extends Component {
     phrase = this.props.privateKey
   ) {
     if (auction) {
-      let unlocked = await this.props.web3.personal.unlockAccount(bidder, phrase, 10);
+      let unlocked = await this.props.web3.personal.unlockAccount(
+        bidder,
+        phrase,
+        10
+      );
       let bidAuction = await Auction.at(auction);
       try {
         const result = await bidAuction.endAuction({ from: bidder });
@@ -270,8 +274,15 @@ export default class AuctionDetails extends Component {
     phrase = this.props.privateKey
   ) {
     if (auction) {
-      let unlocked = await this.props.web3.personal.unlockAccount(bidder, phrase, 10);
-      console.log("Balance: ", this.props.web3.fromWei(this.props.web3.eth.getBalance(bidder)));
+      let unlocked = await this.props.web3.personal.unlockAccount(
+        bidder,
+        phrase,
+        10
+      );
+      console.log(
+        "Balance: ",
+        this.props.web3.fromWei(this.props.web3.eth.getBalance(bidder))
+      );
       console.log("Unlocked: " + unlocked);
       console.log(bidAmount, bidder);
 
@@ -329,7 +340,6 @@ export default class AuctionDetails extends Component {
 
   collectData = async () => {
     const endedAuctions = await this.endExpired();
-    console.log(endedAuctions);
     for (const addr of this.props.relevantAuctions.filter(
       addr =>
         (this.state.searchResults[addr].auctionStatus === "Locked" ||
