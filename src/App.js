@@ -6,7 +6,6 @@ import AuctionDetails from "./Details.js";
 import Withdraw from "./Withdraw.js";
 import Settlement from "./Settlement.js";
 import Login from "./Login.jsx";
-
 import { watchEvents } from "./event-watcher.js";
 
 class App extends Component {
@@ -15,9 +14,12 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    const userId = window.localStorage.getItem("userId") ? window.localStorage.getItem("userId").toLowerCase() : null;
+    const userId = window.localStorage.getItem("userId")
+      ? window.localStorage.getItem("userId").toLowerCase()
+      : null;
     const privateKey = window.localStorage.getItem("privateKey");
     const relevantAuctions = window.localStorage.getItem("relevantAuctions");
+    const completedAuctions = window.localStorage.getItem("completedAuctions");
     this.state = {
       curAuction: null,
       auctionId: null,
@@ -25,7 +27,8 @@ class App extends Component {
       message: null,
       relevantAuctions: relevantAuctions ? JSON.parse(relevantAuctions) : [], // ie. auctions you have bidded on that havent ended.
       userId: userId,
-      privateKey: privateKey ? privateKey : null
+      privateKey: privateKey ? privateKey : null,
+      completedAuctions: completedAuctions ? JSON.parse(completedAuctions) : []
     };
   }
 
@@ -45,11 +48,30 @@ class App extends Component {
     this.setState({ message: msgVal });
   };
 
+  completeAuction = addr => {
+    const prunedAuctions = this.state.relevantAuctions.filter(
+      val => val !== addr
+    );
+    const completedAuctions = Array.from(
+      new Set(this.state.completedAuctions.concat(addr))
+    );
+    this.setState({
+      relevantAuctions: prunedAuctions,
+      completedAuctions: completedAuctions
+    });
+    window.localStorage.setItem(
+      "relevantAuctions",
+      JSON.stringify(prunedAuctions)
+    );
+    window.localStorage.setItem(
+      "completedAuctions",
+      JSON.stringify(completedAuctions)
+    );
+  };
+
   setAuctionDetails = (pAuction, pAuctioneerId) => {
     this.setState({ auctioneerId: pAuctioneerId });
   };
-
-  
 
   addRelevantAuction = addr => {
     const newAuctions = Array.from(
@@ -195,16 +217,17 @@ class App extends Component {
                 onAuctionId={this.setAuctionId}
                 notifier={this.updateStatus}
                 onBid={this.addRelevantAuction}
+                completeAuction={this.completeAuction}
                 relevantAuctions={this.state.relevantAuctions}
               />
             )}
 
             {this.state.sub_feature === "Withdraw" && (
               <Withdraw
-              userId={this.state.userId}
-              auctionId={this.state.setAuctionId}
-              notifier={this.updateStatus}
-              auctions={this.state.relevantAuctions}
+                userId={this.state.userId}
+                auctionId={this.state.setAuctionId}
+                notifier={this.updateStatus}
+                auctions={this.state.relevantAuctions}
               />
             )}
 
