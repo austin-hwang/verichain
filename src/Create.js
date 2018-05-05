@@ -1,3 +1,4 @@
+/*
 var sha256 = require('js-sha256');
 //react and Front End imports
 import React, { Component } from "react";
@@ -201,3 +202,4 @@ CreateAuction.propTypes = {
   onAuctionDetails: PropTypes.func.isRequired,
   notifier: PropTypes.func.isRequired
 };
+*/

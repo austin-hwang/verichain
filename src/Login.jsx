@@ -9,8 +9,7 @@ import { default as Web3 } from "web3";
 //contracts
 import { default as contract } from "truffle-contract";
 import auctionFactory from "./contracts/AuctionFactory.json";
-import auction from "./contracts/dataAuction.json";
-import sampleMetadata from "./sampleMetadata.json";
+import auction from "./contracts/dataAuction.json"
 
 //var watching = false; //start watching to events only
 // var passwd = false;
