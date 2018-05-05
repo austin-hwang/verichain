@@ -64,10 +64,6 @@ The file `dataAuction.sol` creates a smart contract for managing auctions, allow
 4. Allow refunding of bids lower than highest bid.
 5. Withdrawing rewards after auction is completed.
 
-## /dataAnalysis
-
-TODO
-
 ## /public
 
 This folder contains `landingpage.html` and all its JavaScript and CSS dependencies. The landing page gives a fancy intro to our project and contains some basic information. 
@@ -77,6 +73,10 @@ The file `index.html` is where the dashboard is rendered for users to bid on auc
 ## /scripts
 
 This folder contains `start.js`, which is what the program runs on `npm start`.
+
+## /dataAnalysis
+
+A folder detailing an example use case for a data scientist who wants to plot out the temperature data recieved. Symbolizes the last step in the transaction: using the data!
 
 ## /src
 
