@@ -355,8 +355,7 @@ export default class AuctionDetails extends Component {
       addr =>
         (this.state.searchResults[addr].auctionStatus === "Locked" ||
           endedAuctions.includes(addr)) &&
-        this.props.userId ===
-          this.state.searchResults[addr].highestBidder
+        this.props.userId === this.state.searchResults[addr].highestBidder
     )) {
       let curAuction = await Auction.at(addr);
       let data;
@@ -471,7 +470,14 @@ export default class AuctionDetails extends Component {
       selectedAuction: auctionAddress
     });
   }
-
+  refreshResults = async () => {
+    let newResults = {};
+    for (const addr of Object.keys(this.state.searchResults)) {
+      newResults[addr] = await this.getAuctionInfo(addr);
+    }
+    this.setState({ searchResults: newResults });
+    return newResults;
+  };
   refreshResult = async addr => {
     this.state.searchResults[addr] = await this.getAuctionInfo(addr);
 
@@ -482,7 +488,10 @@ export default class AuctionDetails extends Component {
     for (const [addr, { highestBid }] of Object.entries(
       this.state.searchResults
     )) {
-      this.bid(addr, this.refs.massBid.value/Object.keys(this.state.searchResults).length);
+      this.bid(
+        addr,
+        this.refs.massBid.value / Object.keys(this.state.searchResults).length
+      );
     }
     this.refs.massBid.value = minBidPrice(this.state.searchResults);
   };
