@@ -213,11 +213,11 @@ export default class AuctionDetails extends Component {
 
   async refreshAuctions() {
     let factoryInstance = await AuctionFactory.at(
-      "0xc4a324b35f1121ba66ab5f7b366d983f252c1fd7"
+      "0x647616fdb1c6fbe061ef5564fa394abe2ec356ec"
     );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
-    for (var i = auctionsLength - 1; i < auctionsLength; i++) {
+    for (var i = auctionsLength - 5; i < auctionsLength; i++) {
       let auction = await factoryInstance.getAuction.call(i);
       auctions.push(auction);
     }
@@ -329,7 +329,7 @@ export default class AuctionDetails extends Component {
   requestData = async (apiKey, metadata) => {
     const uri =
       metadata.links.filter(val => val.rel === "root")[0].href +
-      metadata.properties[Object.keys(metadata.properties)[1]].href;
+      metadata.properties[Object.keys(metadata.properties)[0]].href;
     return await (await fetch(uri, {
       headers: {
         "Content-Type": "application/json",
@@ -348,10 +348,16 @@ export default class AuctionDetails extends Component {
         this.props.userId === this.state.searchResults[addr].highestBidder
     )) {
       let curAuction = await Auction.at(addr);
-      const data = await this.requestData(
-        await this.getApiKey(curAuction),
-        this.state.searchResults[addr].metadata
-      );
+      let data;
+      try {
+        data = await this.requestData(
+          await this.getApiKey(curAuction),
+          this.state.searchResults[addr].metadata
+        );
+      } catch (e) {
+        console.log(`Couldn't get data for ${addr}`);
+        continue;
+      }
       const hash = "0x" + sha256(data.slice(0, 128));
       await this.verifyHash(curAuction, hash);
       this.props.completeAuction(addr);
