@@ -11,7 +11,8 @@ Either install the Ganache GUI and change port number to `8545` or run in termin
 
 To start IoT API backend: `npm start`
 
-Copy the Auction Factory address generated in terminal and replace it in Details.js at line 216.
+Copy the Auction Factory address generated in terminal and replace it in Details.js at line 216.  
+NOTE: In production, this step can be achieved automatically using an API which stores a list of open AuctionFactories  
 ```bash
 Running migration: 2_deploy_contracts.js
   Deploying AuctionFactory...
