@@ -217,8 +217,7 @@ export default class AuctionDetails extends Component {
     );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
-    const start = auctionsLength < 5 ? 0 : auctionsLength - 5;
-    for (var i = start; i < auctionsLength; i++) {
+    for (var i = 0; i < auctionsLength; i++) {
       let auction = await factoryInstance.getAuction.call(i);
       auctions.push(auction);
     }
@@ -375,8 +374,9 @@ export default class AuctionDetails extends Component {
       this.props.completeAuction(addr);
       var a = window.document.createElement("a");
       a.href = window.URL.createObjectURL(
-        new Blob([data], { type: "text/txt" })
+        new Blob([data], { type: "text/json" })
       );
+      console.log("data", data);
       a.download = `${
         Object.keys(this.state.searchResults[addr].metadata.properties)[0]
       }.json`;
@@ -430,7 +430,7 @@ export default class AuctionDetails extends Component {
       }
       if (
         !Object.keys(info.metadata.properties).includes(sensor) &&
-        !sensor === "any"
+        sensor !== "any"
       ) {
         continue;
       }
