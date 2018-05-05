@@ -217,7 +217,8 @@ export default class AuctionDetails extends Component {
     );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
-    for (var i = Math.min(auctionsLength, 5); i < auctionsLength; i++) {
+    const start = auctionsLength < 5 ? 0 : auctionsLength - 5;
+    for (var i = start; i < auctionsLength; i++) {
       let auction = await factoryInstance.getAuction.call(i);
       auctions.push(auction);
     }
