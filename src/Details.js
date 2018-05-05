@@ -217,7 +217,7 @@ export default class AuctionDetails extends Component {
     );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
-    for (var i = auctionsLength - 5; i < auctionsLength; i++) {
+    for (var i = Math.min(auctionsLength, 5); i < auctionsLength; i++) {
       let auction = await factoryInstance.getAuction.call(i);
       auctions.push(auction);
     }
@@ -322,7 +322,9 @@ export default class AuctionDetails extends Component {
   };
 
   getApiKey = async auction => {
-    let apiKey = await auction.retrieveKey.call({ from: this.props.web3.eth.accounts[0] });
+    let apiKey = await auction.retrieveKey.call({
+      from: this.props.web3.eth.accounts[0]
+    });
     return apiKey;
   };
 
@@ -330,13 +332,21 @@ export default class AuctionDetails extends Component {
     const uri =
       metadata.links.filter(val => val.rel === "root")[0].href +
       metadata.properties[Object.keys(metadata.properties)[0]].href;
-    return await (await fetch(uri, {
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": apiKey
-      },
-      method: "GET"
-    })).text();
+    try {
+      const request = await fetch(uri, {
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": apiKey
+        },
+        method: "GET"
+      });
+      if (!request.ok) {
+        throw new Error("Cannot get data");
+      }
+      return await request.text();
+    } catch (e) {
+      throw new Error("Cannot get data");
+    }
   };
 
   collectData = async () => {
@@ -345,7 +355,8 @@ export default class AuctionDetails extends Component {
       addr =>
         (this.state.searchResults[addr].auctionStatus === "Locked" ||
           endedAuctions.includes(addr)) &&
-        this.props.web3.eth.accounts[0] === this.state.searchResults[addr].highestBidder
+        this.props.web3.eth.accounts[0] ===
+          this.state.searchResults[addr].highestBidder
     )) {
       let curAuction = await Auction.at(addr);
       let data;
