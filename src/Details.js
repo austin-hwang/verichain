@@ -249,7 +249,7 @@ export default class AuctionDetails extends Component {
 
   async endAuctions(
     auction = this.state.selectedAuction,
-    bidder = this.props.web3.eth.accounts[0],
+    bidder = this.props.userId,
     phrase = this.props.privateKey
   ) {
     if (auction) {
@@ -272,7 +272,7 @@ export default class AuctionDetails extends Component {
   async bid(
     auction = this.state.selectedAuction,
     bidAmount = this.refs.txtBidAmount.value,
-    bidder = this.props.web3.eth.accounts[0],
+    bidder = this.props.userId,
     phrase = this.props.privateKey
   ) {
     if (auction) {
@@ -324,7 +324,7 @@ export default class AuctionDetails extends Component {
 
   getApiKey = async auction => {
     let apiKey = await auction.retrieveKey.call({
-      from: this.props.web3.eth.accounts[0]
+      from: this.props.userId
     });
     return apiKey;
   };
@@ -356,7 +356,7 @@ export default class AuctionDetails extends Component {
       addr =>
         (this.state.searchResults[addr].auctionStatus === "Locked" ||
           endedAuctions.includes(addr)) &&
-        this.props.web3.eth.accounts[0] ===
+        this.props.userId ===
           this.state.searchResults[addr].highestBidder
     )) {
       let curAuction = await Auction.at(addr);
@@ -392,7 +392,7 @@ export default class AuctionDetails extends Component {
 
   verifyHash = async (auction, hash) => {
     return await auction.confirmExchange(hash, {
-      from: this.props.web3.eth.accounts[0]
+      from: this.props.userId
     });
   };
 
@@ -688,7 +688,7 @@ export default class AuctionDetails extends Component {
                     <tr>
                       <td>Highest Bidder</td>
                       <td>
-                        {highestBidder === this.props.web3.eth.accounts[0]
+                        {highestBidder === this.props.userId
                           ? `Me (${highestBidder})`
                           : highestBidder}
                       </td>
