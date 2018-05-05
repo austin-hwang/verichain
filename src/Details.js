@@ -213,7 +213,7 @@ export default class AuctionDetails extends Component {
 
   async refreshAuctions() {
     let factoryInstance = await AuctionFactory.at(
-      "0x647616fdb1c6fbe061ef5564fa394abe2ec356ec"
+      "0xe37bea8371f377c9e350ae92b2dd697344e4bd3d"
     );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
@@ -482,7 +482,7 @@ export default class AuctionDetails extends Component {
     for (const [addr, { highestBid }] of Object.entries(
       this.state.searchResults
     )) {
-      this.bid(addr, highestBid + 1);
+      this.bid(addr, this.refs.massBid.value/Object.keys(this.state.searchResults).length);
     }
     this.refs.massBid.value = minBidPrice(this.state.searchResults);
   };
