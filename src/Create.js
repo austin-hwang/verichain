@@ -39,7 +39,6 @@ export default class CreateAuction extends Component {
     this.props.notifier(null, false, false, true);
     this.props.web3.eth.getAccounts(function(error, accounts) {
         me.refs.beneficiary.value = accounts[0];
-        console.log(accounts[0]);
     });
   }
 

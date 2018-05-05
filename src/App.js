@@ -129,7 +129,7 @@ class App extends Component {
                       Logout
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a
                       onClick={() => {
                         this.setState({ sub_feature: "Create" });
@@ -137,7 +137,7 @@ class App extends Component {
                     >
                       Create
                     </a>
-                  </li>
+                  </li> */}
                   <li>
                     <a
                       onClick={() => {
