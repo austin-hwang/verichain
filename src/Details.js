@@ -213,7 +213,7 @@ export default class AuctionDetails extends Component {
 
   async refreshAuctions() {
     let factoryInstance = await AuctionFactory.at(
-      "0xb2f46e431480fb2377a04506c76955196116b0d1"
+      "0xf0476c54e967919121d642ed99e27a544f32b45a"
     );
     let auctionsLength = parseInt(await factoryInstance.numAuctions.call());
     let auctions = [];
@@ -248,7 +248,7 @@ export default class AuctionDetails extends Component {
 
   async endAuctions(
     auction = this.state.selectedAuction,
-    bidder = this.props.userId,
+    bidder = this.props.web3.eth.accounts[0],
     phrase = this.props.privateKey
   ) {
     if (auction) {
@@ -271,7 +271,7 @@ export default class AuctionDetails extends Component {
   async bid(
     auction = this.state.selectedAuction,
     bidAmount = this.refs.txtBidAmount.value,
-    bidder = this.props.userId,
+    bidder = this.props.web3.eth.accounts[0],
     phrase = this.props.privateKey
   ) {
     if (auction) {
@@ -322,7 +322,7 @@ export default class AuctionDetails extends Component {
   };
 
   getApiKey = async auction => {
-    let apiKey = await auction.retrieveKey.call({ from: this.props.userId });
+    let apiKey = await auction.retrieveKey.call({ from: this.props.web3.eth.accounts[0] });
     return apiKey;
   };
 
@@ -345,7 +345,7 @@ export default class AuctionDetails extends Component {
       addr =>
         (this.state.searchResults[addr].auctionStatus === "Locked" ||
           endedAuctions.includes(addr)) &&
-        this.props.userId === this.state.searchResults[addr].highestBidder
+        this.props.web3.eth.accounts[0] === this.state.searchResults[addr].highestBidder
     )) {
       let curAuction = await Auction.at(addr);
       const data = await this.requestData(
@@ -370,7 +370,7 @@ export default class AuctionDetails extends Component {
 
   verifyHash = async (auction, hash) => {
     return await auction.confirmExchange(hash, {
-      from: this.props.userId
+      from: this.props.web3.eth.accounts[0]
     });
   };
 
@@ -666,7 +666,7 @@ export default class AuctionDetails extends Component {
                     <tr>
                       <td>Highest Bidder</td>
                       <td>
-                        {highestBidder === this.props.userId
+                        {highestBidder === this.props.web3.eth.accounts[0]
                           ? `Me (${highestBidder})`
                           : highestBidder}
                       </td>
